@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
+import API from "./api/crypto";
+
+const response = await API.trending();
 </script>
 
 <template>
