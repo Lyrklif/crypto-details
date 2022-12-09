@@ -1,5 +1,5 @@
 import type { AxiosPromise, AxiosInstance } from "axios";
-import { coinGecko } from "../services/axios";
+import { coinGecko, simpleswap, coincap } from "../services/axios";
 
 export interface ApiInterface {
   trending: () => AxiosPromise;

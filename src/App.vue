@@ -3,7 +3,12 @@ import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
 import API from "./api/crypto";
 
-const response = await API.trending();
+// async function load() {
+//   const response = await API.trending();
+//   console.log("TTT response", response);
+// }
+//
+// load();
 </script>
 
 <template>
