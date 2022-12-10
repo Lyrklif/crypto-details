@@ -11,7 +11,7 @@ const API: ApiInterface = {
     return instance.get("search/trending");
   },
   search(query) {
-    return instance.get("search", { params: query });
+    return instance.get("search", { params: { query } });
   },
 };
 
