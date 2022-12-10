@@ -1,5 +1,6 @@
 import type { AxiosPromise } from "axios";
 import instance from "./instance";
+import type { TrendingResponse, SearchResponse } from "./types";
 
 export interface ApiInterface {
   trending: () => AxiosPromise<TrendingResponse>;

@@ -39,3 +39,11 @@ interface SearchResponse {
   categories: Array<SearchCategoryItem>;
   nfts: Array<any>;
 }
+
+export type {
+  TrendingCoinItem,
+  TrendingResponse,
+  SearchCoinItem,
+  SearchCategoryItem,
+  SearchResponse,
+};
