@@ -11,4 +11,5 @@ interface ImportMetaEnv {
   readonly VITE_COINCAP_API: string;
   readonly VITE_COINCAP_API_KEY: string;
   readonly VITE_GOOGLE_TRENDS_API: string;
+  readonly VITE_COIN_PAPRIKA_API: string;
 }
