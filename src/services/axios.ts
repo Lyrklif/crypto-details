@@ -17,4 +17,8 @@ const coincap: AxiosInstance = axios.create({
   },
 });
 
-export { coinGecko, simpleswap, coincap };
+const googleTrends: AxiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_GOOGLE_TRENDS_API,
+});
+
+export { coinGecko, simpleswap, coincap, googleTrends };
