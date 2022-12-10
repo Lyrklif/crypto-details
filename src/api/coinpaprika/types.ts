@@ -122,6 +122,16 @@ interface GetTwitterItem {
   youtube_link: string;
 }
 
+interface CoinExchangesItem {
+  id: string;
+  name: string;
+  fiats: Array<{
+    name: string;
+    symbol: string;
+  }>;
+  adjusted_volume_24h_share: number;
+}
+
 export type {
   SearchCurrencyItem,
   SearchIcosItem,
@@ -131,4 +141,5 @@ export type {
   SearchResponse,
   GetCoinByIDResponse,
   GetTwitterItem,
+  CoinExchangesItem,
 };
