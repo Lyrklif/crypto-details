@@ -108,6 +108,20 @@ interface GetCoinByIDResponse {
   last_data_at: string;
 }
 
+interface GetTwitterItem {
+  date: string;
+  user_name: string;
+  user_image_link: string;
+  status: string;
+  is_retweet: boolean;
+  retweet_count: number;
+  like_count: number;
+  status_link: string;
+  status_id: string;
+  media_link: string;
+  youtube_link: string;
+}
+
 export type {
   SearchCurrencyItem,
   SearchIcosItem,
@@ -116,4 +130,5 @@ export type {
   SearchTagsItem,
   SearchResponse,
   GetCoinByIDResponse,
+  GetTwitterItem,
 };

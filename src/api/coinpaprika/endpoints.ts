@@ -1,6 +1,10 @@
 import type { AxiosPromise } from "axios";
 import instance from "./instance";
-import type { SearchResponse, GetCoinByIDResponse } from "./types";
+import type {
+  SearchResponse,
+  GetCoinByIDResponse,
+  GetTwitterItem,
+} from "./types";
 
 export interface ApiInterface {
   search: (params: {
@@ -10,6 +14,7 @@ export interface ApiInterface {
     limit?: number;
   }) => AxiosPromise<SearchResponse>;
   getCoinByID: (coin_id: string) => AxiosPromise<GetCoinByIDResponse>;
+  coinTwitter: (coin_id: string) => AxiosPromise<Array<GetTwitterItem>>;
 }
 
 const API: ApiInterface = {
@@ -18,6 +23,9 @@ const API: ApiInterface = {
   },
   getCoinByID(coin_id) {
     return instance.get("coins", { params: { coin_id } });
+  },
+  coinTwitter(coin_id) {
+    return instance.get(`coins/${coin_id}/twitter`);
   },
 };
 
