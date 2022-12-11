@@ -18,4 +18,5 @@ interface ImportMetaEnv {
   readonly VITE_NEWS_API_KEY: string;
   readonly VITE_GOOGLE_NEWS_API: string;
   readonly VITE_GOOGLE_NEWS_API_KEY: string;
+  readonly VITE_MINERSTAT_API: string;
 }
