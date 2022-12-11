@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
-import API_CRYPTO from "./api/crypto";
-import API_TRENDS from "./api/trends";
 
 // async function load() {
 //   const response = await API_CRYPTO.trending();
