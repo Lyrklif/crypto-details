@@ -4,12 +4,11 @@ import API from "../api";
 
 const coins = ref([]);
 
-// TODO uncomment
-// async function load() {
-//   const response = await API.coingecko.trending();
-//   console.log("TTT response", response);
-// }
-// load();
+async function load() {
+  const response = await API.coingecko.trending();
+  console.log("TTT response", response);
+}
+load();
 </script>
 
 <template>
