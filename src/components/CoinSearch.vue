@@ -5,6 +5,7 @@ import type { SearchCurrencyItem } from "../api/coinpaprika/types";
 import type { TrendingCoinItem } from "../api/coingecko/types";
 
 const SEARCH_LIMIT = 5;
+const MIN_LENGTH_COIN_NAME = 3;
 
 const coinName: Ref<string> = ref("");
 const isError: Ref<boolean> = ref(false);
@@ -16,7 +17,7 @@ async function loadTrendingCoins() {
   try {
     const response = await API.coingecko.trending();
     trendingCoins.value = response.data.coins.slice(0, 3);
-  } finally {
+  } catch (error: any) {
     trendingCoins.value = [];
   }
 }
@@ -56,7 +57,7 @@ loadTrendingCoins();
           class="form-control"
           v-model="coinName"
           :disabled="isSearching"
-          minlength="3"
+          :minlength="MIN_LENGTH_COIN_NAME"
         />
       </label>
     </div>
@@ -99,7 +100,7 @@ loadTrendingCoins();
       type="submit"
       class="btn btn-block btn-primary"
       title="Поиск"
-      :disabled="isSearching"
+      :disabled="isSearching || coinName.length < MIN_LENGTH_COIN_NAME"
     >
       Поиск
     </button>
