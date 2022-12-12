@@ -1,15 +1,17 @@
 interface TrendingCoinItem {
-  id: string;
-  coin_id: number;
-  name: string;
-  symbol: string;
-  market_cap_rank: number;
-  thumb: string;
-  small: string;
-  large: string;
-  slug: string;
-  price_btc: number;
-  score: 1 | 2 | 3 | 4 | 5 | 6;
+  item: {
+    id: string;
+    coin_id: number;
+    name: string;
+    symbol: string;
+    market_cap_rank: number;
+    thumb: string;
+    small: string;
+    large: string;
+    slug: string;
+    price_btc: number;
+    score: number;
+  };
 }
 
 interface TrendingResponse {
