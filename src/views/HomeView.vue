@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref, Ref } from "vue";
+import { ref } from "vue";
 import CoinSearch from "@/components/SearchCoins.vue";
 import SearchResults from "@/components/search/SearchResults.vue";
 import { SearchCurrencyItem } from "../api/coinpaprika/types";
 
-const foundedCoins: Ref<Array<SearchCurrencyItem>> = ref([]);
+const foundedCoins = ref<Array<SearchCurrencyItem>>([]);
 
 const setCoins = (coins = []) => {
   foundedCoins.value = coins;

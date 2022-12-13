@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, Ref } from "vue";
+import { ref } from "vue";
 import API from "../api";
 import type { TrendingCoinItem } from "../api/coingecko/types";
 import TrendCoins from "./search/TrendCoins.vue";
@@ -10,10 +10,10 @@ const MIN_LENGTH_COIN_NAME = 3;
 
 const emit = defineEmits(["search"]);
 
-const isError: Ref<boolean> = ref(false);
-const isSearching: Ref<boolean> = ref(false);
-const coinName: Ref<string> = ref("");
-const trendingCoins: Ref<Array<TrendingCoinItem>> = ref([]);
+const isError = ref(false);
+const isSearching = ref(false);
+const coinName = ref("");
+const trendingCoins = ref<Array<TrendingCoinItem>>([]);
 
 async function loadTrendingCoins() {
   try {

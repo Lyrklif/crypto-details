@@ -24,7 +24,7 @@ const API: ApiInterface = {
     return instance.get("search", { params: { q, c, modifier, limit } });
   },
   getCoinByID(coin_id) {
-    return instance.get("coins", { params: { coin_id } });
+    return instance.get(`coins/${coin_id}`);
   },
   coinTwitter(coin_id) {
     return instance.get(`coins/${coin_id}/twitter`);

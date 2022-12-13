@@ -1,8 +1,10 @@
 import { Server } from "miragejs";
 import searchTrending from "./mock/searchTrending";
 import search2 from "./mock/search2";
-import type { TrendingResponse, SearchResponse } from "./api/coingecko/types";
-import type { SearchResponse as SearchResponse2 } from "./api/coinpaprika/types";
+import coinById from "./mock/coinById";
+import type { TrendingResponse } from "./api/coingecko/types";
+import type { SearchResponse } from "./api/coinpaprika/types";
+import type { GetCoinByIDResponse } from "./api/coinpaprika/types";
 
 export function makeServer() {
   const server = new Server();
@@ -11,8 +13,12 @@ export function makeServer() {
     return searchTrending;
   });
 
-  server.get("/search", (): SearchResponse2 => {
+  server.get("/search", (): SearchResponse => {
     return search2;
+  });
+
+  server.get("/coins/:coin_id", (): GetCoinByIDResponse => {
+    return coinById;
   });
 
   return server;

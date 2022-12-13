@@ -46,14 +46,14 @@ interface GetCoinByIDResponse {
   id: string;
   name: string;
   symbol: string;
-  parent: {
+  parent?: {
     id: string;
     name: string;
     symbol: string;
   };
   rank: number;
-  is_new: false;
-  is_active: true;
+  is_new: boolean;
+  is_active: boolean;
   type: string;
   logo: string;
   tags: Array<{
@@ -69,28 +69,28 @@ interface GetCoinByIDResponse {
   }>;
   description: string;
   message: string;
-  open_source: true;
-  hardware_wallet: true;
+  open_source: boolean;
+  hardware_wallet: boolean;
   started_at: string;
   development_status: string;
   proof_type: string;
   org_structure: string;
   hash_algorithm: string;
-  contract: string;
-  platform: string;
-  contracts: Array<{
+  contract?: string;
+  platform?: string;
+  contracts?: Array<{
     contract: string;
     platform: string;
     type: string;
   }>;
   links: {
-    explorer: Array<string>;
-    facebook: Array<string>;
-    reddit: Array<string>;
-    source_code: Array<string>;
-    website: Array<string>;
-    youtube: Array<string>;
-    medium: null;
+    explorer?: null | Array<string>;
+    facebook?: null | Array<string>;
+    reddit?: null | Array<string>;
+    source_code?: null | Array<string>;
+    website?: null | Array<string>;
+    youtube?: null | Array<string>;
+    medium?: null | Array<string>;
   };
   links_extended: Array<{
     url: string;
@@ -98,11 +98,14 @@ interface GetCoinByIDResponse {
     stats?: {
       contributors?: number;
       stars?: number;
+      subscribers?: number;
+      members?: number;
+      followers?: number;
     };
   }>;
   whitepaper: {
     link: string;
-    thumbnail: string;
+    thumbnail: null | string;
   };
   first_data_at: string;
   last_data_at: string;
