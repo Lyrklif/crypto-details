@@ -2,6 +2,8 @@
 import { ref, Ref } from "vue";
 import API from "../api";
 import type { TrendingCoinItem } from "../api/coingecko/types";
+import TrendCoins from "./search/TrendCoins.vue";
+import TokenNotFound from "./search/TokenNotFound.vue";
 
 const SEARCH_LIMIT = 5;
 const MIN_LENGTH_COIN_NAME = 3;
@@ -68,43 +70,13 @@ loadTrendingCoins();
           </label>
         </div>
 
-        <ul
+        <TrendCoins
+          :coins="trendingCoins"
           v-if="trendingCoins.length"
-          class="flex-row list-unstyled d-flex flex-wrap"
-        >
-          <li
-            v-for="item in trendingCoins"
-            :key="item.item.id"
-            class="mr-1 mb-1"
-          >
-            <button
-              @click="setCoinName(item.item.symbol)"
-              type="button"
-              class="btn btn-primary btn-pill text-dark py-1 px-2"
-              :title="item.item.name"
-            >
-              {{ item.item.symbol }}
-            </button>
-          </li>
-        </ul>
+          @choose="setCoinName"
+        />
 
-        <div
-          v-if="isError"
-          class="alert alert-danger alert-dismissible shadow-soft fade show"
-          role="alert"
-        >
-          <span class="alert-inner--text">Токен не найден</span>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="alert"
-            aria-label="Close"
-            title="Close"
-            @click="isError = false"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+        <TokenNotFound v-if="isError" @close="isError = false" />
 
         <button
           type="submit"

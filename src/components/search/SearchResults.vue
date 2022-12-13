@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { PropType } from "vue";
-import { SearchCurrencyItem } from "../api/coinpaprika/types";
+import { SearchCurrencyItem } from "../../api/coinpaprika/types";
 
 const emit = defineEmits(["back"]);
-const props = defineProps({
+defineProps({
   items: Array as PropType<Array<SearchCurrencyItem>>,
 });
 </script>
