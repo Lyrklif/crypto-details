@@ -15,7 +15,7 @@ async function load() {
     coin.value = response.data;
     console.log("TTT data", response.data);
   } catch (error: any) {
-    console.log("TTT eroor", error.response);
+    // TODO error
   }
 }
 
