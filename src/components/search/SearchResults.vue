@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PropType } from "vue";
-import { SearchCurrencyItem } from "../../api/coinpaprika/types";
+import type { PropType } from "vue";
+import type { SearchCurrencyItem } from "../../api/coinpaprika/types";
 
 const emit = defineEmits(["back"]);
 defineProps({

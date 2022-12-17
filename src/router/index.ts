@@ -1,22 +1,26 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
+
+import HomeView from "../views/HomeView.vue";
+import AboutView from "../views/AboutView.vue";
+import CoinView from "../views/CoinView.vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
       name: "home",
-      component: import("../views/HomeView.vue"),
+      component: HomeView,
     },
     {
       path: "/about",
       name: "about",
-      component: () => import("../views/AboutView.vue"),
+      component: () => AboutView,
     },
     {
       path: "/:id",
       name: "coin",
-      component: () => import("../views/CoinView.vue"),
+      component: CoinView,
     },
   ],
 });

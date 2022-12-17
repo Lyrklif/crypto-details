@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { PropType, ref } from "vue";
+import type { PropType } from "vue";
+import { ref } from "vue";
 
 const isShow = ref(false);
 
