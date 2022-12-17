@@ -80,7 +80,7 @@ loadTrendingCoins();
 
         <button
           type="submit"
-          class="btn btn-block btn-primary"
+          class="btn btn-block btn-primary animate-up-2"
           title="Поиск"
           :disabled="isSearching || coinName.length < MIN_LENGTH_COIN_NAME"
         >

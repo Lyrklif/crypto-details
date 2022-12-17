@@ -17,7 +17,7 @@ const links: Array<{ to: string; text: string }> = [
     >
       <ul class="nav nav-pills nav-fill flex-row">
         <li
-          class="nav-item mr-3 mr-md-0 mb-0"
+          class="nav-item mr-3 mr-md-0 mb-0 animate-up-2"
           v-for="item in links"
           :key="item.text"
         >

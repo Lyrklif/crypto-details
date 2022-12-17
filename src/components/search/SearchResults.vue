@@ -14,7 +14,7 @@ defineProps({
       class="card-header text-center pb-0 d-flex align-items-center justify-content-between flex-wrap"
     >
       <button
-        class="btn btn-primary mr-1 mb-2"
+        class="btn btn-primary mr-1 mb-2 animate-left-2"
         type="button"
         @click="emit('back')"
       >
@@ -30,7 +30,7 @@ defineProps({
         <li
           v-for="item in items"
           :key="item.id"
-          class="card bg-primary border-light shadow-soft mb-3"
+          class="card bg-primary border-light shadow-soft mb-3 animate-up-2"
         >
           <RouterLink
             :to="{ name: 'coin', params: { id: item.id } }"
