@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 import API from "../api";
-import { CoinExchangesItem } from "../api/coinpaprika/types";
+import type { CoinExchangesItem } from "../api/coinpaprika/types";
 import SpoilerCard from "./SpoilerCard.vue";
 
 const list = ref<Array<CoinExchangesItem>>([]);

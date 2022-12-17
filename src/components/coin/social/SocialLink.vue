@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, PropType } from "vue";
+import { computed } from "vue";
+import type { PropType } from "vue";
 import type { LinkExtended } from "../../../api/coinpaprika/types";
 import { LINK_EXTENDED_TYPES } from "../../../api/coinpaprika/types";
 import { SOCIAL_ICONS_CLASSES } from "../../../types/social";

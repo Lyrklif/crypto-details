@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import API from "../../api";
 import { useRoute } from "vue-router";
-import { ref, Ref } from "vue";
-import { GetCoinByIDResponse } from "../../api/coinpaprika/types";
+import { ref } from "vue";
+import type { Ref } from "vue";
+import type { GetCoinByIDResponse } from "../../api/coinpaprika/types";
 import SocialLinks from "../coin/social/SocialLinks.vue";
 import TeamList from "../coin/TeamList.vue";
 import TagList from "../coin/TagList.vue";

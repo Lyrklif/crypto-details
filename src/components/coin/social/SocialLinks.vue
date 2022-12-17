@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PropType } from "vue";
+import type { PropType } from "vue";
 import type { LinkExtended } from "../../../api/coinpaprika/types";
 import SocialLink from "./SocialLink.vue";
 
