@@ -42,6 +42,58 @@ interface SearchResponse {
   tags: Array<SearchTagsItem>;
 }
 
+enum LINK_EXTENDED_TYPES {
+  WEBSITE = "website",
+  TWITTER = "twitter",
+  TELEGRAM = "telegram",
+  SOURCE_CODE = "source_code",
+  SLACK = "slack",
+  REDDIT = "reddit",
+  FACEBOOK = "facebook",
+  EXPLORER = "explorer",
+  YOUTUBE = "youtube",
+  BLOG = "blog",
+  MEDIUM = "medium",
+  ANNOUNCEMENT = "announcement",
+}
+
+interface LinkExtended {
+  url: string;
+  type:
+    | "website"
+    | "twitter"
+    | "telegram"
+    | "source_code"
+    | "slack"
+    | "reddit"
+    | "facebook"
+    | "explorer"
+    | "medium"
+    | "blog"
+    | "youtube"
+    | "announcement";
+  stats?: {
+    contributors?: number;
+    stars?: number;
+    subscribers?: number;
+    members?: number;
+    followers?: number;
+  };
+}
+
+interface TeamItem {
+  id: string;
+  name: string;
+  position: string;
+}
+
+interface TagItem {
+  id: string;
+  name: string;
+  coin_counter: number;
+  ico_counter: number;
+}
+
 interface GetCoinByIDResponse {
   id: string;
   name: string;
@@ -56,17 +108,8 @@ interface GetCoinByIDResponse {
   is_active: boolean;
   type: string;
   logo: string;
-  tags: Array<{
-    id: string;
-    name: string;
-    coin_counter: number;
-    ico_counter: number;
-  }>;
-  team: Array<{
-    id: string;
-    name: string;
-    position: string;
-  }>;
+  tags: Array<TagItem>;
+  team: Array<TeamItem>;
   description: string;
   message: string;
   open_source: boolean;
@@ -92,17 +135,7 @@ interface GetCoinByIDResponse {
     youtube?: null | Array<string>;
     medium?: null | Array<string>;
   };
-  links_extended: Array<{
-    url: string;
-    type: string;
-    stats?: {
-      contributors?: number;
-      stars?: number;
-      subscribers?: number;
-      members?: number;
-      followers?: number;
-    };
-  }>;
+  links_extended: Array<LinkExtended>;
   whitepaper: {
     link: string;
     thumbnail: null | string;
@@ -145,4 +178,9 @@ export type {
   GetCoinByIDResponse,
   GetTwitterItem,
   CoinExchangesItem,
+  LinkExtended,
+  TeamItem,
+  TagItem,
 };
+
+export { LINK_EXTENDED_TYPES };
