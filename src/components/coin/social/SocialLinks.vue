@@ -13,7 +13,7 @@ defineProps({
     <li
       v-for="(item, index) in links"
       :key="index"
-      class="mb-2 mr-2 btn btn-sm btn-primary py-1 animate-up-2"
+      class="mb-2 mr-2 animate-up-2"
     >
       <SocialLink :item="item" />
     </li>
