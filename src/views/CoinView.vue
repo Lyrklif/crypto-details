@@ -9,8 +9,9 @@ import TagList from "../components/coin/TagList.vue";
 import StatusesList from "../components/coin/StatusesList.vue";
 import CoinHeader from "../components/coin/CoinHeader.vue";
 import CoinDescription from "../components/coin/CoinDescription.vue";
+import TwitterList from "../components/coin/TwitterList.vue";
 
-let coin: Ref<GetCoinByIDResponse | undefined> = ref();
+const coin: Ref<GetCoinByIDResponse | undefined> = ref();
 
 async function load() {
   try {
@@ -35,5 +36,7 @@ load();
     <SocialLinks :links="coin.links_extended" class="mb-3" />
     <CoinDescription :coin="coin" class="mb-5" />
     <TeamList :links="coin.team" />
+
+    <TwitterList />
   </div>
 </template>
