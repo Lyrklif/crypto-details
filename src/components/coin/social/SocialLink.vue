@@ -42,7 +42,7 @@ const iconClasses = computed(() => {
     :href="item.url"
     target="_blank"
     :title="item.url"
-    class="d-inline-flex align-items-center"
+    class="d-inline-flex align-items-center btn btn-sm btn-primary py-1"
   >
     <span :class="[iconClasses, 'mr-1']"></span>
     <small>{{ link(item.url) }}</small>
