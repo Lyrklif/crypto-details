@@ -44,7 +44,7 @@ loadSocial();
             >
               <img
                 :src="item.user_image_link"
-                class="shadow-soft p-0 border border-light rounded-circle mb-2"
+                class="shadow-soft p-0 border border-light rounded-circle mr-2"
                 :alt="item.user_name"
                 height="48"
                 width="48"
