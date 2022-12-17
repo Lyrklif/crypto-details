@@ -9,12 +9,13 @@ import TagList from "../coin/TagList.vue";
 import StatusesList from "../coin/StatusesList.vue";
 import CoinHeader from "../coin/CoinHeader.vue";
 import CoinDescription from "../coin/CoinDescription.vue";
+import PriceWidget from "../PriceWidget.vue";
 
 const coin: Ref<GetCoinByIDResponse | undefined> = ref();
+const route = useRoute();
 
 async function load() {
   try {
-    const route = useRoute();
     const response = await API.coinpaprika.getCoinByID(
       route.params.id as string
     );
@@ -32,6 +33,7 @@ load();
     <CoinHeader :coin="coin" class="mb-4" />
     <StatusesList :coin="coin" class="mb-2" />
     <TagList :links="coin.tags" class="mb-2" />
+    <PriceWidget :id="`${route.params.id}`" />
     <SocialLinks :links="coin.links_extended" class="mb-3" />
     <CoinDescription :coin="coin" class="mb-5" />
     <TeamList :links="coin.team" />

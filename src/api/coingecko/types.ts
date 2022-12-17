@@ -19,33 +19,9 @@ interface TrendingResponse {
   exchanges: Array<any>;
 }
 
-interface SearchCoinItem {
-  id: string;
-  name: string;
-  api_symbol: string;
-  symbol: string;
-  market_cap_rank: number | null;
-  thumb: string;
-  large: string;
-}
-
 interface SearchCategoryItem {
   id: number;
   name: string;
 }
 
-interface SearchResponse {
-  coins: Array<SearchCoinItem>;
-  exchanges: Array<any>;
-  icos: Array<any>;
-  categories: Array<SearchCategoryItem>;
-  nfts: Array<any>;
-}
-
-export type {
-  TrendingCoinItem,
-  TrendingResponse,
-  SearchCoinItem,
-  SearchCategoryItem,
-  SearchResponse,
-};
+export type { TrendingCoinItem, TrendingResponse, SearchCategoryItem };
