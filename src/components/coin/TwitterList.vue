@@ -12,7 +12,6 @@ async function loadSocial() {
     const response = await API.coinpaprika.coinTwitter(
       route.params.id as string
     );
-    console.log("TTT response.data", response.data);
     list.value = response.data;
   } catch (error: any) {
     // TODO error
@@ -23,7 +22,7 @@ loadSocial();
 </script>
 
 <template>
-  <section>
+  <section v-if="list && list.length">
     <header>
       <h2>Twitter</h2>
     </header>
