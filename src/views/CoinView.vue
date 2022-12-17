@@ -26,7 +26,7 @@ load();
 
 <template>
   <div v-if="coin">
-    <header class="d-flex flex-wrap align-items-center">
+    <header class="d-flex flex-wrap align-items-center mb-4">
       <div
         class="border border-light icon icon-shape-sm mr-3 rounded-circle shadow-inset"
       >
@@ -36,29 +36,29 @@ load();
       <span>{{ coin.symbol }}</span>
     </header>
 
-    <ul class="d-flex flex-row list-unstyled">
-      <li class="mr-1 mb-1">
-        <span v-if="coin.is_new" class="badge badge-info">New</span>
-      </li>
-      <li class="mr-1 mb-1">
-        <span class="badge badge-info">Rank {{ coin.rank }}</span>
-      </li>
+    <ul class="d-flex flex-row flex-wrap list-unstyled mb-2">
       <li v-if="coin.is_active" class="mr-1 mb-1">
         <span class="badge badge-success">Active</span>
       </li>
-      <li v-if="coin.open_source" class="mr-1 mb-1">
-        <span class="badge badge-success">Open Source</span>
-      </li>
-      <li v-if="coin.hardware_wallet" class="mr-1 mb-1">
-        <span class="badge badge-success">Hardware Wallet</span>
+      <li v-if="coin.is_new" class="mr-1 mb-1">
+        <span class="badge badge-danger">New</span>
       </li>
       <li class="mr-1 mb-1">
-        <span class="badge badge-success">{{ coin.development_status }}</span>
+        <span class="badge badge-dark">{{ coin.development_status }}</span>
+      </li>
+      <li class="mr-1 mb-1">
+        <span class="badge badge-dark">Rank {{ coin.rank }}</span>
+      </li>
+      <li v-if="coin.open_source" class="mr-1 mb-1">
+        <span class="badge badge-dark">Open Source</span>
+      </li>
+      <li v-if="coin.hardware_wallet" class="mr-1 mb-1">
+        <span class="badge badge-dark">Hardware Wallet</span>
       </li>
     </ul>
 
-    <TagList :links="coin.tags" />
-    <SocialLinks :links="coin.links_extended" />
+    <TagList :links="coin.tags" class="mb-2" />
+    <SocialLinks :links="coin.links_extended" class="mb-2" />
 
     <p class="lead">{{ coin.description }}</p>
 
