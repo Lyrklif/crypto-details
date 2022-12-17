@@ -52,7 +52,9 @@ loadSocial();
               />
 
               <div>
-                <b class="d-block text-dark lh-100">{{ item.user_name }}</b>
+                <h3 class="d-block text-dark lh-100 my-0 h6">
+                  {{ item.user_name }}
+                </h3>
                 <span class="text-gray-700 lh-100">
                   {{ `@${item.user_name}` }}
                 </span>
