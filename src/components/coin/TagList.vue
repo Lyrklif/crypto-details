@@ -10,7 +10,7 @@ defineProps({
 <template>
   <ul class="list-unstyled d-flex flex-wrap">
     <li v-for="item in links" :key="item.id" class="mr-2 mb-2">
-      <span class="badge badge-dark text-uppercase">{{ item.name }}</span>
+      <span class="badge badge-dark">{{ item.name }}</span>
     </li>
   </ul>
 </template>
