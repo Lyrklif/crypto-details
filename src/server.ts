@@ -1,6 +1,6 @@
 import { Server } from "miragejs";
 import searchTrending from "./mock/searchTrending";
-import search2 from "./mock/search2";
+import search from "./mock/search";
 import coinById from "./mock/coinById";
 import twitter from "./mock/twitter";
 import exchanges from "./mock/exchanges";
@@ -17,7 +17,7 @@ export function makeServer() {
     return searchTrending;
   });
   server.get("/search", (): SearchResponse => {
-    return search2;
+    return search;
   });
   server.get("/coins/:coin_id", (): GetCoinByIDResponse => {
     return coinById;
