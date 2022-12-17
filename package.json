@@ -1,5 +1,6 @@
 {
   "name": "crypto-details",
+  "description": "Detailed information about cryptocurrency using public api",
   "version": "0.0.0",
   "private": true,
   "scripts": {
