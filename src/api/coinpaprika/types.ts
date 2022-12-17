@@ -59,19 +59,7 @@ enum LINK_EXTENDED_TYPES {
 
 interface LinkExtended {
   url: string;
-  type:
-    | "website"
-    | "twitter"
-    | "telegram"
-    | "source_code"
-    | "slack"
-    | "reddit"
-    | "facebook"
-    | "explorer"
-    | "medium"
-    | "blog"
-    | "youtube"
-    | "announcement";
+  type: string;
   stats?: {
     contributors?: number;
     stars?: number;
@@ -154,8 +142,8 @@ interface GetTwitterItem {
   like_count: number;
   status_link: string;
   status_id: string;
-  media_link: string;
-  youtube_link: string;
+  media_link?: string;
+  youtube_link?: string;
 }
 
 interface CoinExchangesItem {
