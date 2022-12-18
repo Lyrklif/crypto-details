@@ -15,6 +15,7 @@ defineProps({
     <button
       class="accordion-panel-header collapsed btn btn-block py-3 accordion-panel-header animate-down-2"
       :aria-expanded="isShow"
+      :title="title"
       @click="isShow = !isShow"
     >
       <span class="h6 mb-0 font-weight-bold">
@@ -22,6 +23,7 @@ defineProps({
       </span>
       <span class="icon"><span class="fas fa-plus"></span></span>
     </button>
+
     <div
       class="collapse card-body bg-primary shadow-inset border-light rounded"
       :class="{ show: isShow }"

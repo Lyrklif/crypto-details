@@ -3,7 +3,9 @@ import { ref } from "vue";
 import API from "../../api";
 import { useRoute } from "vue-router";
 import type { GetTwitterItem } from "../../api/coinpaprika/types";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n();
 const list = ref<Array<GetTwitterItem>>();
 
 async function loadSocial() {
@@ -24,7 +26,7 @@ loadSocial();
 <template>
   <section v-if="list && list.length">
     <header>
-      <h2>Twitter</h2>
+      <h2>{{ t("twitter.title") }}</h2>
     </header>
 
     <ul class="list list-unstyled col-12 col-md-8 col-lg-6">
@@ -80,11 +82,11 @@ loadSocial();
               </p>
               <p class="mr-3 mb-1 small text-gray">
                 <b>{{ item.retweet_count }}</b>
-                Ретвитов
+                {{ t("twitter.retweets") }}
               </p>
               <p class="mr-3 mb-1 small text-gray">
                 <b>{{ item.like_count }}</b>
-                Лайков
+                {{ t("twitter.likes") }}
               </p>
             </footer>
           </a>

@@ -1,0 +1,47 @@
+export default {
+  error: {
+    token_not_found: "Токен не найден",
+  },
+  header: {
+    home: "Домой",
+    about: "О проекте",
+  },
+  search: {
+    title: "Введите название криптовалюты",
+    placeholder: "Bitcoin, BNB, TON, ...",
+    submit: "Поиск",
+    back: "Назад",
+    results: "Результаты поиска",
+    new: "Новый",
+    active: "Активен",
+    close: "Закрыть",
+  },
+  coin: {
+    active: "Активный",
+    not_active: "Не активен",
+    new: "Новый",
+    rank: "Ранг",
+    open_source: "Open Source",
+    hardware_wallet: "Аппаратный кошелек",
+    whitepaper: "Whitepaper",
+    started_at: "Началось в",
+    hash_algorithm: "Хэш-алгоритм",
+    org_structure: "Организационная структура",
+    proof_type: "Proof тип",
+    type: "Тип",
+    last_data_at: "Последние данные на",
+    team: "Команда",
+  },
+  twitter: {
+    title: "Twitter",
+    retweets: "Ретвитов",
+    likes: "Лайков",
+  },
+  exchanges: {
+    title: "Binance Coin Exchanges",
+    spoiler: "Exchanges ({coin} элементов)",
+    source: "Источник",
+    volume: "Объем (24ч)",
+    fiats: "FIATs",
+  },
+};
