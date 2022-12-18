@@ -30,7 +30,7 @@ export default {
     proof_type: "Proof type",
     type: "Type",
     last_data_at: "Last data at",
-    team: "Team",
+    team: "Team ({coin} items)",
   },
   twitter: {
     title: "Twitter",
@@ -43,5 +43,13 @@ export default {
     source: "Source",
     volume: "Volume (24h)",
     fiats: "FIATs",
+  },
+  pools: {
+    title: "Pools ({pools} items)",
+    fee: "Fee",
+    payout_threshold: "Payout Threshold",
+    reward_method: "Reward Method",
+    registration: "Registration",
+    anonymous: "Anonymous",
   },
 };

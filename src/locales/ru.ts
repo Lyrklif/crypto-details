@@ -30,7 +30,7 @@ export default {
     proof_type: "Proof тип",
     type: "Тип",
     last_data_at: "Последние данные на",
-    team: "Команда",
+    team: "Команда ({coin} человек)",
   },
   twitter: {
     title: "Twitter",
@@ -43,5 +43,13 @@ export default {
     source: "Источник",
     volume: "Объем (24ч)",
     fiats: "FIATs",
+  },
+  pools: {
+    title: "Pools ({pools} шт.)",
+    fee: "Fee",
+    payout_threshold: "Payout Threshold",
+    reward_method: "Reward Method",
+    registration: "Регистрация",
+    anonymous: "Анонимно",
   },
 };

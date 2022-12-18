@@ -11,9 +11,11 @@ import StatusesList from "../coin/StatusesList.vue";
 import CoinHeader from "../coin/CoinHeader.vue";
 import CoinDescription from "../coin/CoinDescription.vue";
 import PriceWidget from "../PriceWidget.vue";
+import { useCoinStore } from "../../stores/coin";
 
 const coin: Ref<GetCoinByIDResponse | undefined> = ref();
 const route = useRoute();
+const store = useCoinStore();
 
 async function load() {
   try {
@@ -21,6 +23,7 @@ async function load() {
       route.params.id as string
     );
     coin.value = response.data;
+    store.setSymbol(response.data.symbol);
   } catch (error: any) {
     // TODO error
   }
