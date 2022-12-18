@@ -3,6 +3,7 @@ import CoinBase from "../components/coin/CoinBase.vue";
 import TwitterList from "../components/coin/TwitterList.vue";
 import ExchangeList from "../components/ExchangeList.vue";
 import PoolList from "../components/PoolList.vue";
+import CoinProfile from "../components/CoinProfile.vue";
 </script>
 
 <template>
@@ -11,5 +12,6 @@ import PoolList from "../components/PoolList.vue";
     <TwitterList class="mb-5" />
     <ExchangeList class="mb-4" />
     <PoolList class="mb-4" />
+    <CoinProfile class="mb-4" />
   </div>
 </template>
