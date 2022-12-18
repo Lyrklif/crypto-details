@@ -30,7 +30,7 @@ export default {
     proof_type: "Proof type",
     type: "Type",
     last_data_at: "Last data at",
-    team: "Team ({coin} items)",
+    team: "Team",
   },
   twitter: {
     title: "Twitter",
@@ -39,13 +39,13 @@ export default {
   },
   exchanges: {
     title: "Binance Coin Exchanges",
-    spoiler: "Exchanges ({coin} items)",
+    spoiler: "Exchanges",
     source: "Source",
     volume: "Volume (24h)",
     fiats: "FIATs",
   },
   pools: {
-    title: "Pools ({pools} items)",
+    title: "Pools",
     fee: "Fee",
     payout_threshold: "Payout Threshold",
     reward_method: "Reward Method",

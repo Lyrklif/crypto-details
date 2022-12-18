@@ -3,7 +3,7 @@ import type { PropType } from "vue";
 import { ref } from "vue";
 
 const isShow = ref(false);
-
+const emit = defineEmits(["firstOpen"]);
 defineProps({
   title: String as PropType<string>,
   content: String as PropType<string>,
@@ -17,6 +17,7 @@ defineProps({
       :aria-expanded="isShow"
       :title="title"
       @click="isShow = !isShow"
+      @click.once="emit('firstOpen')"
     >
       <span class="h6 mb-0 font-weight-bold" v-html="title" />
       <span class="icon"><span class="fas fa-plus"></span></span>

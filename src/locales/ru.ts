@@ -30,7 +30,7 @@ export default {
     proof_type: "Proof тип",
     type: "Тип",
     last_data_at: "Последние данные на",
-    team: "Команда ({coin} человек)",
+    team: "Команда",
   },
   twitter: {
     title: "Twitter",
@@ -39,13 +39,13 @@ export default {
   },
   exchanges: {
     title: "Binance Coin Exchanges",
-    spoiler: "Exchanges ({coin} элементов)",
+    spoiler: "Exchanges",
     source: "Источник",
     volume: "Объем (24ч)",
     fiats: "FIATs",
   },
   pools: {
-    title: "Pools ({pools} шт.)",
+    title: "Pools",
     fee: "Fee",
     payout_threshold: "Payout Threshold",
     reward_method: "Reward Method",

@@ -12,24 +12,24 @@ const store = useCoinStore();
 
 async function load() {
   try {
-    const coin = store.symbol;
-    const response = await API.minerstat.pools({ coin });
+    const response = await API.minerstat.pools(store.symbol);
     pools.value = response.data;
   } catch (error: any) {
     // TODO error
   }
 }
-
-load();
 </script>
 
 <template>
-  <section v-if="pools.length">
+  <section>
     <header class="hide">
       <h2>{{ t("pools.title") }}</h2>
     </header>
 
-    <SpoilerCard :title="t('pools.title', { pools: pools.length })">
+    <SpoilerCard
+      :title="`${t('pools.title')} (${pools.length})`"
+      @firstOpen="load"
+    >
       <template #content>
         <table class="table">
           <thead>

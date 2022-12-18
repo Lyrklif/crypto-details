@@ -6,11 +6,11 @@ import type { GetTwitterItem } from "../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
+const route = useRoute();
 const list = ref<Array<GetTwitterItem>>();
 
 async function loadSocial() {
   try {
-    const route = useRoute();
     const response = await API.coinpaprika.coinTwitter(
       route.params.id as string
     );

@@ -7,11 +7,11 @@ import SpoilerCard from "./SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
+const route = useRoute();
 const list = ref<Array<CoinExchangesItem>>([]);
 
 async function load() {
   try {
-    const route = useRoute();
     const response = await API.coinpaprika.coinExchanges(
       route.params.id as string
     );
@@ -20,17 +20,18 @@ async function load() {
     // TODO error
   }
 }
-
-load();
 </script>
 
 <template>
-  <section v-if="list.length">
+  <section>
     <header class="hide">
       <h2>{{ t("exchanges.title") }}</h2>
     </header>
 
-    <SpoilerCard :title="t('exchanges.spoiler', { coin: list.length })">
+    <SpoilerCard
+      :title="`${t('exchanges.spoiler')} (${list.length})`"
+      @firstOpen="load"
+    >
       <template #content>
         <table class="table">
           <tbody>
