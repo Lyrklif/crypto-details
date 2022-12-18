@@ -1,0 +1,47 @@
+export default {
+  error: {
+    token_not_found: "Token not found",
+  },
+  header: {
+    home: "Home",
+    about: "About",
+  },
+  search: {
+    title: "Enter the name of the cryptocurrency",
+    placeholder: "Bitcoin, BNB, TON, ...",
+    submit: "Search",
+    back: "Back",
+    results: "Search results",
+    new: "New",
+    active: "Active",
+    close: "Close",
+  },
+  coin: {
+    active: "Active",
+    not_active: "Not active",
+    new: "New",
+    rank: "Rank",
+    open_source: "Open Source",
+    hardware_wallet: "Hardware Wallet",
+    whitepaper: "Whitepaper",
+    started_at: "Started at",
+    hash_algorithm: "Hash algorithm",
+    org_structure: "Org structure",
+    proof_type: "Proof type",
+    type: "Type",
+    last_data_at: "Last data at",
+    team: "Team",
+  },
+  twitter: {
+    title: "Twitter",
+    retweets: "Retweets",
+    likes: "Likes",
+  },
+  exchanges: {
+    title: "Binance Coin Exchanges",
+    spoiler: "Exchanges ({coin} items)",
+    source: "Source",
+    volume: "Volume (24h)",
+    fiats: "FIATs",
+  },
+};

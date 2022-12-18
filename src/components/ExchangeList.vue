@@ -4,7 +4,9 @@ import { useRoute } from "vue-router";
 import API from "../api";
 import type { CoinExchangesItem } from "../api/coinpaprika/types";
 import SpoilerCard from "./SpoilerCard.vue";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n();
 const list = ref<Array<CoinExchangesItem>>([]);
 
 async function load() {
@@ -25,18 +27,18 @@ load();
 <template>
   <section>
     <header class="mb-3">
-      <h2>Binance Coin Exchanges</h2>
+      <h2>{{ t("exchanges.title") }}</h2>
     </header>
 
-    <SpoilerCard :title="`Exchanges (${list.length} items)`">
+    <SpoilerCard :title="t('exchanges.spoiler', { coin: list.length })">
       <template #content>
         <table class="table">
           <tbody>
             <tr>
               <th></th>
-              <th>Source</th>
-              <th>Volume (24h)</th>
-              <th>FIATs</th>
+              <th>{{ t("exchanges.source") }}</th>
+              <th>{{ t("exchanges.volume") }}</th>
+              <th>{{ t("exchanges.fiats") }}</th>
             </tr>
           </tbody>
           <tbody>

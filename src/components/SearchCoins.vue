@@ -4,10 +4,12 @@ import API from "../api";
 import type { TrendingCoinItem } from "../api/coingecko/types";
 import TrendCoins from "./search/TrendCoins.vue";
 import TokenNotFound from "./search/TokenNotFound.vue";
+import { useI18n } from "vue-i18n";
 
 const SEARCH_LIMIT = 5;
 const MIN_LENGTH_COIN_NAME = 3;
 
+const { t } = useI18n();
 const emit = defineEmits(["search"]);
 
 const isError = ref(false);
@@ -52,7 +54,7 @@ loadTrendingCoins();
 <template>
   <div class="card bg-primary shadow-soft border-light p-2 p-md-4">
     <header class="card-header text-center pb-0">
-      <h2 class="h4">Введите название криптовалюты</h2>
+      <h2 class="h4">{{ t("search.title") }}</h2>
     </header>
 
     <div class="card-body">
@@ -63,6 +65,7 @@ loadTrendingCoins();
               id="coin-name"
               type="text"
               class="form-control"
+              :placeholder="t('search.placeholder')"
               v-model="coinName"
               :disabled="isSearching"
               :minlength="MIN_LENGTH_COIN_NAME"
@@ -81,10 +84,10 @@ loadTrendingCoins();
         <button
           type="submit"
           class="btn btn-block btn-primary animate-up-2"
-          title="Поиск"
+          :title="t('search.submit')"
           :disabled="isSearching || coinName.length < MIN_LENGTH_COIN_NAME"
         >
-          Поиск
+          {{ t("search.submit") }}
         </button>
       </form>
     </div>

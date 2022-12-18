@@ -1,33 +1,44 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
+import LocaleChanger from "../LocaleChanger.vue";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n();
 const links: Array<{ to: string; text: string }> = [
-  { to: "/", text: "Home" },
-  { to: "/about", text: "About" },
+  { to: "/", text: "header.home" },
+  { to: "/about", text: "header.about" },
 ];
 </script>
 
 <template>
   <header class="header-global">
-    <nav
+    <div
       :class="`
       navbar navbar-main navbar-expand-lg navbar-theme-primary
       headroom navbar-light headroom--not-bottom headroom--not-top headroom--pinned justify-content-center
       `"
     >
-      <ul class="nav nav-pills nav-fill flex-row">
-        <li
-          class="nav-item mr-3 mr-md-0 mb-0 animate-up-2"
-          v-for="item in links"
-          :key="item.text"
-        >
-          <RouterLink :to="item.to" v-slot="{ isActive }" :title="item.text">
-            <span class="btn btn-primary" :class="{ active: isActive }">
-              {{ item.text }}
-            </span>
-          </RouterLink>
-        </li>
-      </ul>
-    </nav>
+      <nav>
+        <ul class="nav nav-pills nav-fill flex-row">
+          <li
+            class="nav-item mr-3 mr-md-0 mb-0 animate-up-2"
+            v-for="item in links"
+            :key="t(item.text)"
+          >
+            <RouterLink
+              :to="item.to"
+              v-slot="{ isActive }"
+              :title="t(item.text)"
+            >
+              <span class="btn btn-primary" :class="{ active: isActive }">
+                {{ t(item.text) }}
+              </span>
+            </RouterLink>
+          </li>
+        </ul>
+      </nav>
+
+      <LocaleChanger class="mr-0 ml-auto" />
+    </div>
   </header>
 </template>
