@@ -26,7 +26,7 @@ load();
 
 <template>
   <section v-if="list.length">
-    <header class="mb-3">
+    <header class="hide">
       <h2>{{ t("exchanges.title") }}</h2>
     </header>
 
@@ -72,3 +72,11 @@ load();
     </SpoilerCard>
   </section>
 </template>
+
+<style scoped>
+.hide {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+</style>

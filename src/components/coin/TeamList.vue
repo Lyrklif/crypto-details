@@ -11,21 +11,35 @@ defineProps({
 </script>
 
 <template>
-  <SpoilerCard :title="t('coin.team')">
-    <template #content>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th colspan="2">{{ t("coin.team") }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in links" :key="item.id">
-            <td class="border-0 py-1">{{ item.name }}</td>
-            <td class="border-0 py-1">{{ item.position }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </template>
-  </SpoilerCard>
+  <section>
+    <header class="hide">
+      <h2>{{ t("coin.team") }}</h2>
+    </header>
+
+    <SpoilerCard :title="t('coin.team', { coin: links.length })">
+      <template #content>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th colspan="2">{{ t("coin.team") }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in links" :key="item.id">
+              <td class="border-0 py-1">{{ item.name }}</td>
+              <td class="border-0 py-1">{{ item.position }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </template>
+    </SpoilerCard>
+  </section>
 </template>
+
+<style scoped>
+.hide {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+</style>
