@@ -1,3 +1,12 @@
+interface PoolCoin {
+  algorithm: string;
+  payoutThreshold: string;
+  rewardMethod: string;
+  fee: string;
+  anonymous: boolean;
+  registration: boolean;
+}
+
 interface Pool {
   id: string;
   name: string;
@@ -7,14 +16,7 @@ interface Pool {
   founded: number;
   type: string;
   coins: {
-    "ETH+ZIL": {
-      algorithm: string;
-      payoutThreshold: string;
-      rewardMethod: string;
-      fee: string;
-      anonymous: boolean;
-      registration: boolean;
-    };
+    [someStrKeyWhichIsDynamic: string]: PoolCoin;
   };
 }
 
