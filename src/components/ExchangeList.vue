@@ -25,7 +25,7 @@ load();
 </script>
 
 <template>
-  <section>
+  <section v-if="list.length">
     <header class="mb-3">
       <h2>{{ t("exchanges.title") }}</h2>
     </header>
