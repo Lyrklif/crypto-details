@@ -94,96 +94,110 @@ interface AssetProfileResponse {
   data: AssetProfileDataResponse;
 }
 
+interface AssetMetricDataResponse {
+  risk_metrics: {
+    sharpe_ratios: {
+      last_30_days: number | null;
+      last_90_days: number | null;
+      last_1_year: number | null;
+      last_3_years: number | null;
+    };
+    volatility_stats: {
+      volatility_last_30_days: number | null;
+      volatility_last_90_days: number | null;
+      volatility_last_1_year: number | null;
+      volatility_last_3_years: number | null;
+    };
+  };
+  roi_by_year: {
+    "2021_usd_percent": number | null;
+    "2020_usd_percent": number | null;
+    "2019_usd_percent": number | null;
+    "2018_usd_percent": number | null;
+    "2017_usd_percent": number | null;
+    "2016_usd_percent": number | null;
+    "2015_usd_percent": number | null;
+    "2014_usd_percent": number | null;
+    "2013_usd_percent": number | null;
+    "2012_usd_percent": number | null;
+    "2011_usd_percent": number | null;
+  };
+  supply: {
+    y_2050: number | null;
+    y_plus10: number | null;
+    liquid: number | null;
+    circulating: number | null;
+    y_2050_issued_percent: number | null;
+    annual_inflation_percent: number | null;
+    stock_to_flow: number | null;
+    y_plus10_issued_percent: number | null;
+    supply_revived_90d: number | null;
+  };
+  supply_activity: {
+    supply_active_10y: number | null;
+    supply_active_180d: number | null;
+    supply_active_1d: number | null;
+    supply_active_1y: number | null;
+    supply_active_1y_percent: number | null;
+    supply_active_2y: number | null;
+    supply_active_30d: number | null;
+    supply_active_3y: number | null;
+    supply_active_4y: number | null;
+    supply_active_5y: number | null;
+    supply_active_7d: number | null;
+    supply_active_90d: number | null;
+    supply_active_ever: number | null;
+    outstanding: number | null;
+    supply_revived_1y: number | null;
+    supply_revived_2y: number | null;
+    supply_revived_30d: number | null;
+    supply_revived_3y: number | null;
+    supply_revived_4y: number | null;
+    supply_revived_5y: number | null;
+    supply_revived_7d: number | null;
+    supply_revived_90d: number | null;
+  };
+  supply_distribution: {
+    supply_in_addresses_balance_greater_0_001_native_units: number | null;
+    supply_in_addresses_balance_greater_0_01_native_units: number | null;
+    supply_in_addresses_balance_greater_0_1_native_units: number | null;
+    supply_in_addresses_balance_greater_1_usd: number | null;
+    supply_in_addresses_balance_greater_10_usd: number | null;
+    supply_in_addresses_balance_greater_100_usd: number | null;
+    supply_in_addresses_balance_greater_100k_usd: number | null;
+    supply_in_addresses_balance_greater_100k_native_units: number | null;
+    supply_in_addresses_balance_greater_100_native_units: number | null;
+    supply_in_addresses_balance_greater_10k_usd: number | null;
+    supply_in_addresses_balance_greater_10k_native_units: number | null;
+    supply_in_addresses_balance_greater_10m_usd: number | null;
+    supply_in_addresses_balance_greater_10_native_units: number | null;
+    supply_in_addresses_balance_greater_1k_usd: number | null;
+    supply_in_addresses_balance_greater_1k_native_units: number | null;
+    supply_in_addresses_balance_greater_1m_usd: number | null;
+    supply_in_addresses_balance_greater_1m_native_units: number | null;
+    supply_in_addresses_balance_greater_1_native_units: number | null;
+    supply_in_contracts_usd: number | null;
+    supply_in_contracts_native_units: number | null;
+    supply_shielded: number | null;
+    supply_in_top_100_addresses: number | null;
+    supply_in_top_10_percent_addresses: number | null;
+    supply_in_top_1_percent_addresses: number | null;
+    supply_in_utxo_in_loss: number | null;
+    supply_in_utxo_in_profit: number | null;
+  };
+}
+
 interface AssetMetricResponse {
   status: {
     timestamp: string;
     elapsed: number;
   };
-  data: {
-    id: string;
-    symbol: string;
-    name: string;
-    slug: string;
-    market_data: {
-      price_usd: number;
-      price_btc: number;
-      volume_last_24_hours: number;
-      real_volume_last_24_hours: number;
-      volume_last_24_hours_overstatement_multiple: number;
-      percent_change_usd_last_24_hours: number;
-      percent_change_btc_last_24_hours: number;
-      ohlcv_last_1_hour: {
-        open: number;
-        high: number;
-        low: number;
-        close: number;
-        volume: number;
-      };
-      ohlcv_last_24_hour: {
-        open: number;
-        high: number;
-        low: number;
-        close: number;
-        volume: number;
-      };
-    };
-    supply: {
-      y_2050: number;
-      y_2050_percent_issued: number;
-      supply_yplus_10: number;
-      y_plus10_issued_percent: number;
-      liquid: number;
-      circulating: number;
-      stock_to_flow: number;
-    };
-    blockchain_stats_24_hours: {
-      transaction_volume: number;
-      nvt: number;
-      sum_of_fees: number;
-      median_tx_value: number;
-      median_tx_fee: number;
-      count_of_active_addresses: number;
-      count_of_tx: number;
-      count_of_payments: number;
-      new_issuance: number;
-      average_difficulty: number;
-      kilobytes_added: number;
-      count_of_blocks_added: number;
-      supply_moved_off_chain: null | number;
-    };
-    all_time_high: {
-      price: number;
-      at: string;
-      days_since: number;
-      percent_down: number;
-    };
-    developer_activity: {
-      stars: number;
-      watchers: number;
-      commits_last_3_months: number;
-      commits_last_1_year: number;
-      lines_added_last_3_months: number;
-      lines_added_last_1_year: number;
-      lines_deleted_last_3_months: number;
-      lines_deleted_last_1_year: number;
-    };
-    roi_data: {
-      percent_change_last_1_week: number;
-      percent_change_last_1_month: number;
-      percent_change_last_3_months: number;
-      percent_change_last_1_year: number;
-    };
-    misc_data: {
-      asset_age_days: number;
-      vladimir_club_cost: number;
-      categories: Array<Array<string>>;
-      sector: Array<Array<string>>;
-    };
-  };
+  data: AssetMetricDataResponse;
 }
 
 export type {
   AssetProfileResponse,
   AssetMetricResponse,
   AssetProfileDataResponse,
+  AssetMetricDataResponse,
 };
