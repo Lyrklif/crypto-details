@@ -4,11 +4,13 @@ import search from "./mock/search";
 import coinById from "./mock/coinById";
 import twitter from "./mock/twitter";
 import exchanges from "./mock/exchanges";
+import pools from "./mock/pools";
 import type { TrendingResponse } from "./api/coingecko/types";
 import type { SearchResponse } from "./api/coinpaprika/types";
 import type { GetCoinByIDResponse } from "./api/coinpaprika/types";
 import type { GetTwitterItem } from "./api/coinpaprika/types";
 import type { CoinExchangesItem } from "./api/coinpaprika/types";
+import type { Pool } from "./api/minerstat/types";
 
 export function makeServer() {
   const server = new Server();
@@ -27,6 +29,9 @@ export function makeServer() {
   });
   server.get("coins/:coin_id/exchanges", (): Array<CoinExchangesItem> => {
     return exchanges;
+  });
+  server.get("pools", (): Array<Pool> => {
+    return pools;
   });
 
   return server;
