@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 
-const { t, locale, availableLocales } = useI18n();
+const { t, availableLocales } = useI18n();
 </script>
 
 <template>
-  <div class="locale-changer">
-    <p>{{ locale }}</p>
-
-    <select v-model="$i18n.locale">
+  <div class="form-group locale-changer">
+    <select class="custom-select my-1 mr-sm-2" v-model="$i18n.locale">
       <option
         v-for="(lang, i) in availableLocales"
         :key="`Lang${i}`"
