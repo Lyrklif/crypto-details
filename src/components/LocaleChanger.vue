@@ -5,7 +5,7 @@ const { t, availableLocales } = useI18n();
 </script>
 
 <template>
-  <div class="form-group locale-changer">
+  <div class="form-group locale-changer mb-0">
     <select class="custom-select my-1 mr-sm-2" v-model="$i18n.locale">
       <option
         v-for="(lang, i) in availableLocales"

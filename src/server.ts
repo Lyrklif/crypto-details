@@ -5,12 +5,18 @@ import coinById from "./mock/coinById";
 import twitter from "./mock/twitter";
 import exchanges from "./mock/exchanges";
 import pools from "./mock/pools";
+import profile from "./mock/profile";
+import metrics from "./mock/metrics";
 import type { TrendingResponse } from "./api/coingecko/types";
 import type { SearchResponse } from "./api/coinpaprika/types";
 import type { GetCoinByIDResponse } from "./api/coinpaprika/types";
 import type { GetTwitterItem } from "./api/coinpaprika/types";
 import type { CoinExchangesItem } from "./api/coinpaprika/types";
 import type { Pool } from "./api/minerstat/types";
+import type {
+  AssetProfileResponse,
+  AssetMetricResponse,
+} from "./api/messari/types";
 
 export function makeServer() {
   const server = new Server();
@@ -32,6 +38,12 @@ export function makeServer() {
   });
   server.get("pools", (): Array<Pool> => {
     return pools;
+  });
+  server.get(`assets/:assetKey/profile`, (): AssetProfileResponse => {
+    return profile;
+  });
+  server.get(`assets/:assetKey/metrics`, (): AssetMetricResponse => {
+    return metrics;
   });
 
   return server;

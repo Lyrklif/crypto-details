@@ -14,14 +14,14 @@ const links: Array<{ to: string; text: string }> = [
   <header class="header-global">
     <div
       :class="`
-      navbar navbar-main navbar-expand-lg navbar-theme-primary
+      navbar py-1 navbar-main navbar-expand-lg navbar-theme-primary
       headroom navbar-light headroom--not-bottom headroom--not-top headroom--pinned justify-content-center
       `"
     >
       <nav>
         <ul class="nav nav-pills nav-fill flex-row">
           <li
-            class="nav-item mr-3 mr-md-0 mb-0 animate-up-2"
+            class="nav-item mr-2 mr-md-0 mb-0 animate-up-2"
             v-for="item in links"
             :key="t(item.text)"
           >
@@ -30,7 +30,10 @@ const links: Array<{ to: string; text: string }> = [
               v-slot="{ isActive }"
               :title="t(item.text)"
             >
-              <span class="btn btn-primary" :class="{ active: isActive }">
+              <span
+                class="btn btn-sm btn-primary"
+                :class="{ active: isActive }"
+              >
                 {{ t(item.text) }}
               </span>
             </RouterLink>
