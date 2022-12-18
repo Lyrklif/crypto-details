@@ -18,9 +18,7 @@ defineProps({
       :title="title"
       @click="isShow = !isShow"
     >
-      <span class="h6 mb-0 font-weight-bold">
-        {{ title }}
-      </span>
+      <span class="h6 mb-0 font-weight-bold" v-html="title" />
       <span class="icon"><span class="fas fa-plus"></span></span>
     </button>
 
