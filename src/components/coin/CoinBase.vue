@@ -37,6 +37,6 @@ load();
     <PriceWidget :id="`${route.params.id}`" />
     <SocialLinks :links="coin.links_extended" class="mb-3" />
     <CoinDescription :coin="coin" class="mb-5" />
-    <TeamList :links="coin.team" />
+    <TeamList :links="coin.team" class="mb-5" />
   </div>
 </template>
