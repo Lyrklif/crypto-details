@@ -5,8 +5,8 @@ import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 const links: Array<{ to: string; text: string }> = [
-  { to: "/", text: t("header.home") },
-  { to: "/about", text: t("header.about") },
+  { to: "/", text: "header.home" },
+  { to: "/about", text: "header.about" },
 ];
 </script>
 
@@ -23,11 +23,15 @@ const links: Array<{ to: string; text: string }> = [
           <li
             class="nav-item mr-3 mr-md-0 mb-0 animate-up-2"
             v-for="item in links"
-            :key="item.text"
+            :key="t(item.text)"
           >
-            <RouterLink :to="item.to" v-slot="{ isActive }" :title="item.text">
+            <RouterLink
+              :to="item.to"
+              v-slot="{ isActive }"
+              :title="t(item.text)"
+            >
               <span class="btn btn-primary" :class="{ active: isActive }">
-                {{ item.text }}
+                {{ t(item.text) }}
               </span>
             </RouterLink>
           </li>
