@@ -52,4 +52,11 @@ export default {
     registration: "Registration",
     anonymous: "Anonymous",
   },
+  profile: {
+    title: "Profile",
+    technology: "Technology",
+    history: "History",
+    organizations: "Organizations Investors",
+    token_distribution: "Token distribution",
+  },
 };

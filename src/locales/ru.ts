@@ -52,4 +52,11 @@ export default {
     registration: "Регистрация",
     anonymous: "Анонимно",
   },
+  profile: {
+    title: "Профиль",
+    technology: "Технология",
+    history: "История",
+    organizations: "Организации инвесторы",
+    token_distribution: "Распределение токенов",
+  },
 };
