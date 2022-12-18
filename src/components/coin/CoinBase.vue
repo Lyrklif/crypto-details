@@ -2,7 +2,6 @@
 import API from "../../api";
 import { useRoute } from "vue-router";
 import { ref } from "vue";
-import type { Ref } from "vue";
 import type { GetCoinByIDResponse } from "../../api/coinpaprika/types";
 import SocialLinks from "../coin/social/SocialLinks.vue";
 import TeamList from "../coin/TeamList.vue";
@@ -13,7 +12,7 @@ import CoinDescription from "../coin/CoinDescription.vue";
 import PriceWidget from "../PriceWidget.vue";
 import { useCoinStore } from "../../stores/coin";
 
-const coin: Ref<GetCoinByIDResponse | undefined> = ref();
+const coin = ref<GetCoinByIDResponse>();
 const route = useRoute();
 const store = useCoinStore();
 
