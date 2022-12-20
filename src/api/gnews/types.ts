@@ -1,19 +1,19 @@
-type Lang = "en" | "ru" | "uk";
+interface Article {
+  title: string;
+  description: string;
+  content: string;
+  url: string;
+  image: string;
+  publishedAt: string;
+  source: {
+    name: string;
+    url: string;
+  };
+}
 
 interface ArticleResponse {
   totalArticles: number;
-  articles: Array<{
-    title: string;
-    description: string;
-    content: string;
-    url: string;
-    image: string;
-    publishedAt: string;
-    source: {
-      name: string;
-      url: string;
-    };
-  }>;
+  articles: Array<Article>;
 }
 
-export type { Lang, ArticleResponse };
+export type { Article, ArticleResponse };
