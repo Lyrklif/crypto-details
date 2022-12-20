@@ -18,7 +18,7 @@ const router = createRouter({
       component: () => AboutView,
     },
     {
-      path: "/:id",
+      path: "/coin/:id",
       name: "coin",
       component: CoinView,
     },

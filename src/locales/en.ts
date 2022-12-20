@@ -134,4 +134,7 @@ export default {
     circulating: "Circulating Supply",
     liquid: "Liquid Supply",
   },
+  news: {
+    title: "News",
+  },
 };

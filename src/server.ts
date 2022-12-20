@@ -7,6 +7,7 @@ import exchanges from "./mock/exchanges";
 import pools from "./mock/pools";
 import profile from "./mock/profile";
 import metrics from "./mock/metrics";
+import news from "./mock/news";
 import type { TrendingResponse } from "./api/coingecko/types";
 import type { SearchResponse } from "./api/coinpaprika/types";
 import type { GetCoinByIDResponse } from "./api/coinpaprika/types";
@@ -17,6 +18,7 @@ import type {
   AssetProfileResponse,
   AssetMetricResponse,
 } from "./api/messari/types";
+import type { ArticleResponse } from "./api/news/types";
 
 export function makeServer() {
   const server = new Server();
@@ -44,6 +46,9 @@ export function makeServer() {
   });
   server.get(`assets/:assetKey/metrics`, (): AssetMetricResponse => {
     return metrics;
+  });
+  server.get(`everything`, (): ArticleResponse => {
+    return news;
   });
 
   return server;

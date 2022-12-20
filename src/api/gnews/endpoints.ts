@@ -1,13 +1,13 @@
 import type { AxiosPromise } from "axios";
 import instance from "./instance";
-import type { Lang, ArticleResponse } from "./types";
+import type { ArticleResponse } from "./types";
 import type { NrRange } from "ts-number-range";
 
 export interface ApiInterface {
   search: (params: {
     q: string;
-    lang?: Lang;
-    max?: NrRange<1, 100>;
+    lang?: string;
+    max?: NrRange<1, 101>;
   }) => AxiosPromise<ArticleResponse>;
 }
 

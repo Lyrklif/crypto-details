@@ -6,6 +6,7 @@ import PoolList from "../components/PoolList.vue";
 import CoinProfile from "../components/CoinProfile.vue";
 import CoinMetrics from "../components/CoinMetrics.vue";
 import GoogleTrends from "../components/GoogleTrends.vue";
+import CoinNews from "../components/CoinNews.vue";
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import GoogleTrends from "../components/GoogleTrends.vue";
     <PoolList class="mb-4" />
     <CoinProfile class="mb-4" />
     <CoinMetrics class="mb-4" />
-    <GoogleTrends />
+    <GoogleTrends class="mb-4" />
+    <CoinNews class="mb-4" />
   </div>
 </template>

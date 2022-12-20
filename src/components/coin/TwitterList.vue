@@ -103,7 +103,8 @@ loadSocial();
 }
 
 .image {
-  max-width: 400px;
+  width: 400px;
+  max-width: 100%;
   max-height: 200px;
   object-fit: cover;
 }
