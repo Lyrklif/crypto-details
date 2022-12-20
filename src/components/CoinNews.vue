@@ -39,11 +39,11 @@ async function loadGNews() {
 <template>
   <section>
     <header>
-      <h2 class="text-hide">{{ t("exchanges.title") }}</h2>
+      <h2 class="text-hide">{{ t("news.title") }}</h2>
     </header>
 
     <SpoilerCard
-      :title="`${t('exchanges.spoiler')} (${data.length})`"
+      :title="`${t('news.title')} (${data.length})`"
       @firstOpen="loadNews"
     >
       <template #content v-if="data">
