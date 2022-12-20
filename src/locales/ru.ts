@@ -137,4 +137,7 @@ export default {
   news: {
     title: "Новости",
   },
+  youtube: {
+    title: "Youtube видео",
+  },
 };
