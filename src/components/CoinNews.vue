@@ -46,7 +46,7 @@ async function loadGNews() {
       :title="`${t('news.title')} (${data.length})`"
       @firstOpen="loadNews"
     >
-      <template #content v-if="data">
+      <template #content v-if="data.length">
         <ul class="list-unstyled list">
           <li
             v-for="(item, index) in data"
