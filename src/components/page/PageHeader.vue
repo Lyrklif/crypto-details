@@ -4,9 +4,9 @@ import LocaleChanger from "../LocaleChanger.vue";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
-const links: Array<{ to: string; text: string }> = [
-  { to: "/", text: "header.home" },
-  { to: "/about", text: "header.about" },
+const links: Array<{ name: string; text: string }> = [
+  { name: "home", text: "header.home" },
+  { name: "about", text: "header.about" },
 ];
 </script>
 
@@ -26,7 +26,7 @@ const links: Array<{ to: string; text: string }> = [
             :key="t(item.text)"
           >
             <RouterLink
-              :to="item.to"
+              :to="{ name: item.name }"
               v-slot="{ isActive }"
               :title="t(item.text)"
             >
