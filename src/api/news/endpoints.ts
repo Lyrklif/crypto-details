@@ -15,7 +15,7 @@ export interface ApiInterface {
 const API: ApiInterface = {
   everything({ q, sources, language, pageSize }) {
     return instance.get(`everything`, {
-      params: { sources, language, pageSize },
+      params: { sources, language, pageSize, q },
     });
   },
 };

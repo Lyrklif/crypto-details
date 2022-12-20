@@ -5,16 +5,29 @@ import SpoilerCard from "./SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../stores/coin";
 import type { Article } from "../api/gnews/types";
+import type { ArticleItem } from "../api/news/types";
 
 const { t, locale } = useI18n();
 const store = useCoinStore();
-const data = ref<Array<Article>>([]);
+const data = ref<Array<ArticleItem | Article>>([]);
 
-async function load() {
+async function loadNews() {
+  try {
+    const response = await API.news.everything({
+      q: store.symbol,
+      language: locale.value,
+    });
+    data.value = response.data.articles;
+  } catch (error: any) {
+    await loadGNews();
+  }
+}
+async function loadGNews() {
   try {
     const response = await API.gnews.search({
       q: store.symbol,
       lang: locale.value,
+      max: 100,
     });
     data.value = response.data.articles;
   } catch (error: any) {
@@ -31,7 +44,7 @@ async function load() {
 
     <SpoilerCard
       :title="`${t('exchanges.spoiler')} (${data.length})`"
-      @firstOpen="load"
+      @firstOpen="loadNews"
     >
       <template #content v-if="data">
         <ul class="list-unstyled list">
@@ -43,6 +56,7 @@ async function load() {
             <article class="card bg-primary shadow-sm border-light py-4 px-3">
               <address class="author mb-2">
                 <a
+                  v-if="item.source.url"
                   rel="author"
                   target="_blank"
                   :href="item.source.url"
@@ -53,6 +67,12 @@ async function load() {
                     {{ item.source.name }}
                   </strong>
                 </a>
+                <strong
+                  v-else-if="item.source.name"
+                  class="d-block text-dark lh-100 mb-0"
+                >
+                  {{ item.source.name }}
+                </strong>
               </address>
 
               <a
@@ -68,6 +88,7 @@ async function load() {
                 <div class="d-md-flex align-items-center mb-1">
                   <img
                     :src="item.image"
+                    :alt="item.title"
                     class="image rounded mb-3 mb-md-0 mr-3"
                   />
                   <p class="mb-2 text-body lh-120">{{ item.description }}</p>
