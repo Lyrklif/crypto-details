@@ -23,8 +23,8 @@ async function load() {
 
 <template>
   <section>
-    <header class="hide">
-      <h2>{{ t("profile.title") }}</h2>
+    <header>
+      <h2 class="text-hide">{{ t("profile.title") }}</h2>
     </header>
 
     <SpoilerCard :title="`${t('profile.title')}`" @firstOpen="load">
@@ -53,11 +53,3 @@ async function load() {
     </SpoilerCard>
   </section>
 </template>
-
-<style scoped>
-.hide {
-  visibility: hidden;
-  height: 0;
-  width: 0;
-}
-</style>

@@ -22,8 +22,8 @@ async function load() {
 
 <template>
   <section>
-    <header class="hide">
-      <h2>{{ t("pools.title") }}</h2>
+    <header>
+      <h2 class="text-hide">{{ t("pools.title") }}</h2>
     </header>
 
     <SpoilerCard
@@ -74,11 +74,3 @@ async function load() {
     </SpoilerCard>
   </section>
 </template>
-
-<style scoped>
-.hide {
-  visibility: hidden;
-  height: 0;
-  width: 0;
-}
-</style>
