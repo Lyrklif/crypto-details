@@ -7,7 +7,7 @@ export interface ApiInterface {
   search: (params: {
     q: string;
     lang?: string;
-    max?: NrRange<1, 100>;
+    max?: NrRange<1, 101>;
   }) => AxiosPromise<ArticleResponse>;
 }
 

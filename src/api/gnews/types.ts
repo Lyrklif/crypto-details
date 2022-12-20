@@ -6,7 +6,7 @@ interface Article {
   image: string;
   publishedAt: string;
   source: {
-    name: string;
+    name: string | null;
     url: string;
   };
 }
@@ -16,4 +16,9 @@ interface ArticleResponse {
   articles: Array<Article>;
 }
 
-export type { Article, ArticleResponse };
+enum GOOGLE_NEWS_ERRORS {
+  INTERNAL_SERVER = 500,
+  LIMIT = 403,
+}
+
+export type { Article, ArticleResponse, GOOGLE_NEWS_ERRORS };
