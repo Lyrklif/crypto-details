@@ -137,4 +137,7 @@ export default {
   news: {
     title: "News",
   },
+  youtube: {
+    title: "Youtube videos",
+  },
 };
