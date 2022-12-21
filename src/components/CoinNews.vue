@@ -25,7 +25,7 @@ async function loadNews() {
 async function loadGNews() {
   try {
     const response = await API.gnews.search({
-      q: store.symbol,
+      q: `${store.name} ${store.symbol}`,
       lang: locale.value,
       max: 100,
     });
@@ -38,16 +38,18 @@ async function loadGNews() {
 
 <template>
   <section>
-    <header>
-      <h2 class="text-hide">{{ t("news.title") }}</h2>
-    </header>
-
     <SpoilerCard
-      :title="`${t('news.title')} (${data.length})`"
+      :title="`${t('news.title')} ${data.length ? `(${data.length})` : ''}`"
       @firstOpen="loadNews"
     >
-      <template #content v-if="data.length">
-        <ul class="list-unstyled list">
+      <template #content>
+        <header class="mb-4">
+          <h2 class="h5">
+            {{ t("news.title") }}: <i>{{ store.name }} {{ store.symbol }}</i>
+          </h2>
+        </header>
+
+        <ul class="list-unstyled list" v-if="data">
           <li
             v-for="(item, index) in data"
             :key="`articles-${index}`"
