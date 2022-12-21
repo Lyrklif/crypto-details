@@ -156,6 +156,36 @@ interface CoinExchangesItem {
   adjusted_volume_24h_share: number;
 }
 
+enum MARKET_TRUST {
+  NO_DATA = "no_data",
+  LOW = "low",
+  HIGH = "high",
+  MEDIUM = "medium",
+}
+
+interface MarketsItemResponse {
+  exchange_id: string;
+  exchange_name: string;
+  pair: string;
+  base_currency_id: string;
+  base_currency_name: string;
+  quote_currency_id: string;
+  quote_currency_name: string;
+  market_url: string;
+  category: string;
+  fee_type: string;
+  outlier: boolean;
+  adjusted_volume_24h_share: number;
+  quotes: {
+    [someStrKeyWhichIsDynamic: string]: {
+      price: number;
+      volume_24h: number;
+    };
+  };
+  trust_score: MARKET_TRUST;
+  last_updated: string;
+}
+
 export type {
   SearchCurrencyItem,
   SearchIcosItem,
@@ -169,6 +199,7 @@ export type {
   LinkExtended,
   TeamItem,
   TagItem,
+  MarketsItemResponse,
 };
 
-export { LINK_EXTENDED_TYPES };
+export { LINK_EXTENDED_TYPES, MARKET_TRUST };
