@@ -5,12 +5,13 @@ import { useRoute } from "vue-router";
 import type { GetTwitterItem } from "../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 import TwitterList from "./list/TwitterList.vue";
+import SpoilerCard from "../../base/SpoilerCard.vue";
 
 const { t } = useI18n();
 const route = useRoute();
 const list = ref<Array<GetTwitterItem>>();
 
-async function loadSocial() {
+async function load() {
   try {
     const response = await API.coinpaprika.coinTwitter(
       route.params.id as string
@@ -20,16 +21,23 @@ async function loadSocial() {
     // TODO error
   }
 }
-
-loadSocial();
 </script>
 
 <template>
-  <section v-if="list && list.length">
+  <section>
     <header>
-      <h2>{{ t("twitter.title") }}</h2>
+      <h2 class="text-hide">{{ t("twitter.title") }}</h2>
     </header>
 
-    <TwitterList :list="list" class="col-12 col-md-8 col-lg-6" />
+    <SpoilerCard
+      :title="`${t('twitter.title')} ${
+        list && list.length ? `(${list.length})` : ''
+      }`"
+      @firstOpen="load"
+    >
+      <template #content>
+        <TwitterList :list="list" />
+      </template>
+    </SpoilerCard>
   </section>
 </template>
