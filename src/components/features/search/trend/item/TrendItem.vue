@@ -6,6 +6,7 @@ const emit = defineEmits(["choose"]);
 
 defineProps({
   item: Object as PropType<TrendingCoinItem>,
+  isDisabled: Boolean as PropType<boolean>,
 });
 </script>
 
@@ -15,6 +16,7 @@ defineProps({
     type="button"
     class="btn btn-primary btn-pill text-dark py-1 px-2 animate-up-2"
     :title="item.item.name"
+    :disabled="isDisabled"
   >
     {{ item.item.symbol }}
   </button>

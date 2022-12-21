@@ -13,15 +13,14 @@ const emit = defineEmits(["search"]);
 
 const isError = ref(false);
 const isSearching = ref(false);
-const coinName = ref("");
 
-async function search() {
+async function search(coin: string) {
   try {
     isError.value = false;
     isSearching.value = true;
 
     const response = await API.coinpaprika.search({
-      q: coinName.value,
+      q: coin,
       limit: SEARCH_LIMIT,
     });
     emit("search", response.data.currencies);
@@ -31,11 +30,6 @@ async function search() {
     isSearching.value = false;
   }
 }
-
-const setCoinName = (coin: string) => {
-  coinName.value = coin;
-  search();
-};
 </script>
 
 <template>
@@ -47,7 +41,7 @@ const setCoinName = (coin: string) => {
     <div class="card-body">
       <SearchForm @submit="search" :isDisabled="isSearching" class="mb-4" />
       <NotFound v-if="isError" @close="isError = false" />
-      <SearchTrends @choose="setCoinName" />
+      <SearchTrends @choose="search" :isDisabled="isSearching" />
     </div>
   </div>
 </template>
