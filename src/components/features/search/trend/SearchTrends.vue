@@ -35,7 +35,7 @@ const choose = (key: string) => {
       :key="`search-trend-${item.item.id}`"
       class="mb-1 mr-1"
     >
-      <TrendItem @choose="choose" :item="item" :isDisabled="isDisabled" />
+      <TrendItem @choose="choose" :item="item" :is-disabled="isDisabled" />
     </li>
   </ul>
 </template>

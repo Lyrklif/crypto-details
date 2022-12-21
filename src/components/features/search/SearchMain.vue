@@ -19,6 +19,7 @@ async function search(coin: string) {
     isError.value = false;
     isSearching.value = true;
 
+    console.log("TTT coin", coin);
     const response = await API.coinpaprika.search({
       q: coin,
       limit: SEARCH_LIMIT,
@@ -41,7 +42,7 @@ async function search(coin: string) {
     <div class="card-body">
       <SearchForm @submit="search" :isDisabled="isSearching" class="mb-4" />
       <NotFound v-if="isError" @close="isError = false" />
-      <SearchTrends @choose="search" :isDisabled="isSearching" />
+      <SearchTrends @choose="search" :is-disabled="isSearching" />
     </div>
   </div>
 </template>
