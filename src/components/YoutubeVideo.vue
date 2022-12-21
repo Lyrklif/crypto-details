@@ -13,7 +13,7 @@ const data = ref<Array<YoutubeSearchItem>>([]);
 async function load() {
   try {
     const response = await API.youtube.search({
-      q: store.symbol,
+      q: `${store.name} ${store.symbol}`,
       lang: locale.value,
       maxResults: 20,
     });
@@ -26,16 +26,18 @@ async function load() {
 
 <template>
   <section>
-    <header>
-      <h2 class="text-hide">{{ t("youtube.title") }}</h2>
-    </header>
-
     <SpoilerCard
-      :title="`${t('youtube.title')} (${data.length})`"
+      :title="`${t('youtube.title')} ${data.length ? `(${data.length})` : ''}`"
       @firstOpen="load"
     >
-      <template #content v-if="data.length">
-        <ul class="list-unstyled list">
+      <template #content>
+        <header class="mb-4">
+          <h2 class="h5">
+            {{ t("youtube.title") }}: <i>{{ store.name }} {{ store.symbol }}</i>
+          </h2>
+        </header>
+
+        <ul class="list-unstyled list" v-if="data.length">
           <li
             v-for="item in data"
             :key="`youtube-${item.id.videoId}`"
