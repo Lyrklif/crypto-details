@@ -100,7 +100,7 @@ loadSocial();
 
 <style scoped>
 .list {
-  max-height: 500px;
+  max-height: 100vh;
   overflow: auto;
 }
 
