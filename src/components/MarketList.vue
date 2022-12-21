@@ -30,7 +30,7 @@ async function load() {
     </header>
 
     <SpoilerCard
-      :title="`${t('market.title')} (${list.length})`"
+      :title="`${t('market.title')} ${list.length ? `(${list.length})` : ''}`"
       @firstOpen="load"
     >
       <template #content v-if="list.length">

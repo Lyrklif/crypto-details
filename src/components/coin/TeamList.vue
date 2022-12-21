@@ -16,7 +16,9 @@ defineProps({
       <h2 class="text-hide">{{ t("coin.team") }}</h2>
     </header>
 
-    <SpoilerCard :title="`${t('coin.team')} (${links.length})`">
+    <SpoilerCard
+      :title="`${t('coin.team')} ${links.length ? `(${links.length})` : ''}`"
+    >
       <template #content>
         <table class="table table-striped mb-0">
           <tbody>

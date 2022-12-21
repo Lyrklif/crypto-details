@@ -29,7 +29,9 @@ async function load() {
     </header>
 
     <SpoilerCard
-      :title="`${t('exchanges.spoiler')} (${list.length})`"
+      :title="`${t('exchanges.title')} ${
+        list.length ? `(${list.length})` : ''
+      }`"
       @firstOpen="load"
     >
       <template #content>

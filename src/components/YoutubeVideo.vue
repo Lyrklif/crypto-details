@@ -27,7 +27,9 @@ async function load() {
 <template>
   <section>
     <SpoilerCard
-      :title="`${t('youtube.title')} ${data.length ? `(${data.length})` : ''}`"
+      :title="`${t('youtube.title')} ${
+        data && data.length ? `(${data.length})` : ''
+      }`"
       @firstOpen="load"
     >
       <template #content>
@@ -37,7 +39,7 @@ async function load() {
           </h2>
         </header>
 
-        <ul class="list-unstyled list" v-if="data.length">
+        <ul class="list-unstyled list" v-if="data && data.length">
           <li
             v-for="item in data"
             :key="`youtube-${item.id.videoId}`"

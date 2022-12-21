@@ -29,16 +29,20 @@ async function load() {
 
     <SpoilerCard :title="`${t('profile.title')}`" @firstOpen="load">
       <template #content v-if="profile">
-        <h4>{{ t("profile.technology") }}</h4>
+        <h4 v-if="profile.technology">{{ t("profile.technology") }}</h4>
         <p v-html="profile.technology" />
 
-        <h4>{{ t("profile.token_distribution") }}</h4>
+        <h4 v-if="profile.token_distribution.description">
+          {{ t("profile.token_distribution") }}
+        </h4>
         <p v-html="profile.token_distribution.description" />
 
-        <h4>{{ t("profile.history") }}</h4>
+        <h4 v-if="profile.background">{{ t("profile.history") }}</h4>
         <p v-html="profile.background" />
 
-        <h4>{{ t("profile.organizations") }}</h4>
+        <h4 v-if="profile.organizations.length">
+          {{ t("profile.organizations") }}
+        </h4>
         <ul class="list-unstyled mt-2">
           <li
             v-for="(item, index) in profile.organizations"

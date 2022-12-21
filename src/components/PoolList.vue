@@ -27,7 +27,7 @@ async function load() {
     </header>
 
     <SpoilerCard
-      :title="`${t('pools.title')} (${pools.length})`"
+      :title="`${t('pools.title')} ${pools.length ? `(${pools.length})` : ''}`"
       @firstOpen="load"
     >
       <template #content>
