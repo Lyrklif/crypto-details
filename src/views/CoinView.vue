@@ -6,7 +6,7 @@ import PoolList from "../components/PoolList.vue";
 import CoinProfile from "../components/CoinProfile.vue";
 import CoinMetrics from "../components/metric/MetricMain.vue";
 import GoogleTrends from "../components/GoogleTrends.vue";
-import CoinNews from "../components/CoinNews.vue";
+import CoinNews from "../components/news/NewsMain.vue";
 import YoutubeVideo from "../components/youtube/YoutubeMain.vue";
 import MarketList from "../components/MarketList.vue";
 </script>
