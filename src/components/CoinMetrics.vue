@@ -50,9 +50,7 @@ async function load() {
                     "
                   >
                     {{ data.roi_by_year[key] > 0 ? "+" : "" }}
-                    {{
-                      data.roi_by_year[key] && data.roi_by_year[key].toFixed(2)
-                    }}%
+                    {{ $filters.percent(data.roi_by_year[key]) }}
                   </td>
                 </tr>
               </tbody>
@@ -70,10 +68,7 @@ async function load() {
                 >
                   <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
                   <td class="text-right py-1">
-                    {{
-                      data.risk_metrics.sharpe_ratios[key] &&
-                      data.risk_metrics.sharpe_ratios[key].toFixed(2)
-                    }}
+                    {{ $filters.price(data.risk_metrics.sharpe_ratios[key]) }}
                   </td>
                 </tr>
                 <tr
@@ -84,8 +79,7 @@ async function load() {
                   <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
                   <td class="text-right py-1">
                     {{
-                      data.risk_metrics.volatility_stats[key] &&
-                      data.risk_metrics.volatility_stats[key].toFixed(2)
+                      $filters.price(data.risk_metrics.volatility_stats[key])
                     }}
                   </td>
                 </tr>
@@ -102,16 +96,13 @@ async function load() {
                 <tr v-if="data.supply.circulating">
                   <td class="pr-3 py-1">{{ t(`metric.circulating`) }}</td>
                   <td class="text-right py-1">
-                    {{
-                      data.supply.circulating &&
-                      data.supply.circulating.toFixed(2)
-                    }}
+                    {{ $filters.price(data.supply.circulating) }}
                   </td>
                 </tr>
                 <tr v-if="data.supply.liquid">
                   <td class="pr-3 py-1">{{ t(`metric.liquid`) }}</td>
                   <td class="text-right py-1">
-                    {{ data.supply.liquid && data.supply.liquid.toFixed(2) }}
+                    {{ $filters.price(data.supply.liquid) }}
                   </td>
                 </tr>
               </tbody>
@@ -127,10 +118,7 @@ async function load() {
                 >
                   <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
                   <td class="text-right py-1">
-                    {{
-                      data.supply_activity[key] &&
-                      data.supply_activity[key].toFixed(2)
-                    }}
+                    {{ $filters.price(data.supply_activity[key]) }}
                   </td>
                 </tr>
               </tbody>
@@ -147,10 +135,7 @@ async function load() {
                 >
                   <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
                   <td class="text-right py-1">
-                    {{
-                      data.supply_distribution[key] &&
-                      data.supply_distribution[key].toFixed(2)
-                    }}
+                    {{ $filters.price(data.supply_distribution[key]) }}
                   </td>
                 </tr>
               </tbody>

@@ -46,6 +46,6 @@ const iconClasses = computed(() => {
     class="d-inline-flex align-items-center btn btn-sm btn-primary py-1"
   >
     <span :class="[iconClasses, 'mr-1']"></span>
-    <small>{{ link(item.url) }}</small>
+    <small>{{ $filters.hostname(item.url) }}</small>
   </a>
 </template>

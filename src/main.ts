@@ -3,7 +3,7 @@ import { createPinia } from "pinia";
 import App from "./App.vue";
 import router from "./router";
 import { makeServer } from "./server";
-import mixins from "./helpers/mixins";
+import filters from "./helpers/filters";
 import { createI18n } from "vue-i18n";
 
 import en from "./locales/en";
@@ -27,6 +27,7 @@ if (process.env.NODE_ENV === "development") {
 app.use(createPinia());
 app.use(router);
 app.use(i18n);
-app.mixin(mixins);
+
+app.config.globalProperties.$filters = filters;
 
 app.mount("#app");

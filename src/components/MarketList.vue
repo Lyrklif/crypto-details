@@ -11,6 +11,13 @@ const { t } = useI18n();
 const route = useRoute();
 const list = ref<Array<MarketsItemResponse>>([]);
 
+const badgeClasses = {
+  [MARKET_TRUST.HIGH]: "badge-success",
+  [MARKET_TRUST.MEDIUM]: "badge-secondary",
+  [MARKET_TRUST.LOW]: "badge-danger",
+  [MARKET_TRUST.NO_DATA]: "badge-dark",
+};
+
 async function load() {
   try {
     const response = await API.coinpaprika.getMarketsByCoin(
@@ -30,7 +37,7 @@ async function load() {
     </header>
 
     <SpoilerCard
-      :title="`${t('market.title')} (${list.length})`"
+      :title="`${t('market.title')} ${list.length ? `(${list.length})` : ''}`"
       @firstOpen="load"
     >
       <template #content v-if="list.length">
@@ -62,25 +69,21 @@ async function load() {
                   :key="`fiat-${item.exchange_id}-${fiatKey}`"
                   class="mb-0 d-block text-monospace"
                 >
-                  {{ item.quotes[fiatKey].price.toFixed(6) }} {{ fiatKey }}
+                  {{ $filters.price(item.quotes[fiatKey].price, 6) }}
+                  {{ fiatKey }}
                 </b>
               </td>
               <td class="py-1 text-monospace">{{ item.pair }}</td>
               <td class="py-1">
                 <span
                   class="badge text-monospace"
-                  :class="{
-                    'badge-success': MARKET_TRUST.HIGH === item.trust_score,
-                    'badge-secondary': MARKET_TRUST.MEDIUM === item.trust_score,
-                    'badge-danger': MARKET_TRUST.LOW === item.trust_score,
-                    'badge-dark': MARKET_TRUST.NO_DATA === item.trust_score,
-                  }"
+                  :class="badgeClasses[item.trust_score]"
                 >
                   {{ t(`market.trust_score_value.${item.trust_score}`) }}
                 </span>
               </td>
               <td class="py-1">
-                {{ item.adjusted_volume_24h_share.toFixed(2) }}%
+                {{ $filters.percent(item.adjusted_volume_24h_share) }}
               </td>
               <td class="py-1">{{ item.category }}</td>
             </tr>

@@ -27,13 +27,11 @@ defineProps({
       class="collapse card-body bg-primary shadow-inset border-light rounded"
       :class="{ show: isShow }"
     >
-      <div class="pt-3">
-        <slot name="content">
-          <p class="mb-0">
-            {{ content }}
-          </p>
-        </slot>
-      </div>
+      <slot name="content">
+        <div class="mb-0">
+          {{ content }}
+        </div>
+      </slot>
     </div>
   </div>
 </template>

@@ -29,19 +29,21 @@ async function load() {
     </header>
 
     <SpoilerCard
-      :title="`${t('exchanges.spoiler')} (${list.length})`"
+      :title="`${t('exchanges.title')} ${
+        list.length ? `(${list.length})` : ''
+      }`"
       @firstOpen="load"
     >
       <template #content>
         <table class="table">
-          <tbody>
+          <thead>
             <tr>
               <th></th>
               <th>{{ t("exchanges.source") }}</th>
               <th>{{ t("exchanges.volume") }}</th>
               <th>{{ t("exchanges.fiats") }}</th>
             </tr>
-          </tbody>
+          </thead>
           <tbody>
             <tr v-for="(item, index) in list" :key="item.id">
               <td class="py-1">{{ index + 1 }}</td>
@@ -55,7 +57,7 @@ async function load() {
                 </a>
               </td>
               <td class="py-1">
-                {{ item.adjusted_volume_24h_share.toFixed(4) }}%
+                {{ $filters.percent(item.adjusted_volume_24h_share, 4) }}
               </td>
               <td class="py-1">
                 <small
