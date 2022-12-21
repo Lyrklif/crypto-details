@@ -8,6 +8,7 @@ import CoinMetrics from "../components/CoinMetrics.vue";
 import GoogleTrends from "../components/GoogleTrends.vue";
 import CoinNews from "../components/CoinNews.vue";
 import YoutubeVideo from "../components/YoutubeVideo.vue";
+import MarketList from "../components/MarketList.vue";
 </script>
 
 <template>
@@ -21,5 +22,6 @@ import YoutubeVideo from "../components/YoutubeVideo.vue";
     <GoogleTrends class="mb-4" />
     <CoinNews class="mb-4" />
     <YoutubeVideo class="mb-4" />
+    <MarketList class="mb-4" />
   </div>
 </template>

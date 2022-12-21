@@ -140,4 +140,19 @@ export default {
   youtube: {
     title: "Youtube видео",
   },
+  market: {
+    title: "Биржи",
+    exchange: "Биржа",
+    price: "Цена",
+    pair: "Пара",
+    volume: "Объём (24h)",
+    category: "Категория",
+    trust_score: "Оценка доверия",
+    trust_score_value: {
+      no_data: "-",
+      low: "Низкая",
+      high: "Высокая",
+      medium: "Средняя",
+    },
+  },
 };

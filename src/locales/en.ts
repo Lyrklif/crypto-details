@@ -140,4 +140,19 @@ export default {
   youtube: {
     title: "Youtube videos",
   },
+  market: {
+    title: "Markets",
+    exchange: "Exchange",
+    price: "Price",
+    pair: "Pair",
+    volume: "Volume (24h)",
+    category: "Category",
+    trust_score: "Trust score",
+    trust_score_value: {
+      no_data: "-",
+      low: "Low",
+      high: "High",
+      medium: "Medium",
+    },
+  },
 };
