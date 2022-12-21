@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-import PageHeader from "./components/page/PageHeader.vue";
+import AppHeader from "./components/layout/AppHeader.vue";
 </script>
 
 <template>
   <div>
-    <PageHeader />
+    <AppHeader />
 
     <main class="section container">
       <RouterView />
