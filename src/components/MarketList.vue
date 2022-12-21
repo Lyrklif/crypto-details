@@ -69,7 +69,8 @@ async function load() {
                   :key="`fiat-${item.exchange_id}-${fiatKey}`"
                   class="mb-0 d-block text-monospace"
                 >
-                  {{ item.quotes[fiatKey].price.toFixed(6) }} {{ fiatKey }}
+                  {{ $filters.price(item.quotes[fiatKey].price, 6) }}
+                  {{ fiatKey }}
                 </b>
               </td>
               <td class="py-1 text-monospace">{{ item.pair }}</td>
@@ -82,7 +83,7 @@ async function load() {
                 </span>
               </td>
               <td class="py-1">
-                {{ item.adjusted_volume_24h_share.toFixed(2) }}%
+                {{ $filters.percent(item.adjusted_volume_24h_share) }}
               </td>
               <td class="py-1">{{ item.category }}</td>
             </tr>

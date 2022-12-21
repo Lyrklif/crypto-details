@@ -57,7 +57,7 @@ async function load() {
                 </a>
               </td>
               <td class="py-1">
-                {{ item.adjusted_volume_24h_share.toFixed(4) }}%
+                {{ $filters.percent(item.adjusted_volume_24h_share, 4) }}
               </td>
               <td class="py-1">
                 <small
