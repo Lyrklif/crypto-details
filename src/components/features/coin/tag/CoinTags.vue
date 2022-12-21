@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
-import type { TagItem } from "../../api/coinpaprika/types";
+import type { TagItem } from "../../../../api/coinpaprika/types";
 
 defineProps({
   links: Array as PropType<Array<TagItem>>,

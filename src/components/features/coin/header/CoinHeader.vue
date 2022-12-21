@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
-import type { GetCoinByIDResponse } from "../../api/coinpaprika/types";
+import type { GetCoinByIDResponse } from "../../../../api/coinpaprika/types";
 
 defineProps({
   coin: Object as PropType<GetCoinByIDResponse>,

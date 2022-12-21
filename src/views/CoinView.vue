@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import CoinBase from "../components/coin/CoinBase.vue";
-import TwitterList from "../components/coin/TwitterList.vue";
+import CoinMain from "../components/features/coin/CoinMain.vue";
+import TwitterMain from "../components/features/twitter/TwitterMain.vue";
 import ExchangeMain from "../components/features/exchange/ExchangeMain.vue";
 import PoolMain from "../components/features/pool/PoolMain.vue";
 import ProfileMain from "../components/features/profile/ProfileMain.vue";
@@ -13,8 +13,8 @@ import MarketMain from "../components/features/market/MarketMain.vue";
 
 <template>
   <div>
-    <CoinBase />
-    <TwitterList class="mb-5" />
+    <CoinMain />
+    <TwitterMain class="mb-5" />
     <ExchangeMain class="mb-4" />
     <PoolMain class="mb-4" />
     <ProfileMain class="mb-4" />

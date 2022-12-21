@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
-import type { LinkExtended } from "../../../api/coinpaprika/types";
-import SocialLink from "./SocialLink.vue";
+import type { LinkExtended } from "../../../../api/coinpaprika/types";
+import SocialLink from "./item/SocialItem.vue";
 
 defineProps({
   links: Array as PropType<Array<LinkExtended>>,
