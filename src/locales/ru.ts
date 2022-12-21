@@ -155,4 +155,8 @@ export default {
       medium: "Средняя",
     },
   },
+  trends: {
+    title: "Google тренды",
+    by: "Тренды для",
+  },
 };

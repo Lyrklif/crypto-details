@@ -2,29 +2,42 @@
 import { watch } from "vue";
 import { useCoinStore } from "../stores/coin";
 import { storeToRefs } from "pinia";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n();
+const { locale } = useI18n();
 const store = useCoinStore();
-const { symbol } = storeToRefs(store);
+const { symbol, name } = storeToRefs(store);
 
 watch(symbol, () => {
-  initGoogleTrends(`${symbol}`.toLowerCase());
+  initGoogleTrends(`${symbol.value}`, "TIMESERIES", "TRENDS");
+  initGoogleTrends(`${name.value}`, "TIMESERIES", "TRENDS2");
+  initGoogleTrends(`${name.value}`, "GEO_MAP", "GEO_MAP");
 });
 
-function initGoogleTrends(symbol: string) {
+type widgetType = "TIMESERIES" | "GEO_MAP";
+type divType = "TRENDS" | "TRENDS2" | "GEO_MAP";
+
+function initGoogleTrends(keyword: string, widget: widgetType, divId: divType) {
   if (!window?.trends) return;
 
   window.trends.embed.renderExploreWidgetTo(
-    document.getElementById("widget"),
-    "TIMESERIES",
+    document.getElementById(divId),
+    widget,
     {
       comparisonItem: [
-        { keyword: symbol, geo: "", time: "2004-01-01 2022-12-11" },
+        {
+          keyword,
+          locale: locale.value,
+          geo: "",
+          time: "2004-01-01 2022-12-11",
+        },
       ],
       category: 7,
       property: "",
     },
     {
-      exploreQuery: `cat=7&date=all&q=${symbol}`,
+      exploreQuery: `cat=7&date=all&q=${keyword}`,
       guestPath: "https://trends.google.com:443/trends/embed/",
     }
   );
@@ -32,7 +45,26 @@ function initGoogleTrends(symbol: string) {
 </script>
 
 <template>
-  <div ref="widget" id="widget" height="500" width="1000" class="block"></div>
+  <section class="card bg-primary border-light shadow-soft p-3">
+    <header>
+      <h2>{{ t("trends.title") }}</h2>
+    </header>
+
+    <p class="mb-2">
+      {{ t("trends.by") }}: <i>{{ symbol }}</i>
+    </p>
+    <div id="TRENDS" class="block" />
+
+    <p class="mb-2 mt-4">
+      {{ t("trends.by") }}: <i>{{ name }}</i>
+    </p>
+    <div id="TRENDS2" class="block" />
+
+    <p class="mb-2 mt-4">
+      {{ t("trends.by") }}: <i>{{ name }}</i>
+    </p>
+    <div id="GEO_MAP" class="block" />
+  </section>
 </template>
 
 <style scoped>
