@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { useRoute } from "vue-router";
 import API from "../api";
 import type { CoinExchangesItem } from "../api/coinpaprika/types";
-import SpoilerCard from "./SpoilerCard.vue";
+import SpoilerCard from "./base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import API from "../api";
-import SpoilerCard from "./SpoilerCard.vue";
+import SpoilerCard from "./base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../stores/coin";
 import type { YoutubeSearchItem } from "../api/youtube/types";

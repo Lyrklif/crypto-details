@@ -4,7 +4,7 @@ import API from "../api";
 import type { Pool } from "../api/minerstat/types";
 import { useCoinStore } from "../stores/coin";
 import { useI18n } from "vue-i18n";
-import SpoilerCard from "./SpoilerCard.vue";
+import SpoilerCard from "./base/SpoilerCard.vue";
 
 const { t } = useI18n();
 const pools = ref<Array<Pool>>([]);

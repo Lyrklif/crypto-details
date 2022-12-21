@@ -2,7 +2,7 @@
 import type { PropType } from "vue";
 import type { TeamItem } from "../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
-import SpoilerCard from "../SpoilerCard.vue";
+import SpoilerCard from "../base/SpoilerCard.vue";
 
 const { t } = useI18n();
 defineProps({

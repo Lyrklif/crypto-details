@@ -3,7 +3,7 @@ import { ref } from "vue";
 import API from "../api";
 import { useCoinStore } from "../stores/coin";
 import { useI18n } from "vue-i18n";
-import SpoilerCard from "./SpoilerCard.vue";
+import SpoilerCard from "./base/SpoilerCard.vue";
 import type { AssetMetricDataResponse } from "../api/messari/types";
 
 const { t } = useI18n();
