@@ -5,24 +5,12 @@ import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../../../stores/coin";
 import type { Article } from "../../../api/gnews/types";
-import type { ArticleItem } from "../../../api/news/types";
 import NewsList from "./list/NewsList.vue";
 
 const { t, locale } = useI18n();
 const store = useCoinStore();
-const data = ref<Array<ArticleItem | Article>>([]);
+const data = ref<Array<Article>>([]);
 
-async function loadNews() {
-  try {
-    const response = await API.news.everything({
-      q: store.symbol,
-      language: locale.value,
-    });
-    data.value = response.data.articles;
-  } catch (error: any) {
-    await loadGNews();
-  }
-}
 async function loadGNews() {
   try {
     const response = await API.gnews.search({
@@ -41,7 +29,7 @@ async function loadGNews() {
   <section>
     <SpoilerCard
       :title="`${t('news.title')} ${data.length ? `(${data.length})` : ''}`"
-      @firstOpen="loadNews"
+      @firstOpen="loadGNews"
     >
       <template #content>
         <header class="mb-4">

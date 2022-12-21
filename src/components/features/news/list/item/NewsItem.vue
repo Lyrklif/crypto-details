@@ -2,12 +2,11 @@
 import { PropType } from "vue";
 import { useI18n } from "vue-i18n";
 import type { Article } from "../../../../../api/gnews/types";
-import type { ArticleItem } from "../../../../../api/news/types";
 
 const { t } = useI18n();
 
 defineProps({
-  item: Object as PropType<Article | ArticleItem>,
+  item: Object as PropType<Article>,
 });
 </script>
 

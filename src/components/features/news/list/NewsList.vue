@@ -2,13 +2,12 @@
 import { PropType } from "vue";
 import { useI18n } from "vue-i18n";
 import type { Article } from "../../../../api/gnews/types";
-import type { ArticleItem } from "../../../../api/news/types";
 import NewsItem from "./item/NewsItem.vue";
 
 const { t } = useI18n();
 
 defineProps({
-  list: Array as PropType<Array<Article | ArticleItem>>,
+  list: Array as PropType<Array<Article>>,
 });
 </script>
 
