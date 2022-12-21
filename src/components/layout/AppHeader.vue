@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import LocaleChanger from "../LocaleChanger.vue";
+import LocaleChanger from "../features/LocaleChanger.vue";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
