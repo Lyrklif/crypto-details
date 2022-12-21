@@ -11,6 +11,13 @@ const { t } = useI18n();
 const route = useRoute();
 const list = ref<Array<MarketsItemResponse>>([]);
 
+const badgeClasses = {
+  [MARKET_TRUST.HIGH]: "badge-success",
+  [MARKET_TRUST.MEDIUM]: "badge-secondary",
+  [MARKET_TRUST.LOW]: "badge-danger",
+  [MARKET_TRUST.NO_DATA]: "badge-dark",
+};
+
 async function load() {
   try {
     const response = await API.coinpaprika.getMarketsByCoin(
@@ -69,12 +76,7 @@ async function load() {
               <td class="py-1">
                 <span
                   class="badge text-monospace"
-                  :class="{
-                    'badge-success': MARKET_TRUST.HIGH === item.trust_score,
-                    'badge-secondary': MARKET_TRUST.MEDIUM === item.trust_score,
-                    'badge-danger': MARKET_TRUST.LOW === item.trust_score,
-                    'badge-dark': MARKET_TRUST.NO_DATA === item.trust_score,
-                  }"
+                  :class="badgeClasses[item.trust_score]"
                 >
                   {{ t(`market.trust_score_value.${item.trust_score}`) }}
                 </span>
