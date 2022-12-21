@@ -13,15 +13,15 @@ import MarketMain from "../components/features/market/MarketMain.vue";
 
 <template>
   <div>
-    <CoinMain />
-    <TwitterMain class="mb-5" />
+    <CoinMain class="mb-4" />
     <ExchangeMain class="mb-4" />
     <PoolMain class="mb-4" />
+    <MarketMain class="mb-4" />
     <ProfileMain class="mb-4" />
     <MetricMain class="mb-4" />
-    <GoogleTrends class="mb-4" />
     <NewsMain class="mb-4" />
     <YoutubeMain class="mb-4" />
-    <MarketMain class="mb-4" />
+    <TwitterMain class="mb-5" />
+    <GoogleTrends />
   </div>
 </template>

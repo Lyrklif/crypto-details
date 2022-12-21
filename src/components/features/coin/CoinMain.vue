@@ -32,7 +32,7 @@ load();
 </script>
 
 <template>
-  <div class="mb-4">
+  <div>
     <div class="row">
       <section class="col-12 col-lg-6" v-if="coin">
         <CoinHeader :coin="coin" class="mb-4" />
