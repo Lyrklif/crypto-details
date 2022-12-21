@@ -24,17 +24,23 @@ defineProps({
         {{ pool.name }}
       </a>
     </td>
-    <td class="py-2">{{ pool[store.symbol].fee }}</td>
-    <td class="py-2">{{ pool[store.symbol].payoutThreshold }}</td>
-    <td class="py-2">{{ pool[store.symbol].rewardMethod }}</td>
+    <td class="py-2">{{ pool.coins[store.symbol].fee }}</td>
+    <td class="py-2">{{ pool.coins[store.symbol].payoutThreshold }}</td>
+    <td class="py-2">{{ pool.coins[store.symbol].rewardMethod }}</td>
     <td class="py-2">
       <span class="badge badge-info">
-        {{ pool[store.symbol].algorithm }}
+        {{ pool.coins[store.symbol].algorithm }}
       </span>
-      <span v-if="pool[store.symbol].registration" class="badge badge-danger">
+      <span
+        v-if="pool.coins[store.symbol].registration"
+        class="badge badge-danger"
+      >
         {{ t("pools.registration") }}
       </span>
-      <span v-if="pool[store.symbol].anonymous" class="badge badge-success">
+      <span
+        v-if="pool.coins[store.symbol].anonymous"
+        class="badge badge-success"
+      >
         {{ t("pools.anonymous") }}
       </span>
     </td>
