@@ -23,10 +23,13 @@ defineProps({
     <h4 v-if="profile.background">{{ t("profile.history") }}</h4>
     <p v-html="profile.background" />
 
-    <h4 v-if="profile.organizations.length">
+    <h4 v-if="profile.organizations && profile.organizations.length">
       {{ t("profile.organizations") }}
     </h4>
-    <ul class="list-unstyled mt-2">
+    <ul
+      v-if="profile.organizations && profile.organizations.length"
+      class="list-unstyled mt-2"
+    >
       <li
         v-for="(item, index) in profile.organizations"
         :key="`organization-${index}`"

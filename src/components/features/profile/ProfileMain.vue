@@ -29,7 +29,7 @@ async function load() {
     </header>
 
     <SpoilerCard :title="`${t('profile.title')}`" @firstOpen="load">
-      <template #content v-if="profile">
+      <template #content>
         <ProfileContent v-if="profile" :profile="profile" />
       </template>
     </SpoilerCard>

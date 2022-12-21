@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-  <table class="table col-12 col-md-8 col-lg-6">
+  <table class="table">
     <tbody>
       <tr>
         <td class="py-1">{{ t("coin.started_at") }}</td>

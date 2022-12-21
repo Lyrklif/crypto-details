@@ -14,7 +14,9 @@ defineProps({
     >
       <img :src="coin.logo" :alt="coin.name" height="40" width="40" />
     </div>
-    <h1 class="mr-1">{{ coin.name }}</h1>
-    <span>{{ coin.symbol }}</span>
+    <div>
+      <h1 class="mr-1">{{ coin.name }}</h1>
+      <span>{{ coin.symbol }}</span>
+    </div>
   </header>
 </template>

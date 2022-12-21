@@ -40,7 +40,7 @@ async function load() {
           </h2>
         </header>
 
-        <YoutubeList v-if="data && data.length" />
+        <YoutubeList v-if="data && data.length" :data="data" />
       </template>
     </SpoilerCard>
   </section>
