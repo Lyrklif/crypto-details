@@ -34,14 +34,14 @@ async function load() {
     >
       <template #content>
         <table class="table">
-          <tbody>
+          <thead>
             <tr>
               <th></th>
               <th>{{ t("exchanges.source") }}</th>
               <th>{{ t("exchanges.volume") }}</th>
               <th>{{ t("exchanges.fiats") }}</th>
             </tr>
-          </tbody>
+          </thead>
           <tbody>
             <tr v-for="(item, index) in list" :key="item.id">
               <td class="py-1">{{ index + 1 }}</td>
