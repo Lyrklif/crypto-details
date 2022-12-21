@@ -19,7 +19,6 @@ async function search(coin: string) {
     isError.value = false;
     isSearching.value = true;
 
-    console.log("TTT coin", coin);
     const response = await API.coinpaprika.search({
       q: coin,
       limit: SEARCH_LIMIT,
