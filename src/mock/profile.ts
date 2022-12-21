@@ -76,28 +76,6 @@ export default {
           "Binance Labs is a social impact fund looking to invest in and empower blockchain and cryptocurrency entrepreneurs, projects, and communities.\n\nSupport for projects offered by Binance Labs includes:\n•\tFunding\n•\tGo-to-market strategy  \n•\tBusiness Development\n•\tToken Distribution\n•\tTechnical Review\n•\tRecruiting\n\nTarget investments include:\n•\tPublic Blockchain projects\n•\tDecentralized Exchanges\n•\tWallets & Payments\n•\tStablecoins\n•\tSecurity Token Platforms\n•\tdApps\n\nAdditionally, Binance Labs hopes to collaborate with partners via it’s Ecosystem Fund to build the infrastructure required to help the crypto world expand sustainably. Joining the Ecosystem Fund requires successful completion of an application process and minimum AUM of $100 million USD. Members of the fund can refer promising projects to Binance Labs for further investment.  \n",
         people_count_estimate: null,
       },
-      {
-        name: "Binance",
-        founded_date: null,
-        governance: null,
-        legal_structure: null,
-        jurisdiction: null,
-        org_charter: null,
-        description:
-          "Binance is a digital asset exchange ecosystem offering a variety of centralized and decentralized products and services for efficiently buying and selling blockchain-based coins and tokens. \n",
-        people_count_estimate: null,
-      },
-      {
-        name: "Binance US",
-        founded_date: null,
-        governance: null,
-        legal_structure: null,
-        jurisdiction: null,
-        org_charter: null,
-        description:
-          "Binance.US is a fast, compliant, and secure digital asset marketplace. As a local partner of the global Binance ecosystem, it brings the best-in-class technology, speed, and execution of Binance to everyday users in the United States",
-        people_count_estimate: null,
-      },
     ],
     people: {
       founding_team: null,
@@ -113,107 +91,6 @@ export default {
           medium: null,
           linkedin: null,
         },
-        {
-          first_name: "Joe",
-          last_name: "Lubin",
-          description:
-            "Joseph Lubin is a co-founder of blockchain computing platform Ethereum and the founder of Consensus Systems (ConsenSys), a blockchain venture studio. ConsenSys is one of the largest and fastest-growing companies in the blockchain technology space, building developer tools, decentralized applications, and solutions for enterprises and governments that harness the power of Ethereum. Headquartered in New York, ConsenSys also has a global presence, employing top entrepreneurs, computer scientists, software developers, and experts in enterprise delivery worldwide.\n\nLubin graduated from Princeton University with a degree in Electrical Engineering and Computer Science. He worked in the Princeton Robotics Lab, at tomandandy music developing an autonomous music composition tool, and at private research firm Vision Applications Inc. building autonomous mobile robots.\n \nAs a software engineer and consultant, Lubin worked with eMagine on the Identrus project and was involved in the founding and operation of a hedge fund with a partner. He held positions as Director of the New York office of Blacksmith Software Consulting, and VP of Technology in Private Wealth Management at Goldman Sachs. Through these posts, Lubin focused on the intersection of cryptography, engineering, and finance.\n \nSwitching gears, Lubin moved to Kingston, Jamaica to work on projects in the music industry. Two years into his musical endeavors, Lubin co-founded the Ethereum Project and has been working on Ethereum and ConsenSys since January 2014.",
-          avatar_url:
-            "https://pbs.twimg.com/profile_images/968150222760132608/Dzi20Mri_400x400.jpg",
-          twitter: null,
-          github: null,
-          medium: null,
-          linkedin: null,
-        },
-        {
-          first_name: "Hudson",
-          last_name: "Jameson",
-          description: null,
-          avatar_url:
-            "https://messari.s3.amazonaws.com/images/agora-images/0%3Fe%3D1555545600%26v%3Dbeta%26t%3DhbL51X07mHLsiwKf3d_SP6kpuELzhp1qlsVbnAnRMX8",
-          twitter: null,
-          github: null,
-          medium: null,
-          linkedin: null,
-        },
-        {
-          first_name: "Vitalik",
-          last_name: "Buterin",
-          description:
-            "Vitalik is the creator of Ethereum. He first discovered blockchain and cryptocurrency technologies through Bitcoin in 2011, and was immediately excited by the technology and its potential. He cofounded Bitcoin Magazine in September 2011, and after two and a half years looking at what the existing blockchain technology and applications had to offer, wrote the Ethereum white paper in November 2013. He now leads Ethereum's research team, working on future versions of the Ethereum protocol.",
-          avatar_url:
-            "https://pbs.twimg.com/profile_images/977496875887558661/L86xyLF4_400x400.jpg",
-          twitter: null,
-          github: null,
-          medium: null,
-          linkedin: null,
-        },
-        {
-          first_name: "Pooja",
-          last_name: "Ranjan",
-          description: null,
-          avatar_url:
-            "https://messari.s3.amazonaws.com/images/agora-images/0%3Fe%3D1599091200%26v%3Dbeta%26t%3Dtc62YLYt3WG1t3RAVMYnzb_NcT5Zp7obLXwpi2tRmvo",
-          twitter: null,
-          github: null,
-          medium: null,
-          linkedin: null,
-        },
-        {
-          first_name: "Afri",
-          last_name: "Schoedon",
-          description: null,
-          avatar_url:
-            "https://messari.s3.amazonaws.com/images/agora-images/0%3Fe%3D1554336000%26v%3Dbeta%26t%3DJcyLfR6WjXv9cbS3IggHv3MNlQu7855Fon-OPiPuz8c",
-          twitter: null,
-          github: null,
-          medium: null,
-          linkedin: null,
-        },
-        {
-          first_name: "Greg",
-          last_name: "Colvin",
-          description: null,
-          avatar_url:
-            "https://messari.s3.amazonaws.com/images/agora-images/0%3Fe%3D1555545600%26v%3Dbeta%26t%3DHuI-nv1n0sXY1R-ThDIjuNLHLojyZ7ybqqCGZI-6_gw",
-          twitter: null,
-          github: null,
-          medium: null,
-          linkedin: null,
-        },
-        {
-          first_name: "Alexey",
-          last_name: "Akhunov",
-          description: null,
-          avatar_url:
-            "https://messari.s3.amazonaws.com/images/agora-images/ZFpjH-ke_400x400.jpg",
-          twitter: null,
-          github: null,
-          medium: null,
-          linkedin: null,
-        },
-        {
-          first_name: "Tim",
-          last_name: "Beiko",
-          description: null,
-          avatar_url:
-            "https://messari.s3.amazonaws.com/images/agora-images/tim_b.jpg",
-          twitter: null,
-          github: null,
-          medium: null,
-          linkedin: null,
-        },
-        {
-          first_name: "Peter",
-          last_name: "Szilagyi",
-          description: null,
-          avatar_url:
-            "https://messari.s3.amazonaws.com/images/agora-images/0%3Fe%3D1555545600%26v%3Dbeta%26t%3D9bxyIBEQAOtEEt89lX8Qdk3qLDb95otsBjp9CTLrRZY",
-          twitter: null,
-          github: null,
-          medium: null,
-          linkedin: null,
-        },
       ],
       investors: null,
       advisors: null,
@@ -222,38 +99,6 @@ export default {
       {
         name: "Website",
         url: "https://www.binance.com/en",
-      },
-      {
-        name: "Whitepaper",
-        url: "https://whitepaper.io/coin/binance",
-      },
-      {
-        name: "Github",
-        url: "https://github.com/keycryptovc/base/blob/master/projects/binance_coin.md",
-      },
-      {
-        name: "Twitter",
-        url: "https://twitter.com/binance",
-      },
-      {
-        name: "Reddit",
-        url: "https://www.reddit.com/r/BinanceExchange/",
-      },
-      {
-        name: "Telegram ",
-        url: "https://www.binance.com/en/community",
-      },
-      {
-        name: "Facebook ",
-        url: "https://www.facebook.com/binance",
-      },
-      {
-        name: "YouTube",
-        url: "https://www.youtube.com/binanceyoutube",
-      },
-      {
-        name: "LinkedIn",
-        url: "https://www.linkedin.com/company/binance/",
       },
     ],
     consensus_algorithm: "Delegated Proof-of-Stake",

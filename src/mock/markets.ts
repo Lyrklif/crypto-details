@@ -21,26 +21,4 @@ export default [
     trust_score: "high",
     last_updated: "2022-12-21T03:47:49Z",
   },
-  {
-    exchange_id: "bkex",
-    exchange_name: "Bkex",
-    pair: "ASTR/USDT",
-    base_currency_id: "astr-astar",
-    base_currency_name: "astar",
-    quote_currency_id: "usdt-tether",
-    quote_currency_name: "tether",
-    market_url: "https://www.bkex.com/trade/ASTR_USDT",
-    category: "Spot",
-    fee_type: "Percentage",
-    outlier: false,
-    adjusted_volume_24h_share: 21.278609403719997,
-    quotes: {
-      USD: {
-        price: 0.03942092252463422,
-        volume_24h: 247425.25019554366,
-      },
-    },
-    trust_score: "low",
-    last_updated: "2022-12-21T03:45:47Z",
-  },
 ];
