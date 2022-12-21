@@ -7,7 +7,7 @@ import CoinProfile from "../components/CoinProfile.vue";
 import CoinMetrics from "../components/CoinMetrics.vue";
 import GoogleTrends from "../components/GoogleTrends.vue";
 import CoinNews from "../components/CoinNews.vue";
-import YoutubeVideo from "../components/YoutubeVideo.vue";
+import YoutubeVideo from "../components/youtube/YoutubeMain.vue";
 import MarketList from "../components/MarketList.vue";
 </script>
 
