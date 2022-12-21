@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, PropType } from "vue";
+import { PropType } from "vue";
 import { useI18n } from "vue-i18n";
 import type { AssetMetricDataResponse } from "../../../../api/messari/types";
 

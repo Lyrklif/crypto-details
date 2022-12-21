@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, PropType } from "vue";
+import { PropType } from "vue";
 import type { CoinExchangesItem } from "../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 import TableItem from "./table/TableItem.vue";
