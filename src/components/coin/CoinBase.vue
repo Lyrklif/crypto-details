@@ -9,7 +9,7 @@ import TagList from "../coin/TagList.vue";
 import StatusesList from "../coin/StatusesList.vue";
 import CoinHeader from "../coin/CoinHeader.vue";
 import CoinDescription from "../coin/CoinDescription.vue";
-import PriceWidget from "../PriceWidget.vue";
+import PriceWidget from "../features/PriceWidget.vue";
 import { useCoinStore } from "../../stores/coin";
 
 const coin = ref<GetCoinByIDResponse>();

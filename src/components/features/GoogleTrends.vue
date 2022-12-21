@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { watch } from "vue";
-import { useCoinStore } from "../stores/coin";
+import { useCoinStore } from "../../stores/coin";
 import { storeToRefs } from "pinia";
 import { useI18n } from "vue-i18n";
 
@@ -15,6 +15,8 @@ watch(symbol, () => {
   initGoogleTrends(`${name.value}`, "GEO_MAP", "GEO_MAP");
 });
 
+const startTime = "2004-01-01 2022-12-11";
+
 type widgetType = "TIMESERIES" | "GEO_MAP";
 type divType = "TRENDS" | "TRENDS2" | "GEO_MAP";
 
@@ -26,12 +28,7 @@ function initGoogleTrends(keyword: string, widget: widgetType, divId: divType) {
     widget,
     {
       comparisonItem: [
-        {
-          keyword,
-          locale: locale.value,
-          geo: "",
-          time: "2004-01-01 2022-12-11",
-        },
+        { keyword, locale: locale.value, geo: "", time: startTime },
       ],
       category: 7,
       property: "",
@@ -49,17 +46,14 @@ function initGoogleTrends(keyword: string, widget: widgetType, divId: divType) {
     <header>
       <h2>{{ t("trends.title") }}</h2>
     </header>
-
     <p class="mb-2">
       {{ t("trends.by") }}: <i>{{ symbol }}</i>
     </p>
     <div id="TRENDS" class="block" />
-
     <p class="mb-2 mt-4">
       {{ t("trends.by") }}: <i>{{ name }}</i>
     </p>
     <div id="TRENDS2" class="block" />
-
     <p class="mb-2 mt-4">
       {{ t("trends.by") }}: <i>{{ name }}</i>
     </p>
