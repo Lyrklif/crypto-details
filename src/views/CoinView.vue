@@ -4,7 +4,7 @@ import TwitterList from "../components/coin/TwitterList.vue";
 import ExchangeList from "../components/ExchangeList.vue";
 import PoolList from "../components/PoolList.vue";
 import CoinProfile from "../components/CoinProfile.vue";
-import CoinMetrics from "../components/CoinMetrics.vue";
+import CoinMetrics from "../components/metric/CoinMetrics.vue";
 import GoogleTrends from "../components/GoogleTrends.vue";
 import CoinNews from "../components/CoinNews.vue";
 import YoutubeVideo from "../components/youtube/YoutubeMain.vue";
