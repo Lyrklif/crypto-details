@@ -22,7 +22,7 @@ async function load() {
       route.params.id as string
     );
     coin.value = response.data;
-    store.setSymbol(response.data.symbol);
+    store.setSymbol(response.data.symbol, response.data.name);
   } catch (error: any) {
     // TODO error
   }
