@@ -20,7 +20,7 @@ defineProps({
           <td class="py-1">
             <span class="small">
               <i class="fa-solid fa-calendar-days mr-1" />
-              <span>{{ date(coin.started_at) }}</span>
+              <span>{{ $filters.date(coin.started_at) }}</span>
             </span>
           </td>
         </tr>
@@ -29,7 +29,7 @@ defineProps({
           <td class="py-1">
             <span class="small">
               <i class="fa-solid fa-calendar-days mr-1" />
-              <span>{{ date(coin.last_data_at) }}</span>
+              <span>{{ $filters.date(coin.last_data_at) }}</span>
             </span>
           </td>
         </tr>

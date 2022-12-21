@@ -99,7 +99,7 @@ async function loadGNews() {
                 <div class="d-flex align-items-center">
                   <i class="far fa-calendar-alt mr-2" />
                   <time :datetime="item.publishedAt">
-                    {{ date(item.publishedAt) }}
+                    {{ $filters.date(item.publishedAt) }}
                   </time>
                 </div>
               </a>
