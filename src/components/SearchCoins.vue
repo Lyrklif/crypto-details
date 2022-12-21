@@ -6,7 +6,7 @@ import TrendCoins from "./search/TrendCoins.vue";
 import TokenNotFound from "./search/TokenNotFound.vue";
 import { useI18n } from "vue-i18n";
 
-const SEARCH_LIMIT = 5;
+const SEARCH_LIMIT = 20;
 const MIN_LENGTH_COIN_NAME = 3;
 
 const { t } = useI18n();
@@ -20,7 +20,7 @@ const trendingCoins = ref<Array<TrendingCoinItem>>([]);
 async function loadTrendingCoins() {
   try {
     const response = await API.coingecko.trending();
-    trendingCoins.value = response.data.coins.slice(0, SEARCH_LIMIT);
+    trendingCoins.value = response.data.coins;
   } catch (error: any) {
     trendingCoins.value = [];
   }
