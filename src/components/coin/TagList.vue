@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <ul class="list-unstyled d-flex flex-wrap">
-    <li v-for="item in links" :key="item.id" class="mr-2 mb-2">
+    <li v-for="item in links" :key="`tag-${item.id}`" class="mr-2 mb-2">
       <span class="badge badge-dark">{{ item.name }}</span>
     </li>
   </ul>

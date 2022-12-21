@@ -18,14 +18,9 @@ defineProps({
 
     <SpoilerCard :title="`${t('coin.team')} (${links.length})`">
       <template #content>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th colspan="2">{{ t("coin.team") }}</th>
-            </tr>
-          </thead>
+        <table class="table table-striped mb-0">
           <tbody>
-            <tr v-for="item in links" :key="item.id">
+            <tr v-for="item in links" :key="`team-${item.id}`">
               <td class="border-0 py-1">{{ item.name }}</td>
               <td class="border-0 py-1">{{ item.position }}</td>
             </tr>
