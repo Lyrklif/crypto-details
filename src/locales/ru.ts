@@ -38,8 +38,7 @@ export default {
     likes: "Лайков",
   },
   exchanges: {
-    title: "Binance Coin Exchanges",
-    spoiler: "Exchanges",
+    title: "Exchanges",
     source: "Источник",
     volume: "Объем (24ч)",
     fiats: "FIATs",

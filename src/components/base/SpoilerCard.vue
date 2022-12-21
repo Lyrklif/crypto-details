@@ -35,3 +35,10 @@ defineProps({
     </div>
   </div>
 </template>
+
+<style scoped>
+.collapse {
+  max-height: 100vh;
+  overflow: auto;
+}
+</style>

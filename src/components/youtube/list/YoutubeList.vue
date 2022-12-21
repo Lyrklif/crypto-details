@@ -18,10 +18,3 @@ defineProps({
     </li>
   </ul>
 </template>
-
-<style scoped>
-.list {
-  max-height: 100vh;
-  overflow: auto;
-}
-</style>

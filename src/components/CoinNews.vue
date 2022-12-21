@@ -112,11 +112,6 @@ async function loadGNews() {
 </template>
 
 <style scoped>
-.list {
-  max-height: 100vh;
-  overflow: auto;
-}
-
 .image {
   width: 200px;
   max-width: 100%;

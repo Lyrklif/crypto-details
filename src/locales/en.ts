@@ -38,8 +38,7 @@ export default {
     likes: "Likes",
   },
   exchanges: {
-    title: "Binance Coin Exchanges",
-    spoiler: "Exchanges",
+    title: "Exchanges",
     source: "Source",
     volume: "Volume (24h)",
     fiats: "FIATs",

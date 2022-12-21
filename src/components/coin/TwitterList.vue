@@ -99,11 +99,6 @@ loadSocial();
 </template>
 
 <style scoped>
-.list {
-  max-height: 100vh;
-  overflow: auto;
-}
-
 .image {
   width: 400px;
   max-width: 100%;
