@@ -13,12 +13,14 @@ const data = ref<Array<Article>>([]);
 
 async function loadGNews() {
   try {
-    const response = await API.gnews.search({
-      q: `${store.name} ${store.symbol}`,
-      lang: locale.value,
-      max: 100,
-    });
-    data.value = response.data.articles;
+    // const response = await API.gnews.search({
+    //   q: `${store.name} ${store.symbol}`,
+    //   lang: locale.value,
+    //   max: 100,
+    // });
+    // data.value = response.data.articles;
+    const response = await API.messari.newsForAsset(store.symbol);
+    console.log("TTT response", response.data);
   } catch (error: any) {
     // TODO error
   }

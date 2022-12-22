@@ -182,7 +182,7 @@ interface MarketsItemResponse {
       volume_24h: number;
     };
   };
-  trust_score: MARKET_TRUST;
+  trust_score: string;
   last_updated: string;
 }
 

@@ -7,12 +7,10 @@ import exchanges from "./mock/exchanges";
 import pools from "./mock/pools";
 import profile from "./mock/profile";
 import metrics from "./mock/metrics";
-import news from "./mock/news";
 import markets from "./mock/markets";
 
 import type { TrendingResponse } from "./api/coingecko/types";
 import type { Pool } from "./api/minerstat/types";
-import type { ArticleResponse } from "./api/news/types";
 import type {
   SearchResponse,
   MarketsItemResponse,
@@ -51,9 +49,6 @@ export function makeServer() {
   });
   server.get(`assets/:assetKey/metrics`, (): AssetMetricResponse => {
     return metrics;
-  });
-  server.get(`everything`, (): ArticleResponse => {
-    return news;
   });
   server.get(`coins/:coin_id/markets`, (): Array<MarketsItemResponse> => {
     return markets;

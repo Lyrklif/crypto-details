@@ -11,6 +11,10 @@ export interface ApiInterface {
     assetKey: string,
     fields?: string
   ) => AxiosPromise<AssetMetricResponse>;
+  newsForAsset: (
+    assetKey: string,
+    fields?: string
+  ) => AxiosPromise<AssetMetricResponse>;
 }
 
 const API: ApiInterface = {
@@ -19,6 +23,9 @@ const API: ApiInterface = {
   },
   assetMetrics(assetKey, fields) {
     return instance.get(`assets/${assetKey}/metrics`, { params: { fields } });
+  },
+  newsForAsset(assetKey, fields) {
+    return instance.get(`news/${assetKey}`, { params: { fields } });
   },
 };
 
