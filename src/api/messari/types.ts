@@ -195,9 +195,37 @@ interface AssetMetricResponse {
   data: AssetMetricDataResponse;
 }
 
+interface AssetNewsItem {
+  id: string;
+  title: string;
+  content: string;
+  references: Array<{
+    name: string;
+    url: string;
+  }>;
+  previewImage: string;
+  pdfUrl: string | null;
+  published_at: string;
+  author: {
+    name: string;
+  };
+  tags: Array<string>;
+  url: string;
+}
+
+interface AssetNewsResponse {
+  status: {
+    elapsed: number;
+    timestamp: string;
+  };
+  data: Array<AssetNewsItem>;
+}
+
 export type {
   AssetProfileResponse,
   AssetMetricResponse,
   AssetProfileDataResponse,
   AssetMetricDataResponse,
+  AssetNewsResponse,
+  AssetNewsItem,
 };
