@@ -6,17 +6,25 @@ import { useCoinStore } from "../../../stores/coin";
 import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import PoolTable from "./table/PoolTable.vue";
+import PoweredBy from "../source/PoweredBy.vue";
 
 const { t } = useI18n();
 const pools = ref<Array<Pool>>([]);
 const store = useCoinStore();
+const loading = ref<boolean>(false);
+const error = ref<boolean>(false);
 
 async function load() {
   try {
+    loading.value = true;
+    error.value = false;
+
     const response = await API.minerstat.pools(store.symbol);
     pools.value = response.data;
   } catch (error: any) {
-    // TODO error
+    error.value = true;
+  } finally {
+    loading.value = false;
   }
 }
 </script>
@@ -32,6 +40,12 @@ async function load() {
       @firstOpen="load"
     >
       <template #content>
+        <PoweredBy
+          site="minerstat"
+          class="mb-4"
+          :loading="loading"
+          :fall="error"
+        />
         <PoolTable :pools="pools" />
       </template>
     </SpoilerCard>
