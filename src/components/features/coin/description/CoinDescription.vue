@@ -17,6 +17,7 @@ defineProps({
     <DescriptionTable :coin="coin" />
 
     <a
+      v-if="coin.whitepaper.link"
       :href="coin.whitepaper.link"
       target="_blank"
       :title="t('coin.whitepaper')"
