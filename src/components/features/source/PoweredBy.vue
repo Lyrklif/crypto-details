@@ -49,7 +49,7 @@ defineProps({
       <b>{{ site }}</b>
     </a>
 
-    <i v-if="loading" class="fa-solid fa-loader"></i>
+    <i v-if="loading" class="fa-solid fa-spinner"></i>
     <i
       v-else
       class="fa-solid fa-heart"
