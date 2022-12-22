@@ -6,6 +6,7 @@ import { useCoinStore } from "../../../stores/coin";
 import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import PoolTable from "./table/PoolTable.vue";
+import PoweredBy from "../source/PoweredBy.vue";
 
 const { t } = useI18n();
 const pools = ref<Array<Pool>>([]);
@@ -32,6 +33,7 @@ async function load() {
       @firstOpen="load"
     >
       <template #content>
+        <PoweredBy site="minerstat" class="mb-4" />
         <PoolTable :pools="pools" />
       </template>
     </SpoilerCard>

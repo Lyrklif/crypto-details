@@ -6,6 +6,7 @@ import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../../../stores/coin";
 import type { YoutubeSearchItem } from "../../../api/youtube/types";
 import YoutubeList from "./list/YoutubeList.vue";
+import PoweredBy from "../source/PoweredBy.vue";
 
 const { t, locale } = useI18n();
 const store = useCoinStore();
@@ -34,12 +35,13 @@ async function load() {
       @firstOpen="load"
     >
       <template #content>
-        <header class="mb-4">
-          <h2 class="h5">
+        <header>
+          <h2 class="h5 mb-2">
             {{ t("youtube.title") }}: <i>{{ store.name }} {{ store.symbol }}</i>
           </h2>
         </header>
 
+        <PoweredBy site="youtube" class="mb-4" />
         <YoutubeList v-if="data && data.length" :data="data" />
       </template>
     </SpoilerCard>

@@ -6,6 +6,7 @@ import type { GetTwitterItem } from "../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 import TwitterList from "./list/TwitterList.vue";
 import SpoilerCard from "../../base/SpoilerCard.vue";
+import PoweredBy from "../source/PoweredBy.vue";
 
 const { t } = useI18n();
 const route = useRoute();
@@ -36,6 +37,7 @@ async function load() {
       @firstOpen="load"
     >
       <template #content>
+        <PoweredBy site="coinpaprika" class="mb-4" />
         <TwitterList :list="list" />
       </template>
     </SpoilerCard>

@@ -11,6 +11,7 @@ import CoinStatuses from "./status/CoinStatuses.vue";
 import CoinHeader from "./header/CoinHeader.vue";
 import CoinDescription from "./description/CoinDescription.vue";
 import PriceWidget from "../CoinPrice.vue";
+import PoweredBy from "../source/PoweredBy.vue";
 
 const coin = ref<GetCoinByIDResponse>();
 const route = useRoute();
@@ -40,6 +41,7 @@ load();
         <CoinTags :links="coin.tags" class="mb-2" />
         <CoinSocial :links="coin.links_extended" class="mb-3" />
         <CoinDescription :coin="coin" class="mb-2" />
+        <PoweredBy site="coinpaprika" class="mb-4" />
       </section>
 
       <PriceWidget class="col-12 col-lg-6" :id="`${route.params.id}`" />

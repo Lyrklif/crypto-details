@@ -6,6 +6,7 @@ import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../../../stores/coin";
 import type { Article } from "../../../api/gnews/types";
 import NewsList from "./list/NewsList.vue";
+import PoweredBy from "../source/PoweredBy.vue";
 
 const { t, locale } = useI18n();
 const store = useCoinStore();
@@ -32,12 +33,13 @@ async function loadGNews() {
       @firstOpen="loadGNews"
     >
       <template #content>
-        <header class="mb-4">
-          <h2 class="h5">
+        <header>
+          <h2 class="h5 mb-2">
             {{ t("news.title") }}: <i>{{ store.name }} {{ store.symbol }}</i>
           </h2>
         </header>
 
+        <PoweredBy site="gnews" class="mb-4" />
         <NewsList :list="data" v-if="data.length" />
       </template>
     </SpoilerCard>

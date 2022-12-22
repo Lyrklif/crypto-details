@@ -2,6 +2,9 @@ export default {
   error: {
     token_not_found: "Token not found",
   },
+  source: {
+    powered_by: "Powered by",
+  },
   header: {
     home: "Home",
     about: "About",

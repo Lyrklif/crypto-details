@@ -3,6 +3,7 @@ import type { PropType } from "vue";
 import type { TeamItem } from "../../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../../base/SpoilerCard.vue";
+import PoweredBy from "../../source/PoweredBy.vue";
 
 const { t } = useI18n();
 defineProps({
@@ -20,6 +21,8 @@ defineProps({
       :title="`${t('coin.team')} ${links.length ? `(${links.length})` : ''}`"
     >
       <template #content>
+        <PoweredBy site="coinpaprika" class="mb-4" />
+
         <table class="table table-striped mb-0">
           <tbody>
             <tr v-for="item in links" :key="`team-${item.id}`">

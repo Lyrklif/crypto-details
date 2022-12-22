@@ -6,6 +6,7 @@ import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import type { AssetProfileDataResponse } from "../../../api/messari/types";
 import ProfileContent from "./content/ProfileContent.vue";
+import PoweredBy from "../source/PoweredBy.vue";
 
 const { t } = useI18n();
 const store = useCoinStore();
@@ -30,6 +31,7 @@ async function load() {
 
     <SpoilerCard :title="`${t('profile.title')}`" @firstOpen="load">
       <template #content>
+        <PoweredBy site="messari" class="mb-4" />
         <ProfileContent v-if="profile" :profile="profile" />
       </template>
     </SpoilerCard>

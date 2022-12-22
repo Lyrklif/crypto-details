@@ -2,6 +2,9 @@ export default {
   error: {
     token_not_found: "Токен не найден",
   },
+  source: {
+    powered_by: "Источник данных",
+  },
   header: {
     home: "Домой",
     about: "О проекте",
