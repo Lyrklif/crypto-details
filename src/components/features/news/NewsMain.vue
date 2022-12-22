@@ -38,7 +38,7 @@ async function loadGNews() {
       <template #content>
         <header>
           <h2 class="h5 mb-2">
-            {{ t("news.title") }}: <i>{{ store.name }} {{ store.symbol }}</i>
+            {{ t("news.title") }}: <i>{{ store.symbol }}</i>
           </h2>
         </header>
 
