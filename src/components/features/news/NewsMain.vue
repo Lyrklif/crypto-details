@@ -21,7 +21,6 @@ async function loadGNews() {
 
     const response = await API.messari.newsForAsset(store.symbol);
     data.value = response.data.data;
-    console.log("TTT response.data.data", response.data.data);
   } catch (error: any) {
     error.value = true;
   } finally {
