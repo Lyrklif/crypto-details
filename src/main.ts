@@ -20,9 +20,9 @@ const i18n = createI18n({
   messages: { en, ru },
 });
 
-// if (process.env.NODE_ENV === "development") {
-//   makeServer();
-// }
+if (process.env.NODE_ENV === "development") {
+  makeServer();
+}
 
 app.use(createPinia());
 app.use(router);
