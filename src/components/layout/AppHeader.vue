@@ -3,17 +3,25 @@ import { ref } from "vue";
 import { RouterLink } from "vue-router";
 import LocaleChanger from "../features/LocaleChanger.vue";
 import { useI18n } from "vue-i18n";
+import { onClickOutside } from "@vueuse/core";
 
 const { t } = useI18n();
+const target = ref(null);
 const show = ref(false);
 const links: Array<{ name: string; text: string }> = [
   { name: "home", text: "header.home" },
   { name: "about", text: "header.about" },
 ];
+
+onClickOutside(target, (event) => {
+  if (show.value) {
+    show.value = false;
+  }
+});
 </script>
 
 <template>
-  <div>
+  <div ref="target">
     <button
       class="mobile-toggle btn btn-icon-only btn-primary btn-pill mr-2 mt-2 p-4"
       @click="show = !show"
