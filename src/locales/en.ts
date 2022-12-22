@@ -8,6 +8,8 @@ export default {
   header: {
     home: "Home",
     about: "About",
+    show_menu: "Show navigation bar",
+    close_menu: "Hide navigation bar",
   },
   search: {
     title: "Enter the name of the cryptocurrency",
