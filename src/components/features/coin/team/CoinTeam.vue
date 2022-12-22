@@ -8,6 +8,8 @@ import PoweredBy from "../../source/PoweredBy.vue";
 const { t } = useI18n();
 defineProps({
   links: Array as PropType<Array<TeamItem>>,
+  loading: Boolean as PropType<boolean>,
+  error: Boolean as PropType<boolean>,
 });
 </script>
 
@@ -21,7 +23,12 @@ defineProps({
       :title="`${t('coin.team')} ${links.length ? `(${links.length})` : ''}`"
     >
       <template #content>
-        <PoweredBy site="coinpaprika" class="mb-4" />
+        <PoweredBy
+          site="coinpaprika"
+          class="mb-4"
+          :loading="loading"
+          :fall="error"
+        />
 
         <table class="table table-striped mb-0">
           <tbody>

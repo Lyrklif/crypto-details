@@ -11,9 +11,14 @@ import PoweredBy from "../source/PoweredBy.vue";
 const { t, locale } = useI18n();
 const store = useCoinStore();
 const data = ref<Array<Article>>([]);
+const loading = ref<boolean>(false);
+const error = ref<boolean>(false);
 
 async function loadGNews() {
   try {
+    loading.value = true;
+    error.value = false;
+
     const response = await API.gnews.search({
       q: `${store.name} ${store.symbol}`,
       lang: locale.value,
@@ -21,7 +26,9 @@ async function loadGNews() {
     });
     data.value = response.data.articles;
   } catch (error: any) {
-    // TODO error
+    error.value = true;
+  } finally {
+    loading.value = false;
   }
 }
 </script>
@@ -39,7 +46,7 @@ async function loadGNews() {
           </h2>
         </header>
 
-        <PoweredBy site="gnews" class="mb-4" />
+        <PoweredBy site="gnews" class="mb-4" :loading="loading" :fall="error" />
         <NewsList :list="data" v-if="data.length" />
       </template>
     </SpoilerCard>

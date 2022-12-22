@@ -11,14 +11,21 @@ import PoweredBy from "../source/PoweredBy.vue";
 const { t } = useI18n();
 const store = useCoinStore();
 const profile = ref<AssetProfileDataResponse>();
+const loading = ref<boolean>(false);
+const error = ref<boolean>(false);
 
 async function load() {
   try {
+    loading.value = true;
+    error.value = false;
+
     const fields = "technology,token_distribution,background,organizations";
     const response = await API.messari.assetProfile(store.symbol, fields);
     profile.value = response.data.data;
   } catch (error: any) {
-    // TODO error
+    error.value = true;
+  } finally {
+    loading.value = false;
   }
 }
 </script>
@@ -31,7 +38,12 @@ async function load() {
 
     <SpoilerCard :title="`${t('profile.title')}`" @firstOpen="load">
       <template #content>
-        <PoweredBy site="messari" class="mb-4" />
+        <PoweredBy
+          site="messari"
+          class="mb-4"
+          :loading="loading"
+          :fall="error"
+        />
         <ProfileContent v-if="profile" :profile="profile" />
       </template>
     </SpoilerCard>
