@@ -1,6 +1,10 @@
 import type { AxiosPromise } from "axios";
 import instance from "./instance";
-import type { AssetProfileResponse, AssetMetricResponse } from "./types";
+import type {
+  AssetProfileResponse,
+  AssetMetricResponse,
+  AssetNewsResponse,
+} from "./types";
 
 export interface ApiInterface {
   assetProfile: (
@@ -14,7 +18,7 @@ export interface ApiInterface {
   newsForAsset: (
     assetKey: string,
     fields?: string
-  ) => AxiosPromise<AssetMetricResponse>;
+  ) => AxiosPromise<AssetNewsResponse>;
 }
 
 const API: ApiInterface = {
