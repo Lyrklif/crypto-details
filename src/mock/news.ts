@@ -1,23 +1,33 @@
 export default {
-  status: "ok",
-  totalResults: 1150,
-  articles: [
+  status: {
+    elapsed: 3,
+    timestamp: "2022-12-21T14:43:38.630078134Z",
+  },
+  data: [
     {
-      source: {
-        id: "business-insider",
-        name: "Business Insider",
+      id: "62fe0057-e542-4355-95f4-913e4db75e8a",
+      title: "State of Bitcoin Q3 2022",
+      content: "<p>content</p>",
+      references: [
+        {
+          name: "Sami Kassab",
+          url: "",
+        },
+        {
+          name: "Kunal Goel",
+          url: "",
+        },
+      ],
+      previewImage:
+        "https://cdn.sanity.io/images/2bt0j8lu/production/2dcbd333d5581ec1983b0daa7c0e43695be60217-1600x900.png",
+      pdfUrl:
+        "https://cdn.sanity.io/files/2bt0j8lu/production/e4973a044e4f4e5a118952fefb89ef9f3db5c48d.pdf",
+      published_at: "2022-09-20T13:30:00Z",
+      author: {
+        name: "Sami Kassab, Kunal Goel",
       },
-      author: "prosen@insider.com (Phil Rosen)",
-      title:
-        "Binance's native token is hovering near 5-month lows and has shed 52% in 2022",
-      description:
-        "Binance's BNB token has plunged, suggesting faltering confidence in the world's largest crypto exchange.",
-      url: "https://markets.businessinsider.com/news/currencies/binance-native-token-bnb-ftx-ftt-sam-bankmanfried-crypto-currency-2022-12",
-      urlToImage:
-        "https://i.insider.com/63a0654db5600000185b4308?width=1200&format=jpeg",
-      publishedAt: "2022-12-19T14:22:03Z",
-      content:
-        "Binance, the world's largest cryptocurrency exchange, has seen its native token BNB shed more than half its value this year. It's currently hovering near a five-month low just above $249 per token, a… [+1100 chars]",
+      tags: ["Quarterly-Reports"],
+      url: "https://messari.io/article/state-of-bitcoin-q3-2022",
     },
   ],
 };

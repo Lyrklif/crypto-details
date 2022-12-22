@@ -1,63 +1,43 @@
 <script setup lang="ts">
 import { PropType } from "vue";
 import { useI18n } from "vue-i18n";
-import type { Article } from "../../../../../api/gnews/types";
-import type { ArticleItem } from "../../../../../api/news/types";
+import type { AssetNewsItem } from "../../../../../api/messari/types";
 
 const { t } = useI18n();
 
 defineProps({
-  item: Object as PropType<Article | ArticleItem>,
+  item: Object as PropType<AssetNewsItem>,
 });
 </script>
 
 <template>
-  <article class="card bg-primary shadow-sm border-light py-4 px-3">
-    <address class="author mb-2">
-      <a
-        v-if="item.source.url"
-        rel="author"
-        target="_blank"
-        :href="item.source.url"
-        :title="item.source.name"
-        class="text-decoration-none"
-      >
-        <strong class="d-block text-dark lh-100 mb-0">
-          {{ item.source.name }}
-        </strong>
-      </a>
-      <strong
-        v-else-if="item.source.name"
-        class="d-block text-dark lh-100 mb-0"
-      >
-        {{ item.source.name }}
-      </strong>
-    </address>
-
+  <article class="card bg-primary shadow-sm border-light">
     <a
       :href="item.url"
       target="_blank"
       :title="item.title"
-      class="text-decoration-none"
+      class="text-decoration-none d-md-flex py-4 px-3"
     >
-      <header>
-        <h3 class="h5 mt-0 mb-2 text-facebook">{{ item.title }}</h3>
-      </header>
-
-      <div class="d-md-flex align-items-center mb-1">
+      <div class="d-md-flex align-items-center mr-md-1 flex-shrink-0">
         <img
-          :src="item.image"
+          :src="item.previewImage"
           :alt="item.title"
-          class="image rounded mb-3 mb-md-0 mr-3"
+          class="image rounded mb-3 mb-md-0 mr-md-3"
         />
-        <p class="mb-2 text-body lh-120">{{ item.description }}</p>
       </div>
-
-      <div class="d-flex align-items-center">
-        <i class="far fa-calendar-alt mr-2" />
-        <time :datetime="item.publishedAt">
-          {{ $filters.date(item.publishedAt) }}
-        </time>
+      <div>
+        <header class="mb-1">
+          <h3 class="h5 mt-0 mb-0 text-facebook">{{ item.title }}</h3>
+          <span class="text-dark lh-100 mb-2 small">
+            {{ item.author.name }}
+          </span>
+        </header>
+        <div class="d-flex align-items-center">
+          <i class="far fa-calendar-alt mr-2" />
+          <time :datetime="item.published_at">
+            {{ $filters.date(item.published_at) }}
+          </time>
+        </div>
       </div>
     </a>
   </article>

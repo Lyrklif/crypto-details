@@ -4,35 +4,27 @@ import API from "../../../api";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../../../stores/coin";
-import type { Article } from "../../../api/gnews/types";
-import type { ArticleItem } from "../../../api/news/types";
 import NewsList from "./list/NewsList.vue";
+import PoweredBy from "../source/PoweredBy.vue";
+import type { AssetNewsItem } from "../../../api/messari/types";
 
-const { t, locale } = useI18n();
+const { t } = useI18n();
 const store = useCoinStore();
-const data = ref<Array<ArticleItem | Article>>([]);
+const data = ref<Array<AssetNewsItem>>([]);
+const loading = ref<boolean>(false);
+const error = ref<boolean>(false);
 
-async function loadNews() {
-  try {
-    const response = await API.news.everything({
-      q: store.symbol,
-      language: locale.value,
-    });
-    data.value = response.data.articles;
-  } catch (error: any) {
-    await loadGNews();
-  }
-}
 async function loadGNews() {
   try {
-    const response = await API.gnews.search({
-      q: `${store.name} ${store.symbol}`,
-      lang: locale.value,
-      max: 100,
-    });
-    data.value = response.data.articles;
+    loading.value = true;
+    error.value = false;
+
+    const response = await API.messari.newsForAsset(store.symbol);
+    data.value = response.data.data;
   } catch (error: any) {
-    // TODO error
+    error.value = true;
+  } finally {
+    loading.value = false;
   }
 }
 </script>
@@ -41,15 +33,21 @@ async function loadGNews() {
   <section>
     <SpoilerCard
       :title="`${t('news.title')} ${data.length ? `(${data.length})` : ''}`"
-      @firstOpen="loadNews"
+      @firstOpen="loadGNews"
     >
       <template #content>
-        <header class="mb-4">
-          <h2 class="h5">
-            {{ t("news.title") }}: <i>{{ store.name }} {{ store.symbol }}</i>
+        <header>
+          <h2 class="h5 mb-2">
+            {{ t("news.title") }}: <i>{{ store.symbol }}</i>
           </h2>
         </header>
 
+        <PoweredBy
+          site="messari"
+          class="mb-4"
+          :loading="loading"
+          :fall="error"
+        />
         <NewsList :list="data" v-if="data.length" />
       </template>
     </SpoilerCard>
