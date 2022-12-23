@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 import AppHeader from "./components/layout/header/AppHeader.vue";
-import Pagination from "./components/layout/Pagination.vue";
+import Pagination from "./components/layout/AppPagination.vue";
 </script>
 
 <template>
