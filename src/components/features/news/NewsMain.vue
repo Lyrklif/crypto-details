@@ -20,7 +20,7 @@ async function loadGNews() {
     error.value = false;
 
     const response = await API.messari.newsForAsset(store.symbol);
-    data.value = response.data.data;
+    data.value = response.data.data || [];
   } catch (error: any) {
     error.value = true;
   } finally {
