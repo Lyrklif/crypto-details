@@ -9,7 +9,7 @@ export default [
     description:
       "2Miners is a mining pool for popular coins: ETH, RVN, ETC, XMR, ERGO, FIRO, CKB, and others. Servers are located in EU, US and ASIA. Solo mode is available for all the coins. Pool fee - 1%, Solo fee - 1.5%. No fee ETH pool payouts are available in BTC and NANO.",
     coins: {
-      ETH: {
+      BNB: {
         algorithm: "Ethash",
         payoutThreshold: "0.005 ETH",
         rewardMethod: "SOLO",
