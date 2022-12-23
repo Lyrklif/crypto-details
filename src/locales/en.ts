@@ -3,6 +3,12 @@ export default {
   errors: {
     token_not_found: "Token not found",
   },
+  alert: {
+    success: "Well done!",
+    warning: "Warning!",
+    error: "Error!",
+    info: "Info",
+  },
   source: {
     powered_by: "Powered by",
   },
