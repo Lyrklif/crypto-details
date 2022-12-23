@@ -8,7 +8,6 @@ const sites = {
   coingecko: "https://www.coingecko.com/",
   coinpaprika: "https://coinpaprika.com/",
   messari: "https://messari.io/",
-  gnews: "https://gnews.io/",
   minerstat: "https://minerstat.com/",
   youtube: "https://www.youtube.com/",
 };
@@ -17,7 +16,6 @@ type siteType =
   | "coingecko"
   | "coinpaprika"
   | "messari"
-  | "gnews"
   | "minerstat"
   | "youtube";
 
