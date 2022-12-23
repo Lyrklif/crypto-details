@@ -5,23 +5,28 @@ import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../../../stores/coin";
 import NewsList from "./list/NewsList.vue";
-import PoweredBy from "../source/PoweredBy.vue";
+import PoweredBy from "../../base/PoweredBy.vue";
 import type { AssetNewsItem } from "../../../api/messari/types";
+import AlertMessage from "../../base/AlertMessage.vue";
+import LinesSpinner from "../../base/LinesSpinner.vue";
 
 const { t } = useI18n();
 const store = useCoinStore();
 const data = ref<Array<AssetNewsItem>>([]);
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
+const errorText = ref<string>("");
 
 async function loadGNews() {
   try {
     loading.value = true;
     error.value = false;
+    errorText.value = "";
 
     const response = await API.messari.newsForAsset(store.symbol);
     data.value = response.data.data || [];
-  } catch (error: any) {
+  } catch (e: any) {
+    errorText.value = e.response.statusText;
     error.value = true;
   } finally {
     loading.value = false;
@@ -48,7 +53,10 @@ async function loadGNews() {
           :loading="loading"
           :fall="error"
         />
-        <NewsList :list="data" v-if="data.length" />
+        <LinesSpinner v-if="loading" />
+        <AlertMessage v-else-if="error" :text="errorText" type="error" />
+        <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
+        <NewsList v-else :list="data" />
       </template>
     </SpoilerCard>
   </section>

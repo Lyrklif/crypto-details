@@ -6,25 +6,30 @@ import type { GetTwitterItem } from "../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 import TwitterList from "./list/TwitterList.vue";
 import SpoilerCard from "../../base/SpoilerCard.vue";
-import PoweredBy from "../source/PoweredBy.vue";
+import PoweredBy from "../../base/PoweredBy.vue";
+import AlertMessage from "../../base/AlertMessage.vue";
+import LinesSpinner from "../../base/LinesSpinner.vue";
 
 const { t } = useI18n();
 const route = useRoute();
-const list = ref<Array<GetTwitterItem>>();
+const list = ref<Array<GetTwitterItem>>([]);
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
+const errorText = ref<string>("");
 
 async function load() {
   try {
     loading.value = true;
     error.value = false;
+    errorText.value = "";
 
     const response = await API.coinpaprika.coinTwitter(
       route.params.id as string
     );
     list.value = response.data;
-  } catch (error: any) {
+  } catch (e: any) {
     error.value = true;
+    errorText.value = e.response.data.error;
   } finally {
     loading.value = false;
   }
@@ -50,7 +55,10 @@ async function load() {
           :loading="loading"
           :fall="error"
         />
-        <TwitterList :list="list" />
+        <LinesSpinner v-if="loading" />
+        <AlertMessage v-else-if="error" :text="errorText" type="error" />
+        <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
+        <TwitterList v-else :list="list" />
       </template>
     </SpoilerCard>
   </section>

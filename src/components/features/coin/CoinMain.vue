@@ -11,11 +11,16 @@ import CoinStatuses from "./status/CoinStatuses.vue";
 import CoinHeader from "./header/CoinHeader.vue";
 import CoinDescription from "./description/CoinDescription.vue";
 import PriceWidget from "../CoinPrice.vue";
-import PoweredBy from "../source/PoweredBy.vue";
+import PoweredBy from "../../base/PoweredBy.vue";
+import AlertMessage from "../../base/AlertMessage.vue";
+import { useI18n } from "vue-i18n";
+import LinesSpinner from "../../base/LinesSpinner.vue";
 
+const { t } = useI18n();
 const coin = ref<GetCoinByIDResponse>();
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
+const errorText = ref<string>("");
 const route = useRoute();
 const store = useCoinStore();
 
@@ -23,14 +28,16 @@ async function load() {
   try {
     loading.value = true;
     error.value = false;
+    errorText.value = "";
 
     const response = await API.coinpaprika.getCoinByID(
       route.params.id as string
     );
     coin.value = response.data;
     store.setSymbol(response.data.symbol, response.data.name);
-  } catch (error: any) {
+  } catch (e: any) {
     error.value = true;
+    errorText.value = e.response.data.error;
   } finally {
     loading.value = false;
   }
@@ -42,7 +49,21 @@ load();
 <template>
   <div>
     <div class="row">
-      <section class="col-12 col-lg-6" v-if="coin">
+      <div v-if="loading" class="col-12 col-lg-6">
+        <LinesSpinner />
+      </div>
+      <AlertMessage
+        v-else-if="error"
+        :text="errorText"
+        type="error"
+        class="col-12 col-lg-6"
+      />
+      <AlertMessage
+        v-else-if="!coin"
+        :text="t('errors.empty')"
+        class="col-12 col-lg-6"
+      />
+      <section class="col-12 col-lg-6" v-else>
         <CoinHeader :coin="coin" class="mb-4" />
         <CoinStatuses :coin="coin" class="mb-2" />
         <CoinTags :links="coin.tags" class="mb-2" />

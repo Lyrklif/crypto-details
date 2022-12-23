@@ -1,6 +1,14 @@
 export default {
-  error: {
+  error: "Ошибка",
+  errors: {
     token_not_found: "Токен не найден",
+    empty: "Данные об этой криптовалюте не найдены",
+  },
+  alert: {
+    success: "Отлично!",
+    warning: "Предупреждение!",
+    error: "Ошибка!",
+    info: "Инфо",
   },
   source: {
     powered_by: "Источник данных",

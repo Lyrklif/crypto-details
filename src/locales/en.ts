@@ -1,6 +1,14 @@
 export default {
-  error: {
+  error: "Error",
+  errors: {
     token_not_found: "Token not found",
+    empty: "No data found for this cryptocurrency",
+  },
+  alert: {
+    success: "Well done!",
+    warning: "Warning!",
+    error: "Error!",
+    info: "Info",
   },
   source: {
     powered_by: "Powered by",

@@ -6,25 +6,30 @@ import type { MarketsItemResponse } from "../../../api/coinpaprika/types";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import MarketTable from "./table/MarketTable.vue";
-import PoweredBy from "../source/PoweredBy.vue";
+import PoweredBy from "../../base/PoweredBy.vue";
+import AlertMessage from "../../base/AlertMessage.vue";
+import LinesSpinner from "../../base/LinesSpinner.vue";
 
 const { t } = useI18n();
 const route = useRoute();
 const list = ref<Array<MarketsItemResponse>>([]);
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
+const errorText = ref<string>("");
 
 async function load() {
   try {
     loading.value = true;
     error.value = false;
+    errorText.value = "";
 
     const response = await API.coinpaprika.getMarketsByCoin(
       route.params.id as string
     );
     list.value = response.data;
-  } catch (error: any) {
+  } catch (e: any) {
     error.value = true;
+    errorText.value = e.response.data.error;
   } finally {
     loading.value = false;
   }
@@ -48,7 +53,10 @@ async function load() {
           :loading="loading"
           :fall="error"
         />
-        <MarketTable :list="list" />
+        <LinesSpinner v-if="loading" />
+        <AlertMessage v-else-if="error" :text="errorText" type="error" />
+        <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
+        <MarketTable v-else :list="list" />
       </template>
     </SpoilerCard>
   </section>

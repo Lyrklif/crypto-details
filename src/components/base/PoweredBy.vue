@@ -1,27 +1,14 @@
 <script lang="ts" setup>
 import type { PropType } from "vue";
 import { useI18n } from "vue-i18n";
+import sourceAPI from "../../constants/sourceAPI";
+import type { sourceAPINameType } from "../../constants/sourceAPI";
 
 const { t } = useI18n();
 
-const sites = {
-  coingecko: "https://www.coingecko.com/",
-  coinpaprika: "https://coinpaprika.com/",
-  messari: "https://messari.io/",
-  minerstat: "https://minerstat.com/",
-  youtube: "https://www.youtube.com/",
-};
-
-type siteType =
-  | "coingecko"
-  | "coinpaprika"
-  | "messari"
-  | "minerstat"
-  | "youtube";
-
 defineProps({
   site: {
-    type: String as PropType<siteType>,
+    type: String as PropType<sourceAPINameType>,
     required: true,
   },
   loading: {
@@ -40,7 +27,7 @@ defineProps({
     {{ t("source.powered_by") }}
     <a
       target="_blank"
-      :href="sites[site]"
+      :href="sourceAPI[site].site"
       :title="site"
       class="text-capitalize mr-2"
     >
