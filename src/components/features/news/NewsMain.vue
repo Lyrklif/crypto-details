@@ -8,6 +8,7 @@ import NewsList from "./list/NewsList.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
 import type { AssetNewsItem } from "../../../api/messari/types";
 import AlertMessage from "../../base/AlertMessage.vue";
+import LinesSpinner from "../../base/LinesSpinner.vue";
 
 const { t } = useI18n();
 const store = useCoinStore();
@@ -52,7 +53,8 @@ async function loadGNews() {
           :loading="loading"
           :fall="error"
         />
-        <AlertMessage v-if="error" :text="errorText" type="error" />
+        <LinesSpinner v-if="loading" />
+        <AlertMessage v-else-if="error" :text="errorText" type="error" />
         <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
         <NewsList v-else :list="data" />
       </template>

@@ -14,6 +14,7 @@ import PriceWidget from "../CoinPrice.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
 import AlertMessage from "../../base/AlertMessage.vue";
 import { useI18n } from "vue-i18n";
+import LinesSpinner from "../../base/LinesSpinner.vue";
 
 const { t } = useI18n();
 const coin = ref<GetCoinByIDResponse>();
@@ -48,7 +49,21 @@ load();
 <template>
   <div>
     <div class="row">
-      <section class="col-12 col-lg-6" v-if="coin">
+      <div v-if="loading" class="col-12 col-lg-6">
+        <LinesSpinner />
+      </div>
+      <AlertMessage
+        v-else-if="error"
+        :text="errorText"
+        type="error"
+        class="col-12 col-lg-6"
+      />
+      <AlertMessage
+        v-else-if="!coin"
+        :text="t('errors.empty')"
+        class="col-12 col-lg-6"
+      />
+      <section class="col-12 col-lg-6" v-else>
         <CoinHeader :coin="coin" class="mb-4" />
         <CoinStatuses :coin="coin" class="mb-2" />
         <CoinTags :links="coin.tags" class="mb-2" />
@@ -61,18 +76,6 @@ load();
           :fall="error"
         />
       </section>
-
-      <AlertMessage
-        v-if="error"
-        :text="errorText"
-        type="error"
-        class="col-12 col-lg-6"
-      />
-      <AlertMessage
-        v-else-if="!coin"
-        :text="t('errors.empty')"
-        class="col-12 col-lg-6"
-      />
 
       <PriceWidget class="col-12 col-lg-6" :id="`${route.params.id}`" />
     </div>

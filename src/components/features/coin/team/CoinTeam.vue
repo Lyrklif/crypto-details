@@ -6,6 +6,7 @@ import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../../base/SpoilerCard.vue";
 import PoweredBy from "../../../base/PoweredBy.vue";
 import AlertMessage from "../../../base/AlertMessage.vue";
+import LinesSpinner from "../../../base/LinesSpinner.vue";
 
 const { t } = useI18n();
 const showCount = ref(false);
@@ -37,7 +38,8 @@ defineProps({
           :fall="error"
         />
 
-        <AlertMessage v-if="error" :text="errorText" type="error" />
+        <LinesSpinner v-if="loading" />
+        <AlertMessage v-else-if="error" :text="errorText" type="error" />
         <AlertMessage v-else-if="!links.length" :text="t('errors.empty')" />
 
         <table v-else class="table table-striped mb-0">

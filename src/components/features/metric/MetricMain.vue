@@ -8,6 +8,7 @@ import type { AssetMetricDataResponse } from "../../../api/messari/types";
 import MetricsContent from "./content/MetricsContent.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
 import AlertMessage from "../../base/AlertMessage.vue";
+import LinesSpinner from "../../base/LinesSpinner.vue";
 
 const { t } = useI18n();
 const store = useCoinStore();
@@ -49,7 +50,8 @@ async function load() {
           :loading="loading"
           :fall="error"
         />
-        <AlertMessage v-if="error" :text="errorText" type="error" />
+        <LinesSpinner v-if="loading" />
+        <AlertMessage v-else-if="error" :text="errorText" type="error" />
         <AlertMessage v-else-if="!data" :text="t('errors.empty')" />
         <MetricsContent v-else :data="data" />
       </template>

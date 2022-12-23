@@ -8,6 +8,7 @@ import TwitterList from "./list/TwitterList.vue";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
 import AlertMessage from "../../base/AlertMessage.vue";
+import LinesSpinner from "../../base/LinesSpinner.vue";
 
 const { t } = useI18n();
 const route = useRoute();
@@ -54,7 +55,8 @@ async function load() {
           :loading="loading"
           :fall="error"
         />
-        <AlertMessage v-if="error" :text="errorText" type="error" />
+        <LinesSpinner v-if="loading" />
+        <AlertMessage v-else-if="error" :text="errorText" type="error" />
         <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
         <TwitterList v-else :list="list" />
       </template>
