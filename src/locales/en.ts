@@ -10,6 +10,8 @@ export default {
     about: "About",
     show_menu: "Show navigation bar",
     close_menu: "Hide navigation bar",
+    pin: "Pin menu",
+    unpin: "Unpin menu",
   },
   search: {
     title: "Enter the name of the cryptocurrency",
