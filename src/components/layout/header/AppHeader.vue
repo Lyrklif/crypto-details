@@ -16,7 +16,6 @@ const pin = ref(false);
 
 onClickOutside(target, () => hideOnEvent());
 const { direction } = useSwipe(target, {
-  passive: false,
   onSwipeEnd(e: TouchEvent, direction: SwipeDirection) {
     if (direction === SwipeDirection.RIGHT) hideOnEvent();
   },
@@ -35,7 +34,7 @@ const toggleShow = () => {
 </script>
 
 <template>
-  <div ref="target" class="h-100vh app-header">
+  <div ref="target" class="h-100 app-header">
     <HeaderToggle class="toggle mr-2 mt-2" :show="show" @click="toggleShow" />
 
     <header
