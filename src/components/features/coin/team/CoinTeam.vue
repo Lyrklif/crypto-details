@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
+import { ref } from "vue";
 import type { TeamItem } from "../../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../../base/SpoilerCard.vue";
 import PoweredBy from "../../source/PoweredBy.vue";
 
 const { t } = useI18n();
+const showCount = ref(false);
 defineProps({
   links: Array as PropType<Array<TeamItem>>,
   loading: Boolean as PropType<boolean>,
@@ -20,7 +22,10 @@ defineProps({
     </header>
 
     <SpoilerCard
-      :title="`${t('coin.team')} ${links.length ? `(${links.length})` : ''}`"
+      :title="`${t('coin.team')} ${
+        showCount && links.length ? `(${links.length})` : ''
+      }`"
+      @firstOpen="showCount = true"
     >
       <template #content>
         <PoweredBy
