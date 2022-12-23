@@ -15,7 +15,13 @@ const route = useRoute();
           {{ t(homeLink.text) }}
         </RouterLink>
       </li>
-      <li class="breadcrumb-item active" aria-current="page">Data</li>
+      <li
+        class="breadcrumb-item active"
+        aria-current="page"
+        v-if="route.meta && route.meta.title"
+      >
+        {{ t(route.meta.title) }}
+      </li>
     </ol>
   </header>
 </template>

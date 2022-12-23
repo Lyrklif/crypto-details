@@ -5,6 +5,10 @@ export default {
   source: {
     powered_by: "Источник данных",
   },
+  pagination: {
+    coin: "Монета",
+    about: "В проекте",
+  },
   header: {
     home: "Домой",
     about: "О проекте",

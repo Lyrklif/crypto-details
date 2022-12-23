@@ -16,11 +16,13 @@ const router = createRouter({
       path: "/about",
       name: "about",
       component: AboutView,
+      meta: { title: "pagination.about" },
     },
     {
       path: "/coin/:id",
       name: "coin",
       component: CoinView,
+      meta: { title: "pagination.coin" },
     },
   ],
 });

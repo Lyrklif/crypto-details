@@ -5,6 +5,10 @@ export default {
   source: {
     powered_by: "Powered by",
   },
+  pagination: {
+    coin: "Coin",
+    about: "About",
+  },
   header: {
     home: "Home",
     about: "About",
