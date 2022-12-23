@@ -7,7 +7,7 @@ import SpoilerCard from "../../base/SpoilerCard.vue";
 import type { AssetMetricDataResponse } from "../../../api/messari/types";
 import MetricsContent from "./content/MetricsContent.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
-import ErrorRequest from "../../base/ErrorMessage.vue";
+import AlertMessage from "../../base/AlertMessage.vue";
 
 const { t } = useI18n();
 const store = useCoinStore();
@@ -49,8 +49,9 @@ async function load() {
           :loading="loading"
           :fall="error"
         />
-        <ErrorRequest v-if="error" :text="errorText" />
-        <MetricsContent :data="data" v-else-if="data" />
+        <AlertMessage v-if="error" :text="errorText" type="error" />
+        <AlertMessage v-else-if="!data" :text="t('errors.empty')" />
+        <MetricsContent v-else :data="data" />
       </template>
     </SpoilerCard>
   </section>

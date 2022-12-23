@@ -7,11 +7,11 @@ import { useI18n } from "vue-i18n";
 import TwitterList from "./list/TwitterList.vue";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
-import ErrorRequest from "../../base/ErrorMessage.vue";
+import AlertMessage from "../../base/AlertMessage.vue";
 
 const { t } = useI18n();
 const route = useRoute();
-const list = ref<Array<GetTwitterItem>>();
+const list = ref<Array<GetTwitterItem>>([]);
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
 const errorText = ref<string>("");
@@ -54,7 +54,8 @@ async function load() {
           :loading="loading"
           :fall="error"
         />
-        <ErrorRequest v-if="error" :text="errorText" />
+        <AlertMessage v-if="error" :text="errorText" type="error" />
+        <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
         <TwitterList v-else :list="list" />
       </template>
     </SpoilerCard>

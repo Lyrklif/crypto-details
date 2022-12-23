@@ -7,7 +7,7 @@ import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import PoolTable from "./table/PoolTable.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
-import ErrorRequest from "../../base/ErrorMessage.vue";
+import AlertMessage from "../../base/AlertMessage.vue";
 
 const { t } = useI18n();
 const pools = ref<Array<Pool>>([]);
@@ -50,7 +50,8 @@ async function load() {
           :loading="loading"
           :fall="error"
         />
-        <ErrorRequest v-if="error" :text="errorText" />
+        <AlertMessage v-if="error" :text="errorText" type="error" />
+        <AlertMessage v-else-if="!pools.length" :text="t('errors.empty')" />
         <PoolTable v-else :pools="pools" />
       </template>
     </SpoilerCard>

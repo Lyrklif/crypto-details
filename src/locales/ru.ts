@@ -2,6 +2,7 @@ export default {
   error: "Ошибка",
   errors: {
     token_not_found: "Токен не найден",
+    empty: "Данные об этой криптовалюте не найдены",
   },
   alert: {
     success: "Отлично!",

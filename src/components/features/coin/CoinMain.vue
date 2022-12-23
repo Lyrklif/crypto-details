@@ -12,8 +12,10 @@ import CoinHeader from "./header/CoinHeader.vue";
 import CoinDescription from "./description/CoinDescription.vue";
 import PriceWidget from "../CoinPrice.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
-import ErrorRequest from "../../base/ErrorMessage.vue";
+import AlertMessage from "../../base/AlertMessage.vue";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n();
 const coin = ref<GetCoinByIDResponse>();
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
@@ -60,7 +62,17 @@ load();
         />
       </section>
 
-      <ErrorRequest v-if="error" class="col-12 col-lg-6" :text="errorText" />
+      <AlertMessage
+        v-if="error"
+        :text="errorText"
+        type="error"
+        class="col-12 col-lg-6"
+      />
+      <AlertMessage
+        v-else-if="!coin"
+        :text="t('errors.empty')"
+        class="col-12 col-lg-6"
+      />
 
       <PriceWidget class="col-12 col-lg-6" :id="`${route.params.id}`" />
     </div>

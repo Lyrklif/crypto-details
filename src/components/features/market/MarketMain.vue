@@ -7,7 +7,7 @@ import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import MarketTable from "./table/MarketTable.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
-import ErrorRequest from "../../base/ErrorMessage.vue";
+import AlertMessage from "../../base/AlertMessage.vue";
 
 const { t } = useI18n();
 const route = useRoute();
@@ -52,7 +52,8 @@ async function load() {
           :loading="loading"
           :fall="error"
         />
-        <ErrorRequest v-if="error" :text="errorText" />
+        <AlertMessage v-if="error" :text="errorText" type="error" />
+        <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
         <MarketTable v-else :list="list" />
       </template>
     </SpoilerCard>

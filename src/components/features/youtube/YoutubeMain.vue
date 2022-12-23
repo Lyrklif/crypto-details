@@ -7,7 +7,7 @@ import { useCoinStore } from "../../../stores/coin";
 import type { YoutubeSearchItem } from "../../../api/youtube/types";
 import YoutubeList from "./list/YoutubeList.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
-import ErrorRequest from "../../base/ErrorMessage.vue";
+import AlertMessage from "../../base/AlertMessage.vue";
 
 const { t, locale } = useI18n();
 const store = useCoinStore();
@@ -58,8 +58,9 @@ async function load() {
           :loading="loading"
           :fall="error"
         />
-        <ErrorRequest v-if="error" :text="errorText" />
-        <YoutubeList v-else-if="data.length" :data="data" />
+        <AlertMessage v-if="error" :text="errorText" type="error" />
+        <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
+        <YoutubeList v-else :data="data" />
       </template>
     </SpoilerCard>
   </section>
