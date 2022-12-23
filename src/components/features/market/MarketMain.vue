@@ -6,7 +6,7 @@ import type { MarketsItemResponse } from "../../../api/coinpaprika/types";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import MarketTable from "./table/MarketTable.vue";
-import PoweredBy from "../source/PoweredBy.vue";
+import PoweredBy from "../../base/PoweredBy.vue";
 
 const { t } = useI18n();
 const route = useRoute();

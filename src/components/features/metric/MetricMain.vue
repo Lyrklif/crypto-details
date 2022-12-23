@@ -6,7 +6,7 @@ import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import type { AssetMetricDataResponse } from "../../../api/messari/types";
 import MetricsContent from "./content/MetricsContent.vue";
-import PoweredBy from "../source/PoweredBy.vue";
+import PoweredBy from "../../base/PoweredBy.vue";
 
 const { t } = useI18n();
 const store = useCoinStore();

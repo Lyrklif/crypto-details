@@ -11,7 +11,7 @@ import CoinStatuses from "./status/CoinStatuses.vue";
 import CoinHeader from "./header/CoinHeader.vue";
 import CoinDescription from "./description/CoinDescription.vue";
 import PriceWidget from "../CoinPrice.vue";
-import PoweredBy from "../source/PoweredBy.vue";
+import PoweredBy from "../../base/PoweredBy.vue";
 
 const coin = ref<GetCoinByIDResponse>();
 const loading = ref<boolean>(false);

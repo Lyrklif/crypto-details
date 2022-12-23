@@ -4,7 +4,7 @@ import { ref } from "vue";
 import type { TeamItem } from "../../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../../base/SpoilerCard.vue";
-import PoweredBy from "../../source/PoweredBy.vue";
+import PoweredBy from "../../../base/PoweredBy.vue";
 
 const { t } = useI18n();
 const showCount = ref(false);

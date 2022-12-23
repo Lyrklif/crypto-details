@@ -5,7 +5,7 @@ import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../../../stores/coin";
 import NewsList from "./list/NewsList.vue";
-import PoweredBy from "../source/PoweredBy.vue";
+import PoweredBy from "../../base/PoweredBy.vue";
 import type { AssetNewsItem } from "../../../api/messari/types";
 
 const { t } = useI18n();

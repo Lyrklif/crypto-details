@@ -6,7 +6,7 @@ import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../../../stores/coin";
 import type { YoutubeSearchItem } from "../../../api/youtube/types";
 import YoutubeList from "./list/YoutubeList.vue";
-import PoweredBy from "../source/PoweredBy.vue";
+import PoweredBy from "../../base/PoweredBy.vue";
 
 const { t, locale } = useI18n();
 const store = useCoinStore();
