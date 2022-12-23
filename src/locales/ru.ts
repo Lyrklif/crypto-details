@@ -1,5 +1,6 @@
 export default {
-  error: {
+  error: "Ошибка",
+  errors: {
     token_not_found: "Токен не найден",
   },
   source: {

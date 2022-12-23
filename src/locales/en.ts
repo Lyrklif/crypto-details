@@ -1,5 +1,6 @@
 export default {
-  error: {
+  error: "Error",
+  errors: {
     token_not_found: "Token not found",
   },
   source: {

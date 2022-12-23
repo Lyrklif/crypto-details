@@ -10,7 +10,7 @@ const emit = defineEmits(["close"]);
     class="alert alert-danger alert-dismissible shadow-soft fade show"
     role="alert"
   >
-    <span class="alert-inner--text">{{ t("error.token_not_found") }}</span>
+    <span class="alert-inner--text">{{ t("errors.token_not_found") }}</span>
     <button
       type="button"
       class="close"

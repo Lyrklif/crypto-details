@@ -7,21 +7,25 @@ import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import PoolTable from "./table/PoolTable.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
+import ErrorRequest from "../../base/ErrorMessage.vue";
 
 const { t } = useI18n();
 const pools = ref<Array<Pool>>([]);
 const store = useCoinStore();
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
+const errorText = ref<string>("");
 
 async function load() {
   try {
     loading.value = true;
     error.value = false;
+    errorText.value = "";
 
     const response = await API.minerstat.pools(store.symbol);
     pools.value = response.data;
-  } catch (error: any) {
+  } catch (e: any) {
+    errorText.value = e.response.data.error;
     error.value = true;
   } finally {
     loading.value = false;
@@ -46,7 +50,8 @@ async function load() {
           :loading="loading"
           :fall="error"
         />
-        <PoolTable :pools="pools" />
+        <ErrorRequest v-if="error" :text="errorText" />
+        <PoolTable v-else :pools="pools" />
       </template>
     </SpoilerCard>
   </section>

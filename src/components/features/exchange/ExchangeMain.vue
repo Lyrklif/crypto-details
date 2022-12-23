@@ -7,24 +7,28 @@ import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import ExchangeTable from "./content/ExchangeTable.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
+import ErrorRequest from "../../base/ErrorMessage.vue";
 
 const { t } = useI18n();
 const route = useRoute();
 const list = ref<Array<CoinExchangesItem>>([]);
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
+const errorText = ref<string>("");
 
 async function load() {
   try {
     loading.value = true;
     error.value = false;
+    errorText.value = "";
 
     const response = await API.coinpaprika.coinExchanges(
       route.params.id as string
     );
     list.value = response.data;
-  } catch (error: any) {
+  } catch (e: any) {
     error.value = true;
+    errorText.value = e.response.data.error;
   } finally {
     loading.value = false;
   }
@@ -51,7 +55,8 @@ async function load() {
           :fall="error"
         />
 
-        <ExchangeTable :list="list" class="content" />
+        <ErrorRequest v-if="error" :text="errorText" />
+        <ExchangeTable v-else :list="list" class="content" />
       </template>
     </SpoilerCard>
   </section>

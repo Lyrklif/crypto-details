@@ -7,21 +7,25 @@ import { useCoinStore } from "../../../stores/coin";
 import NewsList from "./list/NewsList.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
 import type { AssetNewsItem } from "../../../api/messari/types";
+import ErrorRequest from "../../base/ErrorMessage.vue";
 
 const { t } = useI18n();
 const store = useCoinStore();
 const data = ref<Array<AssetNewsItem>>([]);
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
+const errorText = ref<string>("");
 
 async function loadGNews() {
   try {
     loading.value = true;
     error.value = false;
+    errorText.value = "";
 
     const response = await API.messari.newsForAsset(store.symbol);
     data.value = response.data.data || [];
-  } catch (error: any) {
+  } catch (e: any) {
+    errorText.value = e.response.statusText;
     error.value = true;
   } finally {
     loading.value = false;
@@ -48,7 +52,8 @@ async function loadGNews() {
           :loading="loading"
           :fall="error"
         />
-        <NewsList :list="data" v-if="data.length" />
+        <ErrorRequest v-if="error" :text="errorText" />
+        <NewsList :list="data" v-else-if="data.length" />
       </template>
     </SpoilerCard>
   </section>

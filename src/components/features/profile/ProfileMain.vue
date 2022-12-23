@@ -7,22 +7,26 @@ import SpoilerCard from "../../base/SpoilerCard.vue";
 import type { AssetProfileDataResponse } from "../../../api/messari/types";
 import ProfileContent from "./content/ProfileContent.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
+import ErrorRequest from "../../base/ErrorMessage.vue";
 
 const { t } = useI18n();
 const store = useCoinStore();
 const profile = ref<AssetProfileDataResponse>();
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
+const errorText = ref<string>("");
 
 async function load() {
   try {
     loading.value = true;
     error.value = false;
+    errorText.value = "";
 
     const fields = "technology,token_distribution,background,organizations";
     const response = await API.messari.assetProfile(store.symbol, fields);
     profile.value = response.data.data;
-  } catch (error: any) {
+  } catch (e: any) {
+    errorText.value = e.response.statusText;
     error.value = true;
   } finally {
     loading.value = false;
@@ -44,7 +48,8 @@ async function load() {
           :loading="loading"
           :fall="error"
         />
-        <ProfileContent v-if="profile" :profile="profile" />
+        <ErrorRequest v-if="error" :text="errorText" />
+        <ProfileContent v-else-if="profile" :profile="profile" />
       </template>
     </SpoilerCard>
   </section>

@@ -12,10 +12,12 @@ import CoinHeader from "./header/CoinHeader.vue";
 import CoinDescription from "./description/CoinDescription.vue";
 import PriceWidget from "../CoinPrice.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
+import ErrorRequest from "../../base/ErrorMessage.vue";
 
 const coin = ref<GetCoinByIDResponse>();
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
+const errorText = ref<string>("");
 const route = useRoute();
 const store = useCoinStore();
 
@@ -23,14 +25,16 @@ async function load() {
   try {
     loading.value = true;
     error.value = false;
+    errorText.value = "";
 
     const response = await API.coinpaprika.getCoinByID(
       route.params.id as string
     );
     coin.value = response.data;
     store.setSymbol(response.data.symbol, response.data.name);
-  } catch (error: any) {
+  } catch (e: any) {
     error.value = true;
+    errorText.value = e.response.data.error;
   } finally {
     loading.value = false;
   }
@@ -55,6 +59,8 @@ load();
           :fall="error"
         />
       </section>
+
+      <ErrorRequest v-if="error" class="col-12 col-lg-6" :text="errorText" />
 
       <PriceWidget class="col-12 col-lg-6" :id="`${route.params.id}`" />
     </div>
