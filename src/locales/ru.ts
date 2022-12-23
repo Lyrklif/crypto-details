@@ -5,9 +5,17 @@ export default {
   source: {
     powered_by: "Источник данных",
   },
+  pagination: {
+    coin: "Монета",
+    about: "В проекте",
+  },
   header: {
     home: "Домой",
     about: "О проекте",
+    show_menu: "Показать навигационную панель",
+    close_menu: "Скрыть навигационную панель",
+    pin: "Закрепить меню",
+    unpin: "Открепить меню",
   },
   search: {
     title: "Введите название криптовалюты",

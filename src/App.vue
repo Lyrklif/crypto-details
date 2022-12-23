@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-import AppHeader from "./components/layout/AppHeader.vue";
+import AppHeader from "./components/layout/header/AppHeader.vue";
+import Pagination from "./components/layout/AppPagination.vue";
 </script>
 
 <template>
-  <div>
+  <div class="d-flex flex-row-reverse">
     <AppHeader />
 
-    <main class="section container">
+    <main class="container">
+      <Pagination class="mt-4 mb-5" />
       <RouterView />
     </main>
   </div>

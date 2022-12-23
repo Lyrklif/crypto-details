@@ -5,9 +5,17 @@ export default {
   source: {
     powered_by: "Powered by",
   },
+  pagination: {
+    coin: "Coin",
+    about: "About",
+  },
   header: {
     home: "Home",
     about: "About",
+    show_menu: "Show navigation bar",
+    close_menu: "Hide navigation bar",
+    pin: "Pin menu",
+    unpin: "Unpin menu",
   },
   search: {
     title: "Enter the name of the cryptocurrency",
