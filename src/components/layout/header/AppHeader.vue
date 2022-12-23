@@ -34,7 +34,7 @@ const toggleShow = () => {
 </script>
 
 <template>
-  <div ref="target" class="h-100 app-header">
+  <div ref="target" class="mh-100 h-100vh app-header">
     <HeaderToggle class="toggle mr-2 mt-2" :show="show" @click="toggleShow" />
 
     <header
