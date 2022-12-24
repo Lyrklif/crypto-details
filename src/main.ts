@@ -6,7 +6,7 @@ import { makeServer } from "./server";
 import filters from "./helpers/filters";
 import { createI18n } from "vue-i18n";
 import { useInterfaceStore } from "./stores/interface";
-import { defaultInterfaceLang } from "./constants/settings";
+import { defaultInterfaceLang } from "./constants/interface";
 
 import en from "./locales/en";
 import ru from "./locales/ru";

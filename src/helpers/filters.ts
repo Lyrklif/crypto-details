@@ -2,7 +2,7 @@ import { useInterfaceStore } from "../stores/interface";
 import {
   defaultInterfaceCurrency,
   defaultInterfaceLang,
-} from "../constants/settings";
+} from "../constants/interface";
 
 interface MixinsInterface {
   hostname: (value: string) => string;

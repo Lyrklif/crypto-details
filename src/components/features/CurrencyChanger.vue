@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useInterfaceStore } from "../../stores/interface";
 import { ref } from "vue";
-import { currencyVariants } from "../../constants/settings";
+import { currencyVariants } from "../../constants/interface";
 
 const store = useInterfaceStore();
 const selectCurrencyValue = ref(store.currency);

@@ -3,7 +3,7 @@ import { useStorage } from "@vueuse/core";
 import {
   defaultInterfaceLang,
   defaultInterfaceCurrency,
-} from "../constants/settings";
+} from "../constants/interface";
 import type { RemovableRef } from "@vueuse/core";
 
 export interface InterfaceStore {
