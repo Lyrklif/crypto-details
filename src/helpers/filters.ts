@@ -28,7 +28,12 @@ const filters: MixinsInterface = {
   },
   percent(value, decimalPlaces = 2) {
     if (!value) return value;
-    return `${value.toFixed(decimalPlaces)}%`;
+    const fixedValue = value.toLocaleString(undefined, {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: decimalPlaces,
+    });
+
+    return `${fixedValue}%`;
   },
   price(value, decimalPlaces = 4) {
     if (!value) return value;
