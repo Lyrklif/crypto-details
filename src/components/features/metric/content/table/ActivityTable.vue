@@ -21,7 +21,7 @@ defineProps({
           v-show="data.supply_activity[key]"
         >
           <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
-          <td class="text-right py-1">
+          <td class="text-right py-1 text-monospace">
             {{ $filters.price(data.supply_activity[key]) }}
           </td>
         </tr>

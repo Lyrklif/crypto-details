@@ -21,8 +21,8 @@ defineProps({
           v-show="data.risk_metrics.sharpe_ratios[key]"
         >
           <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
-          <td class="text-right py-1">
-            {{ $filters.price(data.risk_metrics.sharpe_ratios[key]) }}
+          <td class="text-right py-1 text-monospace">
+            {{ $filters.price(data.risk_metrics.sharpe_ratios[key], 2) }}
           </td>
         </tr>
         <tr
@@ -31,8 +31,8 @@ defineProps({
           v-show="data.risk_metrics.volatility_stats[key]"
         >
           <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
-          <td class="text-right py-1">
-            {{ $filters.price(data.risk_metrics.volatility_stats[key]) }}
+          <td class="text-right py-1 text-monospace">
+            {{ $filters.price(data.risk_metrics.volatility_stats[key], 2) }}
           </td>
         </tr>
       </tbody>

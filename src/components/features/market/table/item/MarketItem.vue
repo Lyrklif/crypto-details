@@ -48,7 +48,7 @@ defineProps({
         {{ t(`market.trust_score_value.${item.trust_score}`) }}
       </span>
     </td>
-    <td class="py-1">
+    <td class="py-1 text-monospace">
       {{ $filters.percent(item.adjusted_volume_24h_share) }}
     </td>
     <td class="py-1">{{ item.category }}</td>

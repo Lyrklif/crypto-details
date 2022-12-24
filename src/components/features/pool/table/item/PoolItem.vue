@@ -24,8 +24,10 @@ defineProps({
         {{ pool.name }}
       </a>
     </td>
-    <td class="py-2">{{ pool.coins[store.symbol].fee }}</td>
-    <td class="py-2">{{ pool.coins[store.symbol].payoutThreshold }}</td>
+    <td class="py-2 text-monospace">{{ pool.coins[store.symbol].fee }}</td>
+    <td class="py-2 text-monospace">
+      {{ pool.coins[store.symbol].payoutThreshold }}
+    </td>
     <td class="py-2">{{ pool.coins[store.symbol].rewardMethod }}</td>
     <td class="py-2">
       <span class="badge badge-info">

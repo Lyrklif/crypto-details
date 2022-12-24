@@ -21,7 +21,7 @@ defineProps({
         {{ item.name }}
       </a>
     </td>
-    <td class="py-1">
+    <td class="py-1 text-monospace">
       {{ $filters.percent(item.adjusted_volume_24h_share, 4) }}
     </td>
     <td class="py-1">

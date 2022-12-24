@@ -22,7 +22,7 @@ defineProps({
         >
           <td class="pr-3 py-1">{{ parseInt(key) }}</td>
           <td
-            class="text-right py-1"
+            class="text-right py-1 text-monospace"
             :class="data.roi_by_year[key] >= 0 ? 'text-success' : 'text-danger'"
           >
             {{ data.roi_by_year[key] > 0 ? "+" : "" }}
