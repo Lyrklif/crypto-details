@@ -10,13 +10,18 @@ const route = useRoute();
 <template>
   <header v-if="route.name !== homeLink.name">
     <ol class="breadcrumb breadcrumb-gray">
-      <li class="breadcrumb-item">
-        <RouterLink :to="{ name: homeLink.name }" :title="homeLink.text">
+      <li class="mr-2">
+        <RouterLink
+          class="mr-2"
+          :to="{ name: homeLink.name }"
+          :title="homeLink.text"
+        >
           {{ t(homeLink.text) }}
         </RouterLink>
+        <span class="icon-angle-double-right" />
       </li>
       <li
-        class="breadcrumb-item active"
+        class="active"
         aria-current="page"
         v-if="route.meta && route.meta.title"
       >

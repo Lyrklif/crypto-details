@@ -31,7 +31,7 @@ const scrollToSpoiler = () => {
       @click.once="emit('firstOpen')"
     >
       <span class="h6 mb-0 font-weight-bold" v-html="title" />
-      <span class="icon"><span class="fas fa-plus"></span></span>
+      <span class="icon"><span class="icon-plus"></span></span>
     </button>
 
     <div

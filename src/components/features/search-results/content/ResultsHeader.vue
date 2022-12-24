@@ -15,7 +15,7 @@ const emit = defineEmits(["back"]);
       :title="t('search.back')"
       @click="emit('back')"
     >
-      <span class="mr-1"><span class="fas fa-angle-left"></span></span>
+      <span class="mr-1"><span class="icon-chevron-left"></span></span>
       {{ t("search.back") }}
     </button>
 

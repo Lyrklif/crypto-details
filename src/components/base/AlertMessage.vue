@@ -6,10 +6,10 @@ const { t } = useI18n();
 
 type alertTypes = "info" | "success" | "error" | "warning";
 const alerts: { [alertTypes: string]: { classes: string; icon: string } } = {
-  success: { classes: "alert-success", icon: "fa-thumbs-up" },
-  warning: { classes: "alert-secondary", icon: "fa-exclamation-circle" },
-  error: { classes: "alert-danger", icon: "fa-fire" },
-  info: { classes: "alert-info", icon: "fa-bell" },
+  success: { classes: "alert-success", icon: "icon-checkmark" },
+  warning: { classes: "alert-secondary", icon: "icon-bell" },
+  error: { classes: "alert-danger", icon: "icon-fire" },
+  info: { classes: "alert-info", icon: "icon-info-circle" },
 };
 
 defineProps({
@@ -32,7 +32,7 @@ defineProps({
       role="alert"
     >
       <span class="alert-inner--icon">
-        <span class="fas" :class="alerts[type].icon" />
+        <span :class="alerts[type].icon" />
       </span>
       <span class="alert-inner--text">
         <strong class="mr-2">{{ t(`alert.${type}`) }}</strong>

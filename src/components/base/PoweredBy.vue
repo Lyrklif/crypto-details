@@ -34,11 +34,7 @@ defineProps({
       <b>{{ site }}</b>
     </a>
 
-    <i v-if="loading" class="fa-solid fa-spinner"></i>
-    <i
-      v-else
-      class="fa-solid fa-heart"
-      :class="fall ? 'fa-heart-crack' : 'fa-heart'"
-    ></i>
+    <i v-if="loading" class="icon-spinner"></i>
+    <i v-else :class="fall ? 'icon-heart-broken' : 'icon-heart'"></i>
   </p>
 </template>

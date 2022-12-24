@@ -16,6 +16,6 @@ defineProps({
     @click="emit('click')"
     :title="pin ? t('header.unpin') : t('header.pin')"
   >
-    <i class="fa-solid" :class="pin ? 'fa-toggle-on' : 'fa-toggle-off'"></i>
+    <i :class="pin ? 'icon-toggle-on' : 'icon-toggle-off'"></i>
   </button>
 </template>

@@ -16,6 +16,6 @@ defineProps({
     @click="emit('click')"
     :title="show ? t('header.close_menu') : t('header.show_menu')"
   >
-    <i class="fa-solid" :class="show ? 'fa-xmark' : 'fa-burger'"></i>
+    <i :class="show ? 'icon-cross' : 'icon-menu'"></i>
   </button>
 </template>

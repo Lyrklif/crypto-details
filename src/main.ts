@@ -11,6 +11,8 @@ import { defaultInterfaceLang } from "./constants/interface";
 import en from "./locales/en";
 import ru from "./locales/ru";
 
+import "./assets/googlefonts.css";
+import "./assets/style.css";
 import "./assets/neumorphism.css";
 
 const app = createApp(App);
@@ -26,6 +28,7 @@ const i18n = createI18n({
 });
 
 if (process.env.NODE_ENV === "development") {
+  // comment this line to get real api data
   makeServer();
 }
 

@@ -31,7 +31,7 @@ defineProps({
         :title="t('search.submit')"
         :disabled="isDisabled || coinName.length < MIN_LENGTH_COIN_NAME"
       >
-        <span class="fas fa-search"></span>
+        <span class="icon-search"></span>
       </button>
     </div>
   </form>

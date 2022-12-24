@@ -23,7 +23,7 @@ defineProps({
       :title="t('coin.whitepaper')"
       class="btn btn-primary mb-4 animate-up-2"
     >
-      <i class="fa-solid fa-paperclip mr-1"></i>
+      <i class="icon-attachment mr-1"></i>
       {{ t("coin.whitepaper") }}
     </a>
   </div>

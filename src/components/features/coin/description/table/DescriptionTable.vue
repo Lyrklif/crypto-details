@@ -16,7 +16,7 @@ defineProps({
         <td class="py-1">{{ t("coin.started_at") }}</td>
         <td class="py-1">
           <span class="small">
-            <i class="fa-solid fa-calendar-days mr-1" />
+            <i class="icon-calendar mr-1" />
             <span>{{ $filters.date(coin.started_at) }}</span>
           </span>
         </td>
@@ -25,7 +25,7 @@ defineProps({
         <td class="py-1">{{ t("coin.last_data_at") }}</td>
         <td class="py-1">
           <span class="small">
-            <i class="fa-solid fa-calendar-days mr-1" />
+            <i class="icon-calendar mr-1" />
             <span>{{ $filters.date(coin.last_data_at) }}</span>
           </span>
         </td>
