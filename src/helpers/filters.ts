@@ -1,4 +1,4 @@
-import { useSettingsStore } from "../stores/settings";
+import { useInterfaceStore } from "../stores/interface";
 import {
   defaultInterfaceCurrency,
   defaultInterfaceLang,
@@ -20,7 +20,7 @@ const filters: MixinsInterface = {
   date(value) {
     if (!value) return value;
     const date = new Date(value);
-    const settingsStore = useSettingsStore();
+    const settingsStore = useInterfaceStore();
     const locale = settingsStore.lang || defaultInterfaceLang;
 
     return date.toLocaleDateString(locale);
@@ -31,7 +31,7 @@ const filters: MixinsInterface = {
   },
   price(value, decimalPlaces = 4) {
     if (!value) return value;
-    const settingsStore = useSettingsStore();
+    const settingsStore = useInterfaceStore();
     const locale = settingsStore.lang || defaultInterfaceLang;
     const currency = settingsStore.currency || defaultInterfaceCurrency;
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
-import { useSettingsStore } from "../../stores/settings";
+import { useInterfaceStore } from "../../stores/interface";
 
-const store = useSettingsStore();
+const store = useInterfaceStore();
 
 defineProps({
   id: String as PropType<string>,

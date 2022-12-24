@@ -6,14 +6,14 @@ import {
 } from "../constants/settings";
 import type { RemovableRef } from "@vueuse/core";
 
-export interface SettingsStore {
+export interface InterfaceStore {
   lang: RemovableRef<string>;
   currency: RemovableRef<string>;
   setLang: (currentLang: string) => void;
   setCurrency: (currentCurrency: string) => void;
 }
 
-export const useSettingsStore = defineStore("settings", (): SettingsStore => {
+export const useInterfaceStore = defineStore("settings", (): InterfaceStore => {
   const lang = useStorage("lang", defaultInterfaceLang);
   const currency = useStorage("currency", defaultInterfaceCurrency);
 

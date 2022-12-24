@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import { useSettingsStore } from "../../stores/settings";
+import { useInterfaceStore } from "../../stores/interface";
 import { watch } from "vue";
 
-const store = useSettingsStore();
+const store = useInterfaceStore();
 const { t, availableLocales, locale } = useI18n();
 
 watch(locale, () => {

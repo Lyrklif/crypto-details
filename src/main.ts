@@ -5,7 +5,7 @@ import router from "./router";
 import { makeServer } from "./server";
 import filters from "./helpers/filters";
 import { createI18n } from "vue-i18n";
-import { useSettingsStore } from "./stores/settings";
+import { useInterfaceStore } from "./stores/interface";
 import { defaultInterfaceLang } from "./constants/settings";
 
 import en from "./locales/en";
@@ -16,7 +16,7 @@ import "./assets/neumorphism.css";
 const app = createApp(App);
 
 app.use(createPinia());
-const settingsStore = useSettingsStore();
+const settingsStore = useInterfaceStore();
 
 const i18n = createI18n({
   legacy: false,
