@@ -1,3 +1,6 @@
+import { useSettingsStore } from "../stores/settings";
+import { defaultInterfaceLang } from "../constants/settings";
+
 interface MixinsInterface {
   hostname: (value: string) => string;
   date: (value: string) => string;
@@ -14,7 +17,10 @@ const filters: MixinsInterface = {
   date(value) {
     if (!value) return value;
     const date = new Date(value);
-    const locale = navigator.language || "en";
+    const settingsStore = useSettingsStore();
+    const locale =
+      settingsStore.lang || navigator.language || defaultInterfaceLang;
+
     return date.toLocaleDateString(locale);
   },
   percent(value, decimalPlaces = 2) {
@@ -23,7 +29,16 @@ const filters: MixinsInterface = {
   },
   price(value, decimalPlaces = 4) {
     if (!value) return value;
-    return value.toFixed(decimalPlaces);
+    const settingsStore = useSettingsStore();
+    const locale =
+      settingsStore.lang || navigator.language || defaultInterfaceLang;
+
+    return value.toLocaleString(locale, {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: decimalPlaces,
+      style: "currency",
+      currency: "USD",
+    });
   },
 };
 

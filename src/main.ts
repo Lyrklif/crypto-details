@@ -6,6 +6,7 @@ import { makeServer } from "./server";
 import filters from "./helpers/filters";
 import { createI18n } from "vue-i18n";
 import { useSettingsStore } from "./stores/settings";
+import { defaultInterfaceLang } from "./constants/settings";
 
 import en from "./locales/en";
 import ru from "./locales/ru";
@@ -19,8 +20,8 @@ const settingsStore = useSettingsStore();
 
 const i18n = createI18n({
   legacy: false,
-  locale: settingsStore.lang || "en",
-  fallbackLocale: "en",
+  locale: settingsStore.lang || defaultInterfaceLang,
+  fallbackLocale: defaultInterfaceLang,
   messages: { en, ru },
 });
 
