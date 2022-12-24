@@ -36,7 +36,6 @@ defineProps({
         class="mb-0 d-block text-monospace"
       >
         {{ $filters.price(item.quotes[fiatKey].price, 6) }}
-        {{ fiatKey }}
       </b>
     </td>
     <td class="py-1 text-monospace">{{ item.pair }}</td>

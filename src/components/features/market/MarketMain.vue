@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import API from "../../../api";
 import type { MarketsItemResponse } from "../../../api/coinpaprika/types";
@@ -9,13 +9,21 @@ import MarketTable from "./table/MarketTable.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
 import AlertMessage from "../../base/AlertMessage.vue";
 import LinesSpinner from "../../base/LinesSpinner.vue";
+import { useInterfaceStore } from "../../../stores/interface";
+import { storeToRefs } from "pinia";
 
 const { t } = useI18n();
 const route = useRoute();
+const store = useInterfaceStore();
+const { currency } = storeToRefs(store);
 const list = ref<Array<MarketsItemResponse>>([]);
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
 const errorText = ref<string>("");
+
+watch(currency, () => {
+  load();
+});
 
 async function load() {
   try {
@@ -24,7 +32,8 @@ async function load() {
     errorText.value = "";
 
     const response = await API.coinpaprika.getMarketsByCoin(
-      route.params.id as string
+      route.params.id as string,
+      store.currency
     );
     list.value = response.data;
   } catch (e: any) {
