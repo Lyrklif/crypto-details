@@ -13,9 +13,11 @@ defineProps({
 
 const toggle = () => {
   isShow.value = !isShow.value;
-  if (!isShow.value && spoilerWrapper.value) {
-    spoilerWrapper.value.scrollIntoView({ behavior: "smooth" });
-  }
+  if (!isShow.value) scrollToSpoiler();
+};
+const scrollToSpoiler = () => {
+  if (!spoilerWrapper.value) return;
+  spoilerWrapper.value.scrollIntoView({ behavior: "smooth" });
 };
 </script>
 
