@@ -13,7 +13,7 @@ defineProps({
 <template>
   <div>
     <button
-      class="accordion-panel-header collapsed btn btn-block py-3 accordion-panel-header animate-down-2"
+      class="collapsed btn btn-block bg-gradient-gray-300 py-3 accordion-panel-header animate-down-2"
       :aria-expanded="isShow"
       :title="title"
       @click="isShow = !isShow"
@@ -37,8 +37,14 @@ defineProps({
 </template>
 
 <style scoped>
+.collapsed {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
 .collapse {
-  max-height: 100vh;
   overflow: auto;
+  max-width: 100%;
 }
 </style>
