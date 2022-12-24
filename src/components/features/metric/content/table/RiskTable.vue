@@ -13,7 +13,7 @@ defineProps({
 <template>
   <div>
     <h4 class="mb-1">{{ t("metric.risk") }}</h4>
-    <table class="table mb-3 table-striped">
+    <table class="table mb-4 table-striped">
       <tbody>
         <tr
           v-for="key in Object.keys(data.risk_metrics.sharpe_ratios)"
@@ -22,9 +22,13 @@ defineProps({
         >
           <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
           <td class="text-right py-1 text-monospace">
-            {{ $filters.price(data.risk_metrics.sharpe_ratios[key], 2) }}
+            {{ $filters.number(data.risk_metrics.sharpe_ratios[key], 2) }}
           </td>
         </tr>
+      </tbody>
+    </table>
+    <table class="table table-striped">
+      <tbody>
         <tr
           v-for="key in Object.keys(data.risk_metrics.volatility_stats)"
           :key="`volatility_stats-${key}`"
@@ -32,7 +36,7 @@ defineProps({
         >
           <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
           <td class="text-right py-1 text-monospace">
-            {{ $filters.price(data.risk_metrics.volatility_stats[key], 2) }}
+            {{ $filters.number(data.risk_metrics.volatility_stats[key], 2) }}
           </td>
         </tr>
       </tbody>

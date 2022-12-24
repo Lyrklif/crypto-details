@@ -18,13 +18,13 @@ defineProps({
         <tr v-if="data.supply.circulating">
           <td class="pr-3 py-1">{{ t(`metric.circulating`) }}</td>
           <td class="text-right py-1 text-monospace">
-            {{ $filters.price(data.supply.circulating) }}
+            {{ $filters.number(data.supply.circulating) }}
           </td>
         </tr>
         <tr v-if="data.supply.liquid">
           <td class="pr-3 py-1">{{ t(`metric.liquid`) }}</td>
           <td class="text-right py-1 text-monospace">
-            {{ $filters.price(data.supply.liquid) }}
+            {{ $filters.number(data.supply.liquid) }}
           </td>
         </tr>
       </tbody>

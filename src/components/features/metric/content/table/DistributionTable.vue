@@ -22,7 +22,7 @@ defineProps({
         >
           <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
           <td class="text-right py-1 text-monospace">
-            {{ $filters.price(data.supply_distribution[key]) }}
+            {{ $filters.number(data.supply_distribution[key]) }}
           </td>
         </tr>
       </tbody>
