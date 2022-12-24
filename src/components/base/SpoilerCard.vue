@@ -3,20 +3,29 @@ import type { PropType } from "vue";
 import { ref } from "vue";
 
 const isShow = ref(false);
+const spoilerWrapper = ref<HTMLElement>();
+
 const emit = defineEmits(["firstOpen"]);
 defineProps({
   title: String as PropType<string>,
   content: String as PropType<string>,
 });
+
+const toggle = () => {
+  isShow.value = !isShow.value;
+  if (!isShow.value && spoilerWrapper.value) {
+    spoilerWrapper.value.scrollIntoView({ behavior: "smooth" });
+  }
+};
 </script>
 
 <template>
-  <div>
+  <div ref="spoilerWrapper">
     <button
       class="collapsed btn btn-block bg-gradient-gray-300 py-3 accordion-panel-header animate-down-2"
       :aria-expanded="isShow"
       :title="title"
-      @click="isShow = !isShow"
+      @click="toggle"
       @click.once="emit('firstOpen')"
     >
       <span class="h6 mb-0 font-weight-bold" v-html="title" />
