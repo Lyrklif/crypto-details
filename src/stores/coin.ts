@@ -1,7 +1,14 @@
 import { ref } from "vue";
+import type { Ref } from "vue";
 import { defineStore } from "pinia";
 
-export const useCoinStore = defineStore("coin", () => {
+interface CoinStore {
+  symbol: Ref<string>;
+  name: Ref<string>;
+  setSymbol: (key: string, fullName: string) => void;
+}
+
+export const useCoinStore = defineStore("coin", (): CoinStore => {
   const symbol = ref("");
   const name = ref("");
 

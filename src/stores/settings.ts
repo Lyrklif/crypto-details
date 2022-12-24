@@ -1,13 +1,29 @@
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
-import { defaultInterfaceLang } from "../constants/settings";
+import {
+  defaultInterfaceLang,
+  defaultInterfaceCurrency,
+} from "../constants/settings";
+import type { RemovableRef } from "@vueuse/core";
 
-export const useSettingsStore = defineStore("settings", () => {
-  const lang = useStorage("lang", navigator.language || defaultInterfaceLang);
+export interface SettingsStore {
+  lang: RemovableRef<string>;
+  currency: RemovableRef<string>;
+  setLang: (currentLang: string) => void;
+  setCurrency: (currentCurrency: string) => void;
+}
 
-  function setLang(newLang: string) {
-    lang.value = newLang;
+export const useSettingsStore = defineStore("settings", (): SettingsStore => {
+  const lang = useStorage("lang", defaultInterfaceLang);
+  const currency = useStorage("currency", defaultInterfaceCurrency);
+
+  function setLang(currentLang: string): void {
+    lang.value = currentLang;
   }
 
-  return { lang, setLang };
+  function setCurrency(currentCurrency: string): void {
+    currency.value = currentCurrency;
+  }
+
+  return { lang, currency, setLang, setCurrency };
 });

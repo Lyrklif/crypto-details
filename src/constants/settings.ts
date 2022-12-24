@@ -1,3 +1,4 @@
 const defaultInterfaceLang = "en";
+const defaultInterfaceCurrency = "USD";
 
-export { defaultInterfaceLang };
+export { defaultInterfaceLang, defaultInterfaceCurrency };
