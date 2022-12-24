@@ -9,6 +9,7 @@ interface MixinsInterface {
   date: (value: string) => string;
   percent: (value: number, decimalPlaces?: number) => string | number;
   price: (value: number, decimalPlaces?: number) => string | number;
+  number: (value: number, decimalPlaces?: number) => string | number;
 }
 
 const filters: MixinsInterface = {
@@ -40,6 +41,14 @@ const filters: MixinsInterface = {
       maximumFractionDigits: decimalPlaces,
       style: "currency",
       currency: currency,
+    });
+  },
+  number(value, decimalPlaces = 4) {
+    if (!value) return value;
+
+    return value.toLocaleString(undefined, {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: decimalPlaces,
     });
   },
 };
