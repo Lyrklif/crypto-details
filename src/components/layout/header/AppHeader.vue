@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import LocaleChanger from "../../features/LocaleChanger.vue";
+import CurrencyChanger from "../../features/CurrencyChanger.vue";
 import { useI18n } from "vue-i18n";
 import { onClickOutside, useSwipe } from "@vueuse/core";
 import { SwipeDirection } from "@vueuse/core";
@@ -42,6 +43,7 @@ const toggleShow = () => {
       class="content card bg-primary shadow-soft p-2 h-100 pt-6"
     >
       <LocaleChanger class="mb-4" />
+      <CurrencyChanger class="mb-4" />
 
       <nav>
         <ul class="list-unstyled">
