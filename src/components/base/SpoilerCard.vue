@@ -57,5 +57,6 @@ const scrollToSpoiler = () => {
 .collapse {
   overflow: auto;
   max-width: 100%;
+  max-height: 90vh;
 }
 </style>
