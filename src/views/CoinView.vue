@@ -6,7 +6,7 @@ import PoolMain from "../components/features/pool/PoolMain.vue";
 import ProfileMain from "../components/features/profile/ProfileMain.vue";
 import MetricMain from "../components/features/metric/MetricMain.vue";
 import GoogleTrends from "../components/features/GoogleTrends.vue";
-import NewsMain from "../components/features/news/NewsMain.vue";
+import NewsMain from "../components/features/coin-news/NewsMain.vue";
 import YoutubeMain from "../components/features/youtube/YoutubeMain.vue";
 import MarketMain from "../components/features/market/MarketMain.vue";
 </script>
