@@ -5,6 +5,7 @@ import { useCoinStore } from "../../../stores/coin";
 import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import type { AssetProfileDataResponse } from "../../../api/messari/types";
+import { ASSET_ERRORS } from "../../../api/messari/types";
 import ProfileContent from "./content/ProfileContent.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
 import AlertMessage from "../../base/AlertMessage.vue";
@@ -12,7 +13,7 @@ import LinesSpinner from "../../base/LinesSpinner.vue";
 
 const { t } = useI18n();
 const store = useCoinStore();
-const profile = ref<AssetProfileDataResponse>();
+const profile = ref<AssetProfileDataResponse | null>(null);
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
 const errorText = ref<string>("");
@@ -27,8 +28,11 @@ async function load() {
     const response = await API.messari.assetProfile(store.symbol, fields);
     profile.value = response.data.data;
   } catch (e: any) {
+    const notFound = e.response.status === ASSET_ERRORS.NOT_FOUND;
+
+    profile.value = null;
     errorText.value = e.response.statusText;
-    error.value = true;
+    error.value = !notFound;
   } finally {
     loading.value = false;
   }

@@ -221,6 +221,10 @@ interface AssetNewsResponse {
   data: Array<AssetNewsItem>;
 }
 
+enum ASSET_ERRORS {
+  NOT_FOUND = 404,
+}
+
 export type {
   AssetProfileResponse,
   AssetMetricResponse,
@@ -229,3 +233,5 @@ export type {
   AssetNewsResponse,
   AssetNewsItem,
 };
+
+export { ASSET_ERRORS };
