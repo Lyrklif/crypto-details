@@ -1,9 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import NewsMain from "../components/features/last-news/NewsMain.vue";
+</script>
 
 <template>
-  <div class="row justify-content-center mt-7">
-    <div class="col-12 col-md-10 col-lg-6 justify-content-center">
-      [process] News
-    </div>
-  </div>
+  <NewsMain />
 </template>

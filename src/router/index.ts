@@ -16,7 +16,7 @@ const router = createRouter({
       path: "/news",
       name: "news",
       component: NewsView,
-      meta: { title: "pagination.news" },
+      meta: { title: "pagination.last_news" },
     },
     {
       path: "/coin/:id",

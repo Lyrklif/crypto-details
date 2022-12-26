@@ -3,6 +3,7 @@ export default {
   errors: {
     token_not_found: "Token not found",
     empty: "No data found for this cryptocurrency",
+    empty_news: "No latest news. Try later",
   },
   alert: {
     success: "Well done!",
@@ -15,7 +16,7 @@ export default {
   },
   pagination: {
     coin: "Coin",
-    news: "News",
+    last_news: "Last news",
   },
   header: {
     home: "Home",
@@ -154,6 +155,9 @@ export default {
   },
   news: {
     title: "News",
+  },
+  last_news: {
+    title: "Last news",
   },
   youtube: {
     title: "Youtube videos",

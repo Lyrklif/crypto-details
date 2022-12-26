@@ -3,6 +3,7 @@ export default {
   errors: {
     token_not_found: "Токен не найден",
     empty: "Данные об этой криптовалюте не найдены",
+    empty_news: "Нет последних новостей. Попробуйте позже",
   },
   alert: {
     success: "Отлично!",
@@ -15,7 +16,7 @@ export default {
   },
   pagination: {
     coin: "Монета",
-    news: "Новости",
+    last_news: "Последние Новости",
   },
   header: {
     home: "Домой",
@@ -154,6 +155,9 @@ export default {
   },
   news: {
     title: "Новости",
+  },
+  last_news: {
+    title: "Последние новости",
   },
   youtube: {
     title: "Youtube видео",
