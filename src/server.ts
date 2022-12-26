@@ -88,6 +88,12 @@ export function makeServer() {
     }
   );
   server.get(
+    `${import.meta.env.VITE_MESSARI_API}news`,
+    (): AssetNewsResponse => {
+      return news;
+    }
+  );
+  server.get(
     `${import.meta.env.VITE_YOUTUBE_API}search`,
     (): YoutubeSearchResponse => {
       return youtube;
