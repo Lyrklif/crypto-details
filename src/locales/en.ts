@@ -15,11 +15,11 @@ export default {
   },
   pagination: {
     coin: "Coin",
-    about: "About",
+    news: "News",
   },
   header: {
     home: "Home",
-    about: "About",
+    news: "News",
     show_menu: "Show navigation bar",
     close_menu: "Hide navigation bar",
     pin: "Pin menu",

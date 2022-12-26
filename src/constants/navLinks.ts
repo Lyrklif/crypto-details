@@ -4,7 +4,7 @@ interface NAV_LINK {
 }
 
 const homeLink: NAV_LINK = { name: "home", text: "header.home" };
-const aboutLink: NAV_LINK = { name: "about", text: "header.about" };
+const aboutLink: NAV_LINK = { name: "news", text: "header.news" };
 
 const navLinks: Array<NAV_LINK> = [homeLink, aboutLink];
 

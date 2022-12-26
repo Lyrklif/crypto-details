@@ -15,11 +15,11 @@ export default {
   },
   pagination: {
     coin: "Монета",
-    about: "В проекте",
+    news: "Новости",
   },
   header: {
     home: "Домой",
-    about: "О проекте",
+    news: "Новости",
     show_menu: "Показать навигационную панель",
     close_menu: "Скрыть навигационную панель",
     pin: "Закрепить меню",

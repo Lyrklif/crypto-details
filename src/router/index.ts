@@ -1,8 +1,8 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
 import HomeView from "../views/HomeView.vue";
-import AboutView from "../views/AboutView.vue";
 import CoinView from "../views/CoinView.vue";
+import NewsView from "../views/NewsView.vue";
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -13,10 +13,10 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/about",
-      name: "about",
-      component: AboutView,
-      meta: { title: "pagination.about" },
+      path: "/news",
+      name: "news",
+      component: NewsView,
+      meta: { title: "pagination.news" },
     },
     {
       path: "/coin/:id",
