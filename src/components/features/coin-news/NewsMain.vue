@@ -17,7 +17,7 @@ const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
 const errorText = ref<string>("");
 
-async function loadGNews() {
+async function loadNews() {
   try {
     loading.value = true;
     error.value = false;
@@ -38,7 +38,7 @@ async function loadGNews() {
   <section>
     <SpoilerCard
       :title="`${t('news.title')} ${data.length ? `(${data.length})` : ''}`"
-      @firstOpen="loadGNews"
+      @firstOpen="loadNews"
     >
       <template #content>
         <header>
