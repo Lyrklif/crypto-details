@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import { useRoute } from "vue-router";
-import { computed } from "vue";
 
 const route = useRoute();
 defineProps({
@@ -9,14 +8,14 @@ defineProps({
     type: Number as PropType<number>,
     required: true,
   },
+  page: {
+    type: Number as PropType<number>,
+    required: true,
+  },
   routeName: {
     type: String as PropType<string>,
     required: true,
   },
-});
-
-const page = computed(() => {
-  return +route.params.page || 1;
 });
 </script>
 

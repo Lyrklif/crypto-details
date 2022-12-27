@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
 import API from "../../../api";
 import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../../../stores/coin";
@@ -9,14 +9,18 @@ import AlertMessage from "../../base/AlertMessage.vue";
 import LinesSpinner from "../../base/LinesSpinner.vue";
 import NewsList from "./list/NewsList.vue";
 import PagePagination from "../../base/PagePagination.vue";
+import { useRoute } from "vue-router";
+
+const PAGE_COUNT = 10;
 
 const { t } = useI18n();
 const store = useCoinStore();
+const route = useRoute();
 const data = ref<Array<AssetNewsItem>>([]);
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
 const errorText = ref<string>("");
-const page = ref<number>(1);
+const page = ref<number>(+route.params.page || 1);
 
 async function loadNews() {
   try {
@@ -35,6 +39,17 @@ async function loadNews() {
   }
 }
 
+watch(
+  () => route.params.page,
+  () => {
+    page.value = +route.params.page;
+  }
+);
+
+watch(page, () => {
+  loadNews();
+});
+
 loadNews();
 </script>
 
@@ -51,7 +66,8 @@ loadNews();
 
     <PagePagination
       v-if="!loading && !error"
-      :count="10"
+      :count="PAGE_COUNT"
+      :page="page"
       routeName="news"
       class="mt-5"
     />
