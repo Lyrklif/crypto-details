@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import type { GetCoinByIDResponse } from "../../../../api/coinpaprika/types";
+import LazyImage from "../../../base/LazyImage.vue";
 
 defineProps({
   coin: Object as PropType<GetCoinByIDResponse>,
@@ -12,7 +13,7 @@ defineProps({
     <div
       class="border border-light icon icon-shape-sm mr-3 rounded-circle shadow-inset"
     >
-      <img :src="coin.logo" :alt="coin.name" height="40" width="40" />
+      <LazyImage :src="coin.logo" :alt="coin.name" height="40" width="40" />
     </div>
     <div>
       <h1 class="mr-1">{{ coin.name }}</h1>

@@ -2,6 +2,7 @@
 import { PropType } from "vue";
 import type { GetTwitterItem } from "../../../../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
+import LazyImage from "../../../../../base/LazyImage.vue";
 
 const { t } = useI18n();
 
@@ -19,9 +20,9 @@ defineProps({
       :title="item.user_name"
       class="d-flex flex-wrap align-items-center text-decoration-none"
     >
-      <img
+      <LazyImage
         :src="item.user_image_link"
-        class="shadow-soft p-0 border border-light rounded-circle mr-2"
+        class="shadow-soft p-0 border border-light rounded-circle mr-2 overflow-hidden"
         :alt="item.user_name"
         height="48"
         width="48"

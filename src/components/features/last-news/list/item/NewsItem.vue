@@ -2,6 +2,7 @@
 import { PropType } from "vue";
 import { useI18n } from "vue-i18n";
 import type { AssetNewsItem } from "../../../../../api/messari/types";
+import LazyImage from "../../../../base/LazyImage.vue";
 
 const { t } = useI18n();
 
@@ -18,7 +19,7 @@ defineProps({
       :title="item.title"
       class="text-decoration-none card bg-primary border-light shadow-soft h-100"
     >
-      <img
+      <LazyImage
         :src="item.previewImage"
         :alt="item.title"
         class="card-img-top rounded-top"

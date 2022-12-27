@@ -4,6 +4,7 @@ import type { GetTwitterItem } from "../../../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 import TwitterAuthor from "./author/TwitterAuthor.vue";
 import TwitterFooter from "./footer/TwitterFooter.vue";
+import LazyImage from "../../../../base/LazyImage.vue";
 
 const { t } = useI18n();
 
@@ -19,10 +20,11 @@ defineProps({
     <a :href="item.status_link" class="text-decoration-none" target="_blank">
       <p class="h6">{{ item.status }}</p>
 
-      <img
+      <LazyImage
         v-if="item.media_link"
         :src="item.media_link"
         class="card-img-top rounded mb-2 image"
+        :alt="item.status"
       />
 
       <TwitterFooter :item="item" />

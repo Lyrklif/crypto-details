@@ -2,6 +2,7 @@
 import { PropType } from "vue";
 import { useI18n } from "vue-i18n";
 import type { YoutubeSearchItem } from "../../../../api/youtube/types";
+import LazyImage from "../../../base/LazyImage.vue";
 
 const { t } = useI18n();
 
@@ -18,11 +19,12 @@ defineProps({
       :title="item.snippet.title"
       class="text-decoration-none d-sm-flex"
     >
-      <img
+      <LazyImage
         :src="item.snippet.thumbnails.default.url"
         :width="item.snippet.thumbnails.default.width"
         :height="item.snippet.thumbnails.default.height"
         class="mr-2 mb-2"
+        :alt="item.snippet.title"
       />
       <div>
         <header>
