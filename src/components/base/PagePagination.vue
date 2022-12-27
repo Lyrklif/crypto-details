@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import { useRoute } from "vue-router";
+import { computed } from "vue";
 
 const route = useRoute();
 defineProps({
@@ -13,40 +14,50 @@ defineProps({
     required: true,
   },
 });
+
+const page = computed(() => {
+  return +route.params.page || 1;
+});
 </script>
 
 <template>
   <nav>
     <ol class="pagination circle-pagination">
-      <li class="page-item" :class="{ disabled: +route.params.page <= 1 }">
+      <li class="page-item" :class="{ disabled: page <= 1 }">
         <RouterLink
-          :to="{ name: routeName, params: { page: route.params.page - 1 } }"
+          :to="{ name: routeName, params: { page: page - 1 } }"
           class="page-link"
+          :disabled="page <= 1"
+          :event="page <= 1 ? '' : 'click'"
         >
           <i class="icon-angle-double-right left-icon" />
         </RouterLink>
       </li>
 
       <li
-        v-for="(_, index) in Array(count)"
+        v-for="index in [...Array(count).keys()].map((i) => i + 1)"
         :key="`pagination-${index}`"
         class="page-item"
-        :class="{ active: +route.params.page === index + 1 }"
+        :class="{ active: page === index }"
       >
+        <span v-if="page === index" class="page-link">
+          {{ index }}
+        </span>
         <RouterLink
-          :to="{ name: routeName, params: { page: index + 1 } }"
-          v-slot="{ isActive }"
-          :class="{ active: isActive }"
+          v-else
+          :to="{ name: routeName, params: { page: index } }"
           class="page-link"
         >
-          {{ index + 1 }}
+          {{ index }}
         </RouterLink>
       </li>
 
-      <li class="page-item" :class="{ disabled: +route.params.page >= count }">
+      <li class="page-item" :class="{ disabled: page >= count }">
         <RouterLink
-          :to="{ name: routeName, params: { page: +route.params.page + 1 } }"
+          :to="{ name: routeName, params: { page: page + 1 } }"
           class="page-link"
+          :disabled="page >= count"
+          :event="page >= count ? '' : 'click'"
         >
           <i class="icon-angle-double-right" />
         </RouterLink>
