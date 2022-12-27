@@ -14,7 +14,7 @@ defineProps({
 <template>
   <RouterLink
     class="w-100"
-    :to="{ name: item.name }"
+    :to="{ name: item.name, params: item.params }"
     v-slot="{ isActive }"
     :title="t(item.text)"
   >
