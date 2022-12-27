@@ -13,7 +13,7 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/news",
+      path: "/news/:page?",
       name: "news",
       component: NewsView,
       meta: { title: "pagination.last_news" },

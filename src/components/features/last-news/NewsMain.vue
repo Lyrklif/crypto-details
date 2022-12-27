@@ -8,6 +8,7 @@ import type { AssetNewsItem } from "../../../api/messari/types";
 import AlertMessage from "../../base/AlertMessage.vue";
 import LinesSpinner from "../../base/LinesSpinner.vue";
 import NewsList from "./list/NewsList.vue";
+import PagePagination from "../../base/PagePagination.vue";
 
 const { t } = useI18n();
 const store = useCoinStore();
@@ -47,6 +48,8 @@ loadNews();
     <AlertMessage v-else-if="error" :text="errorText" type="error" />
     <AlertMessage v-else-if="!data.length" :text="t('errors.empty_news')" />
     <NewsList v-else :list="data" />
+
+    <PagePagination :count="10" routeName="news" class="mt-5" />
 
     <PoweredBy site="messari" :loading="loading" :fall="error" class="mt-5" />
   </section>
