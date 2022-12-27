@@ -10,8 +10,8 @@ import LinesSpinner from "../../base/LinesSpinner.vue";
 import NewsList from "./list/NewsList.vue";
 import PagePagination from "../../base/PagePagination.vue";
 import { useRoute } from "vue-router";
-
-const PAGE_COUNT = 10;
+import { startNewsPage, maxNewsPage } from "../../../constants/navLinks";
+import router from "../../../router";
 
 const { t } = useI18n();
 const store = useCoinStore();
@@ -20,7 +20,10 @@ const data = ref<Array<AssetNewsItem>>([]);
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
 const errorText = ref<string>("");
-const page = ref<number>(+route.params.page || 1);
+
+const page = computed(() => {
+  return +route.params.page || startNewsPage;
+});
 
 async function loadNews() {
   try {
@@ -42,13 +45,17 @@ async function loadNews() {
 watch(
   () => route.params.page,
   () => {
-    page.value = +route.params.page;
+    const page = +route.params.page;
+
+    if (page > maxNewsPage) {
+      router.push({ name: "news", params: { page: maxNewsPage } });
+    } else if (page < startNewsPage) {
+      router.push({ name: "news", params: { page: startNewsPage } });
+    } else {
+      loadNews();
+    }
   }
 );
-
-watch(page, () => {
-  loadNews();
-});
 
 loadNews();
 </script>
@@ -66,7 +73,7 @@ loadNews();
 
     <PagePagination
       v-if="!loading && !error"
-      :count="PAGE_COUNT"
+      :count="maxNewsPage"
       :page="page"
       routeName="news"
       class="mt-5"
