@@ -49,7 +49,12 @@ loadNews();
     <AlertMessage v-else-if="!data.length" :text="t('errors.empty_news')" />
     <NewsList v-else :list="data" />
 
-    <PagePagination :count="10" routeName="news" class="mt-5" />
+    <PagePagination
+      v-if="!loading && !error"
+      :count="10"
+      routeName="news"
+      class="mt-5"
+    />
 
     <PoweredBy site="messari" :loading="loading" :fall="error" class="mt-5" />
   </section>
