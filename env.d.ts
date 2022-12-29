@@ -13,4 +13,5 @@ interface ImportMetaEnv {
   readonly VITE_YOUTUBE_API_KEY: string;
   readonly VITE_CRYPTOPANIC_API: string;
   readonly VITE_CRYPTOPANIC_API_KEY: string;
+  readonly VITE_GITHUB_REPO_LINK: string;
 }

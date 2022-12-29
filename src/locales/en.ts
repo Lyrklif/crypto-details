@@ -26,6 +26,9 @@ export default {
     pin: "Pin menu",
     unpin: "Unpin menu",
   },
+  footer: {
+    github: "View on Github",
+  },
   search: {
     title: "Enter the name of the cryptocurrency",
     placeholder: "Bitcoin, BNB, TON, ...",
