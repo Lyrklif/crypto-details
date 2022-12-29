@@ -36,6 +36,7 @@ export default {
     active: "Активен",
     close: "Закрыть",
     trends: "Тренды",
+    history: "История",
   },
   coin: {
     active: "Активный",
