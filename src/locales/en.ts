@@ -35,6 +35,8 @@ export default {
     new: "New",
     active: "Active",
     close: "Close",
+    trends: "Trends",
+    history: "History",
   },
   coin: {
     active: "Active",
