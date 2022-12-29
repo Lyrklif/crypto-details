@@ -29,11 +29,11 @@ const choose = (key: string) => {
 </script>
 
 <template>
-  <ul class="flex-row list-unstyled d-flex flex-wrap">
+  <ul class="list-unstyled">
     <li
       v-for="item in trendingCoins"
       :key="`search-trend-${item.item.id}`"
-      class="mb-1 mr-1"
+      class="mb-1 mr-1 d-inline-block"
     >
       <TrendItem @choose="choose" :item="item" :is-disabled="isDisabled" />
     </li>

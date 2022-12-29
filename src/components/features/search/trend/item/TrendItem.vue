@@ -14,7 +14,7 @@ defineProps({
   <button
     @click="emit('choose', item.item.symbol)"
     type="button"
-    class="btn btn-primary btn-pill text-dark py-1 px-2 animate-up-2"
+    class="badge badge-dark text-uppercase animate-up-2"
     :title="item.item.name"
     :disabled="isDisabled"
   >

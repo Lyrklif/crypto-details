@@ -35,6 +35,7 @@ export default {
     new: "Новый",
     active: "Активен",
     close: "Закрыть",
+    trends: "Тренды",
   },
   coin: {
     active: "Активный",

@@ -39,9 +39,13 @@ async function search(coin: string) {
     </header>
 
     <div class="card-body">
-      <SearchForm @submit="search" :isDisabled="isSearching" class="mb-4" />
+      <SearchForm @submit="search" :isDisabled="isSearching" class="mb-3" />
       <NotFound v-if="isError" @close="isError = false" />
-      <SearchTrends @choose="search" :is-disabled="isSearching" />
+
+      <div>
+        <b>{{ t("search.trends") }}:</b>
+        <SearchTrends @choose="search" :is-disabled="isSearching" />
+      </div>
     </div>
   </div>
 </template>
