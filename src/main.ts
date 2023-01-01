@@ -12,7 +12,7 @@ import VueLazyload from "vue-lazyload";
 import en from "./locales/en";
 import ru from "./locales/ru";
 
-import "./assets/style.css";
+import "./assets/icons.css";
 import "./assets/neumorphism.css";
 
 const app = createApp(App);
