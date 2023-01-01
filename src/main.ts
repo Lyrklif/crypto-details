@@ -35,6 +35,6 @@ app.config.globalProperties.$filters = filters;
 
 if (process.env.NODE_ENV === "development") {
   // comment this line to get real api data
-  // makeServer();
+  makeServer();
 }
 app.mount("#app");
