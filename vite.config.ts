@@ -13,16 +13,7 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    createHtmlPlugin({
-      minify: true,
-      inject: {
-        data: {
-          title: "Crypto details",
-          description:
-            "Detailed information about cryptocurrency using public api",
-        },
-      },
-    }),
+    createHtmlPlugin({ minify: true }),
     VueI18nPlugin({}),
   ],
   base,
