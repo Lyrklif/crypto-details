@@ -17,7 +17,10 @@ const toggle = () => {
 };
 const scrollToSpoiler = () => {
   if (!spoilerWrapper.value) return;
-  spoilerWrapper.value.scrollIntoView({ behavior: "smooth" });
+  spoilerWrapper.value.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest",
+  });
 };
 </script>
 
