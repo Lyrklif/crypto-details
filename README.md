@@ -1,9 +1,30 @@
 # crypto-details
 
-**[project in development]**
-
+*[project in development]*  
 Detailed information about cryptocurrency using public api
 
+**What information about cryptocurrency is available:**
+- Basic information
+- Price chart
+- Team 
+- Exchanges 
+- Pools 
+- Markets 
+- Profile
+- Metric
+- News 
+- Youtube videos 
+- Twitter 
+- Google trends
+
+
+Screenshots               |  Screenshots
+:-------------------------:|:-------------------------:
+![1](https://user-images.githubusercontent.com/41914434/218876144-56c62e38-ce38-4178-8899-92841c8927ba.png)  |  ![2](https://user-images.githubusercontent.com/41914434/218876149-0cb8704c-f8cb-41da-8d35-2f0d2132ceb0.png)
+![3](https://user-images.githubusercontent.com/41914434/218876156-ae91593e-56a1-4d31-97ad-4ca357f12ee8.png)  |  ![4](https://user-images.githubusercontent.com/41914434/218876163-cd6f07d2-145d-4d74-af4a-5252a907b29b.png)
+![5](https://user-images.githubusercontent.com/41914434/218876165-ebe7339a-7745-4934-8014-10b4d2deeeb9.png)  |  ![6](https://user-images.githubusercontent.com/41914434/218876166-11ce0f8c-4b88-4109-826d-792571fcd08d.png)
+
+  
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
