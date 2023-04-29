@@ -1,6 +1,5 @@
 # crypto-details
 
-*[project in development]*  
 Detailed information about cryptocurrency using public api
 
 **What information about cryptocurrency is available:**
