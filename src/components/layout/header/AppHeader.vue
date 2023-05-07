@@ -3,9 +3,7 @@ import { ref } from "vue";
 import LocaleChanger from "../../features/LocaleChanger.vue";
 import CurrencyChanger from "../../features/CurrencyChanger.vue";
 import { useI18n } from "vue-i18n";
-import { onClickOutside, useSwipe } from "@vueuse/core";
-import { SwipeDirection } from "@vueuse/core";
-import HeaderItem from "./item/HeaderItem.vue";
+import { onClickOutside, SwipeDirection, useSwipe } from "@vueuse/core";
 import HeaderPin from "./pin/HeaderPin.vue";
 import HeaderToggle from "./toggle/HeaderToggle.vue";
 import navLinks from "../../../constants/navLinks";
@@ -38,26 +36,25 @@ const toggleShow = () => {
   <div ref="target" class="mh-100 h-100vh app-header">
     <HeaderToggle class="toggle mr-2 mt-2" :show="show" @click="toggleShow" />
 
-    <header
-      v-if="show"
-      class="content card bg-primary shadow-soft p-2 h-100 pt-6"
-    >
+    <header v-if="show" class="card p-2 h-100 shadow-2 pt-8">
       <LocaleChanger class="mb-4" />
       <CurrencyChanger class="mb-4" />
 
       <nav>
         <ul class="list-unstyled">
-          <li
-            class="animate-up-2 mb-3"
-            v-for="item in navLinks"
-            :key="t(item.text)"
-          >
-            <HeaderItem :item="item" />
+          <li v-for="item in navLinks" :key="t(item.text)" class="mb-3">
+            <RouterLink
+              class="p-button p-component p-button-link p-button-secondary p-button-outlined"
+              :to="{ name: item.name, params: item.params }"
+              :title="t(item.text)"
+            >
+              {{ t(item.text) }}
+            </RouterLink>
           </li>
         </ul>
       </nav>
 
-      <HeaderPin :pin="pin" @click="pin = !pin" class="w-100 mt-auto" />
+      <HeaderPin :pin="pin" @click="pin = !pin" class="mt-auto mx-auto" />
     </header>
   </div>
 </template>
@@ -78,9 +75,5 @@ const toggleShow = () => {
   top: 0;
   right: 0;
   z-index: 100;
-}
-
-.content {
-  border-radius: 0;
 }
 </style>

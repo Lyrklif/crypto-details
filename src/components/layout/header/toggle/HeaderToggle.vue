@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { PropType } from "vue";
+import Button from "primevue/button";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
@@ -11,11 +12,10 @@ defineProps({
 </script>
 
 <template>
-  <button
-    class="btn btn-icon-only btn-primary btn-pill p-4"
+  <Button
     @click="emit('click')"
     :title="show ? t('header.close_menu') : t('header.show_menu')"
-  >
-    <i :class="show ? 'icon-cross' : 'icon-menu'"></i>
-  </button>
+    :icon="['pi', show ? 'pi-times' : 'pi-bars']"
+    rounded
+  />
 </template>

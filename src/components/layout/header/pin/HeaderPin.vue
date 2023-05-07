@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { PropType } from "vue";
+import { PropType, toRef } from "vue";
 import { useI18n } from "vue-i18n";
+import InputSwitch from "primevue/inputswitch";
 
 const { t } = useI18n();
 const emit = defineEmits(["click"]);
 
-defineProps({
+const props = defineProps({
   pin: Boolean as PropType<boolean>,
 });
+
+const checked = toRef(props, "pin");
 </script>
 
 <template>
-  <button
-    class="btn btn-sm btn-primary d-block"
-    @click="emit('click')"
+  <InputSwitch
+    v-model="checked"
+    @change="emit('click')"
     :title="pin ? t('header.unpin') : t('header.pin')"
-  >
-    <i :class="pin ? 'icon-toggle-on' : 'icon-toggle-off'"></i>
-  </button>
+  />
 </template>

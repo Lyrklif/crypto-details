@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import Card from "primevue/card";
 import API from "../../../api";
 import { useI18n } from "vue-i18n";
 import NotFound from "./error/NotFound.vue";
@@ -37,17 +38,15 @@ async function search(coin: string) {
 </script>
 
 <template>
-  <div class="card bg-primary shadow-soft border-light p-2 p-md-4">
-    <header class="card-header text-center pb-0">
-      <h2 class="h4">{{ t("search.title") }}</h2>
-    </header>
+  <Card>
+    <template #title>{{ t("search.title") }}</template>
 
-    <div class="card-body">
-      <SearchForm @submit="search" :isDisabled="isSearching" class="mb-3" />
+    <template #content>
+      <SearchForm @submit="search" :isDisabled="isSearching" class="mb-5" />
       <NotFound v-if="isError" @close="isError = false" />
 
-      <SearchTrends @choose="search" :is-disabled="isSearching" />
+      <SearchTrends @choose="search" :is-disabled="isSearching" class="mb-3" />
       <SearchHistory @choose="search" :is-disabled="isSearching" />
-    </div>
-  </div>
+    </template>
+  </Card>
 </template>

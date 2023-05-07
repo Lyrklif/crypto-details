@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { PropType, ref } from "vue";
+import Button from "primevue/button";
 import API from "../../../../api";
 import type { TrendingCoinItem } from "../../../../api/coingecko/types";
 import TrendItem from "./item/TrendItem.vue";

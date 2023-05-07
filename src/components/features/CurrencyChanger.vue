@@ -1,30 +1,22 @@
 <script setup lang="ts">
+import Dropdown from "primevue/dropdown";
 import { useInterfaceStore } from "../../stores/interface";
-import { ref } from "vue";
 import { currencyVariants } from "../../constants/interface";
+import { storeToRefs } from "pinia";
 
 const store = useInterfaceStore();
-const selectCurrencyValue = ref(store.currency);
+const { currency } = storeToRefs(store);
+const { setCurrency } = store;
 
 const changeHandler = (): void => {
-  store.setCurrency(selectCurrencyValue.value);
+  setCurrency(currency.value);
 };
 </script>
 
 <template>
-  <div class="form-group mb-0">
-    <select
-      class="custom-select my-1 mr-sm-2"
-      v-model="selectCurrencyValue"
-      @change="changeHandler"
-    >
-      <option
-        v-for="item in currencyVariants"
-        :key="`currency-${item}`"
-        :value="item"
-      >
-        {{ item }}
-      </option>
-    </select>
-  </div>
+  <Dropdown
+    v-model="currency"
+    :options="currencyVariants"
+    @change="changeHandler"
+  />
 </template>

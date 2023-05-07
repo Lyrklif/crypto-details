@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import type { TrendingCoinItem } from "../../../../../api/coingecko/types";
+import Button from "primevue/button";
 
 const emit = defineEmits(["choose"]);
 
@@ -11,13 +12,11 @@ defineProps({
 </script>
 
 <template>
-  <button
+  <Button
+    :label="item.item.symbol"
+    rounded
     @click="emit('choose', item.item.symbol)"
-    type="button"
-    class="badge badge-dark text-uppercase animate-up-2"
-    :title="item.item.name"
     :disabled="isDisabled"
-  >
-    {{ item.item.symbol }}
-  </button>
+    class="py-1"
+  />
 </template>

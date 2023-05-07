@@ -1,26 +1,19 @@
 <script setup lang="ts">
+import Dropdown from "primevue/dropdown";
 import { useI18n } from "vue-i18n";
 import { useInterfaceStore } from "../../stores/interface";
-import { watch } from "vue";
 
 const store = useInterfaceStore();
-const { t, availableLocales, locale } = useI18n();
+const { setLang } = store;
 
-watch(locale, () => {
-  store.setLang(locale.value);
-});
+const { availableLocales, locale } = useI18n();
 </script>
 
 <template>
-  <div class="form-group locale-changer mb-0">
-    <select class="custom-select my-1 mr-sm-2" v-model="$i18n.locale">
-      <option
-        v-for="(lang, i) in availableLocales"
-        :key="`Lang${i}`"
-        :value="lang"
-      >
-        {{ lang }}
-      </option>
-    </select>
-  </div>
+  <Dropdown
+    v-model="$i18n.locale"
+    :options="availableLocales"
+    @change="setLang(locale)"
+    class="uppercase"
+  />
 </template>

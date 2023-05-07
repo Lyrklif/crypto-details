@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
+import Button from "primevue/button";
 
 const emit = defineEmits(["choose"]);
 
@@ -10,13 +11,12 @@ defineProps({
 </script>
 
 <template>
-  <button
+  <Button
+    :label="item"
+    severity="secondary"
+    rounded
     @click="emit('choose', item)"
-    type="button"
-    class="badge badge-dark text-uppercase animate-up-2"
-    :title="item"
     :disabled="isDisabled"
-  >
-    {{ item }}
-  </button>
+    class="py-1"
+  />
 </template>

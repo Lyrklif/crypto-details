@@ -1,8 +1,9 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
 import HomeView from "../views/HomeView.vue";
-import CoinView from "../views/CoinView.vue";
-import NewsView from "../views/NewsView.vue";
+
+const CoinView = () => import("../views/CoinView.vue");
+const NewsView = () => import("../views/NewsView.vue");
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
