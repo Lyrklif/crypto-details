@@ -13,6 +13,7 @@ import PrimeVue from "primevue/config";
 import en from "./locales/en";
 import ru from "./locales/ru";
 
+import "./assets/reset.scss";
 import "./assets/icons.css";
 import "./assets/neumorphism.css";
 
