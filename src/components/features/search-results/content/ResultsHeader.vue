@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Button from "primevue/button";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
@@ -6,18 +7,17 @@ const emit = defineEmits(["back"]);
 </script>
 
 <template>
-  <header
-    class="card-header text-center pb-0 d-flex align-items-center justify-content-between flex-wrap"
-  >
-    <button
-      class="btn btn-primary mr-1 mb-2 animate-left-2"
+  <header class="flex align-items-center justify-content-between flex-wrap">
+    <Button
+      :label="t('search.back')"
+      icon="pi pi-chevron-left"
+      class="mr-1 mb-2"
       type="button"
+      severity="success"
+      outlined
       :title="t('search.back')"
       @click="emit('back')"
-    >
-      <span class="mr-1"><span class="icon-chevron-left"></span></span>
-      {{ t("search.back") }}
-    </button>
+    />
 
     <h2 class="h4 mb-2">{{ t("search.results") }}</h2>
   </header>

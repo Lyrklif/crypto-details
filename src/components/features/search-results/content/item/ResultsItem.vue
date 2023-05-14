@@ -2,6 +2,8 @@
 import type { PropType } from "vue";
 import type { SearchCurrencyItem } from "../../../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
+import Card from "primevue/card";
+import Tag from "primevue/tag";
 
 const { t } = useI18n();
 defineProps({
@@ -12,23 +14,24 @@ defineProps({
 <template>
   <RouterLink
     :to="{ name: 'coin', params: { id: item.id } }"
-    class="p-2 p-md-3"
     :title="item.name"
   >
-    <span class="font-small">{{ item.symbol }}</span>
-    <h3 class="font-weight-bold">{{ item.name }}</h3>
+    <Card>
+      <template #title>
+        <span class="font-small">{{ item.symbol }}</span>
+        <h3 class="font-weight-bold">{{ item.name }}</h3>
+      </template>
 
-    <ul class="d-flex list-unstyled">
-      <li>
-        <span v-if="item.is_new" class="badge badge-secondary mr-1 mb-1">
-          {{ t("search.new") }}
-        </span>
-      </li>
-      <li>
-        <span v-if="item.is_active" class="badge badge-success mr-1 mb-1">
-          {{ t("search.active") }}
-        </span>
-      </li>
-    </ul>
+      <template #content>
+        <ul class="d-flex list-unstyled">
+          <li v-if="item.is_new">
+            <Tag severity="info" :value="t('search.new')" rounded />
+          </li>
+          <li v-if="item.is_active">
+            <Tag severity="success" :value="t('search.active')" rounded />
+          </li>
+        </ul>
+      </template>
+    </Card>
   </RouterLink>
 </template>

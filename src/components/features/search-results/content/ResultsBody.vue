@@ -11,15 +11,9 @@ defineProps({
 </script>
 
 <template>
-  <div class="card-body">
-    <ul class="list-unstyled">
-      <li
-        v-for="item in items"
-        :key="`search-result-${item.id}`"
-        class="card bg-primary border-light shadow-soft mb-3 animate-up-2"
-      >
-        <ResultsItem :item="item" />
-      </li>
-    </ul>
-  </div>
+  <ul class="list-unstyled">
+    <li v-for="item in items" :key="`search-result-${item.id}`" class="mb-3">
+      <ResultsItem :item="item" />
+    </li>
+  </ul>
 </template>
