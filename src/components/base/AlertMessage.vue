@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 import type { PropType } from "vue";
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n();
+import Message from "primevue/message";
 
 type alertTypes = "info" | "success" | "error" | "warning";
-const alerts: { [alertTypes: string]: { classes: string; icon: string } } = {
-  success: { classes: "alert-success", icon: "icon-checkmark" },
-  warning: { classes: "alert-secondary", icon: "icon-bell" },
-  error: { classes: "alert-danger", icon: "icon-fire" },
-  info: { classes: "alert-info", icon: "icon-info-circle" },
+const alerts: {
+  [alertTypes: string]: { severity: string };
+} = {
+  success: { severity: "success" },
+  warning: { severity: "warn" },
+  error: { severity: "error" },
+  info: { severity: "info" },
 };
 
 defineProps({
@@ -25,19 +25,7 @@ defineProps({
 </script>
 
 <template>
-  <div>
-    <div
-      class="alert alert-dismissible shadow-soft show"
-      :class="alerts[type].classes"
-      role="alert"
-    >
-      <span class="alert-inner--icon">
-        <span :class="alerts[type].icon" />
-      </span>
-      <span class="alert-inner--text">
-        <strong class="mr-2">{{ t(`alert.${type}`) }}</strong>
-        <slot>{{ text }}</slot>
-      </span>
-    </div>
-  </div>
+  <Message :severity="alerts[type].severity">
+    <slot>{{ text }}</slot>
+  </Message>
 </template>

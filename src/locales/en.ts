@@ -57,6 +57,10 @@ export default {
     last_data_at: "Last data at",
     team: "Team",
   },
+  team: {
+    name: "Name",
+    position: "Position",
+  },
   twitter: {
     title: "Twitter",
     retweets: "Retweets",

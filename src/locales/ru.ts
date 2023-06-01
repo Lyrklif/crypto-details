@@ -57,6 +57,10 @@ export default {
     last_data_at: "Последние данные на",
     team: "Команда",
   },
+  team: {
+    name: "Имя",
+    position: "Позиция",
+  },
   twitter: {
     title: "Twitter",
     retweets: "Ретвитов",
