@@ -12,8 +12,8 @@ const setCoins = (coins = []) => {
 </script>
 
 <template>
-  <div class="row justify-content-center mt-7">
-    <div class="col-12 col-md-10 col-lg-6 justify-content-center">
+  <div class="grid justify-content-center mt-7">
+    <div class="col-12 md:col-10 lg:col-5 justify-content-center">
       <SearchMain v-if="!foundedCoins.length" @search="setCoins" />
       <ResultsMain v-else :items="foundedCoins" @back="setCoins" />
     </div>

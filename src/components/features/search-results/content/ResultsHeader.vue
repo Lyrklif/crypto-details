@@ -19,6 +19,6 @@ const emit = defineEmits(["back"]);
       @click="emit('back')"
     />
 
-    <h2 class="h4 mb-2">{{ t("search.results") }}</h2>
+    <h2 class="mt-0 mb-2">{{ t("search.results") }}</h2>
   </header>
 </template>

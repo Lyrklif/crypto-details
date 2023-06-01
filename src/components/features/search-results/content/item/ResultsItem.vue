@@ -15,11 +15,12 @@ defineProps({
   <RouterLink
     :to="{ name: 'coin', params: { id: item.id } }"
     :title="item.name"
+    class="no-underline"
   >
     <Card>
       <template #title>
-        <span class="font-small">{{ item.symbol }}</span>
-        <h3 class="font-weight-bold">{{ item.name }}</h3>
+        <span class="font-small text-sm">{{ item.symbol }}</span>
+        <h3 class="font-weight-bold my-0">{{ item.name }}</h3>
       </template>
 
       <template #content>

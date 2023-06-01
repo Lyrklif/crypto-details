@@ -12,16 +12,18 @@ import MarketMain from "../components/features/market/MarketMain.vue";
 </script>
 
 <template>
-  <div>
-    <CoinMain class="mb-4" />
-    <ExchangeMain class="mb-4" />
-    <PoolMain class="mb-4" />
-    <MarketMain class="mb-4" />
-    <ProfileMain class="mb-4" />
-    <MetricMain class="mb-4" />
-    <NewsMain class="mb-4" />
-    <YoutubeMain class="mb-4" />
-    <TwitterMain class="mb-5" />
-    <GoogleTrends />
+  <div class="grid mx-auto">
+    <div class="col-12">
+      <CoinMain class="mb-4" />
+      <ExchangeMain class="mb-4" />
+      <PoolMain class="mb-4" />
+      <MarketMain class="mb-4" />
+      <ProfileMain class="mb-4" />
+      <MetricMain class="mb-4" />
+      <NewsMain class="mb-4" />
+      <YoutubeMain class="mb-4" />
+      <TwitterMain class="mb-5" />
+      <GoogleTrends />
+    </div>
   </div>
 </template>
