@@ -15,7 +15,7 @@ import ru from "./locales/ru";
 
 import "./assets/reset.scss";
 import "./assets/icons.css";
-import "./assets/neumorphism.css";
+// import "./assets/neumorphism.css";
 
 import "primevue/resources/themes/lara-light-teal/theme.css";
 import "primevue/resources/primevue.min.css";

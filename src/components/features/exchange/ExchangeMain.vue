@@ -59,7 +59,7 @@ async function load() {
         <LinesSpinner v-if="loading" />
         <AlertMessage v-else-if="error" :text="errorText" type="error" />
         <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
-        <ExchangeTable v-else :list="list" class="content" />
+        <ExchangeTable v-else :list="list" />
       </template>
     </SpoilerCard>
   </section>

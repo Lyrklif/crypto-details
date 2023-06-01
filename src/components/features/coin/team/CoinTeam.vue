@@ -7,6 +7,7 @@ import SpoilerCard from "../../../base/SpoilerCard.vue";
 import PoweredBy from "../../../base/PoweredBy.vue";
 import AlertMessage from "../../../base/AlertMessage.vue";
 import LinesSpinner from "../../../base/LinesSpinner.vue";
+import DataTable from "primevue/datatable";
 
 const { t } = useI18n();
 const showCount = ref(false);
@@ -42,14 +43,14 @@ defineProps({
         <AlertMessage v-else-if="error" :text="errorText" type="error" />
         <AlertMessage v-else-if="!links.length" :text="t('errors.empty')" />
 
-        <table v-else class="table table-striped mb-0">
-          <tbody>
+        <DataTable v-else>
+          <tbody class="p-datatable-tbody">
             <tr v-for="item in links" :key="`team-${item.id}`">
-              <td class="border-0 py-1">{{ item.name }}</td>
-              <td class="border-0 py-1">{{ item.position }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.position }}</td>
             </tr>
           </tbody>
-        </table>
+        </DataTable>
       </template>
     </SpoilerCard>
   </section>

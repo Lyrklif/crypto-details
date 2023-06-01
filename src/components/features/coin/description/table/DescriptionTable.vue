@@ -14,8 +14,8 @@ defineProps({
   <DataTable>
     <tbody class="p-datatable-tbody">
       <tr>
-        <td class="py-1">{{ t("coin.started_at") }}</td>
-        <td class="py-1">
+        <td>{{ t("coin.started_at") }}</td>
+        <td>
           <span class="small">
             <i class="icon-calendar mr-1" />
             <span>{{ $filters.date(coin.started_at) || "-" }}</span>
@@ -23,8 +23,8 @@ defineProps({
         </td>
       </tr>
       <tr>
-        <td class="py-1">{{ t("coin.last_data_at") }}</td>
-        <td class="py-1">
+        <td>{{ t("coin.last_data_at") }}</td>
+        <td>
           <span class="small">
             <i class="icon-calendar mr-1" />
             <span>{{ $filters.date(coin.last_data_at) || "-" }}</span>
@@ -32,21 +32,21 @@ defineProps({
         </td>
       </tr>
       <tr>
-        <td class="py-1">{{ t("coin.hash_algorithm") }}</td>
-        <td class="py-1">{{ coin.hash_algorithm || "-" }}</td>
+        <td>{{ t("coin.hash_algorithm") }}</td>
+        <td>{{ coin.hash_algorithm || "-" }}</td>
       </tr>
       <tr>
-        <td class="py-1">{{ t("coin.org_structure") }}</td>
-        <td class="py-1">{{ coin.org_structure || "-" }}</td>
+        <td>{{ t("coin.org_structure") }}</td>
+        <td>{{ coin.org_structure || "-" }}</td>
       </tr>
       <tr>
-        <td class="py-1">{{ t("coin.proof_type") }}</td>
-        <td class="py-1">{{ coin.proof_type || "-" }}</td>
+        <td>{{ t("coin.proof_type") }}</td>
+        <td>{{ coin.proof_type || "-" }}</td>
       </tr>
 
       <tr>
-        <td class="py-1">{{ t("coin.type") }}</td>
-        <td class="py-1">{{ coin.type || "-" }}</td>
+        <td>{{ t("coin.type") }}</td>
+        <td>{{ coin.type || "-" }}</td>
       </tr>
     </tbody>
   </DataTable>
