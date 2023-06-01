@@ -7,14 +7,12 @@ import Pagination from "./components/layout/AppPagination.vue";
 
 <template>
   <div>
-    <div class="d-flex flex-row-reverse">
-      <AppHeader />
+    <AppHeader />
 
-      <main class="container">
-        <Pagination class="mt-4 mb-5" />
-        <RouterView />
-      </main>
-    </div>
+    <main class="container">
+      <Pagination class="mt-4 mb-5" />
+      <RouterView />
+    </main>
 
     <AppFooter class="mt-5" />
   </div>

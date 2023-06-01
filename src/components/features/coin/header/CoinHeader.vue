@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-  <header class="d-flex flex-wrap align-items-center">
+  <header class="flex flex-wrap align-items-center">
     <div class="mr-3">
       <LazyImage :src="coin.logo" :alt="coin.name" height="40" width="40" />
     </div>

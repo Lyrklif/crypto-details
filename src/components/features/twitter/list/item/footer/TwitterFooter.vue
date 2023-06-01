@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-  <footer class="d-flex flex-wrap align-items-center">
+  <footer class="flex flex-wrap align-items-center">
     <p class="mr-3 mb-1 small text-gray">
       <time :datetime="item.date">
         {{ $filters.date(item.date) }}

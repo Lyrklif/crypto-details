@@ -40,7 +40,7 @@ const choose = (key: string) => {
       <li
         v-for="item in trendingCoins"
         :key="`search-trend-${item.item.id}`"
-        class="mb-1 mr-1 d-inline-block"
+        class="mb-1 mr-1 inline-block"
       >
         <TrendItem @choose="choose" :item="item" :is-disabled="isDisabled" />
       </li>

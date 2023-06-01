@@ -9879,7 +9879,7 @@ button.bg-slack:focus {
     display: table-cell !important;
 }
 
-.d-flex {
+.flex {
     display: flex !important;
 }
 

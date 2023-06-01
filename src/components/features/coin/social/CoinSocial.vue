@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-  <ul class="list-unstyled d-flex flex-wrap">
+  <ul class="list-unstyled flex flex-wrap">
     <li v-for="(item, index) in links" :key="index" class="mb-2 mr-2">
       <SocialLink :item="item" />
     </li>

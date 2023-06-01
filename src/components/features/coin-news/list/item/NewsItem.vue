@@ -33,7 +33,7 @@ defineProps({
             {{ item.author.name }}
           </span>
         </header>
-        <div class="d-flex align-items-center">
+        <div class="flex align-items-center">
           <i class="far icon-calendar mr-2" />
           <time :datetime="item.published_at">
             {{ $filters.date(item.published_at) }}

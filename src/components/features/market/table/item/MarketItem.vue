@@ -33,7 +33,7 @@ defineProps({
       <b
         v-for="fiatKey in Object.keys(item.quotes)"
         :key="`fiat-${item.exchange_id}-${fiatKey}`"
-        class="mb-0 d-block text-monospace"
+        class="mb-0 block text-monospace"
       >
         {{ $filters.price(item.quotes[fiatKey].price, 6) }}
       </b>

@@ -18,7 +18,7 @@ defineProps({
       target="_blank"
       :href="`https://twitter.com/${item.user_name}`"
       :title="item.user_name"
-      class="d-flex flex-wrap align-items-center text-decoration-none"
+      class="flex flex-wrap align-items-center text-decoration-none"
     >
       <LazyImage
         :src="item.user_image_link"
@@ -29,7 +29,7 @@ defineProps({
       />
 
       <div>
-        <h3 class="d-block text-dark lh-100 my-0 h6">
+        <h3 class="block text-dark lh-100 my-0 h6">
           {{ item.user_name }}
         </h3>
         <span class="text-gray-700 lh-100">

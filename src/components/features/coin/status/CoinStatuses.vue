@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-  <ul class="d-flex flex-row flex-wrap list-unstyled">
+  <ul class="flex flex-row flex-wrap list-unstyled">
     <li class="mr-1 mb-1">
       <Tag
         :severity="coin.is_active ? 'success' : 'warning'"
