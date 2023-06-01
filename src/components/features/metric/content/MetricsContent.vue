@@ -18,16 +18,16 @@ defineProps({
 <template>
   <div>
     <div class="row">
-      <RoiByYearTable class="col-12 col-md-6" :data="data" />
-      <RiskTable class="col-12 col-md-6" :data="data" />
+      <RoiByYearTable class="col-12 md:col-6" :data="data" />
+      <RiskTable class="col-12 md:col-6" :data="data" />
     </div>
 
     <div class="row">
-      <div class="col-12 col-md-6 mb-3">
+      <div class="col-12 md:col-6 mb-3">
         <SupplyTable class="mb-3" :data="data" />
         <ActivityTable :data="data" />
       </div>
-      <DistributionTable class="col-12 col-md-6" :data="data" />
+      <DistributionTable class="col-12 md:col-6" :data="data" />
     </div>
   </div>
 </template>

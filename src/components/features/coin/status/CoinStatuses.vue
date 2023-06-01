@@ -2,6 +2,7 @@
 import type { PropType } from "vue";
 import type { GetCoinByIDResponse } from "../../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
+import Tag from "primevue/tag";
 
 const { t } = useI18n();
 defineProps({
@@ -12,26 +13,25 @@ defineProps({
 <template>
   <ul class="d-flex flex-row flex-wrap list-unstyled">
     <li class="mr-1 mb-1">
-      <span
-        class="badge text-uppercase"
-        :class="coin.is_active ? 'badge-success' : 'badge-danger'"
-        >{{ coin.is_active ? t("coin.active") : t("coin.not_active") }}</span
-      >
+      <Tag
+        :severity="coin.is_active ? 'success' : 'warning'"
+        :value="coin.is_active ? t('coin.active') : t('coin.not_active')"
+      />
     </li>
     <li v-if="coin.is_new" class="mr-1 mb-1">
-      <span class="badge badge-danger text-uppercase">{{ t("coin.new") }}</span>
+      <Tag :value="t('coin.new')" severity="info" />
     </li>
     <li class="mr-1 mb-1">
-      <span class="badge badge-dark">{{ coin.development_status }}</span>
+      <Tag :value="coin.development_status" />
     </li>
     <li class="mr-1 mb-1">
-      <span class="badge badge-dark">{{ t("coin.rank") }} {{ coin.rank }}</span>
+      <Tag :value="`${t('coin.rank')} ${coin.rank}`" />
     </li>
     <li v-if="coin.open_source" class="mr-1 mb-1">
-      <span class="badge badge-dark">{{ t("coin.open_source") }}</span>
+      <Tag :value="t('coin.open_source')" />
     </li>
     <li v-if="coin.hardware_wallet" class="mr-1 mb-1">
-      <span class="badge badge-dark">{{ t("coin.hardware_wallet") }}</span>
+      <Tag :value="t('coin.hardware_wallet')" />
     </li>
   </ul>
 </template>

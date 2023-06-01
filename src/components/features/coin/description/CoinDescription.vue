@@ -12,7 +12,7 @@ defineProps({
 
 <template>
   <div>
-    <p class="lead mb-4">{{ coin.description }}</p>
+    <p class="mb-4">{{ coin.description }}</p>
 
     <DescriptionTable :coin="coin" />
 
@@ -21,9 +21,9 @@ defineProps({
       :href="coin.whitepaper.link"
       target="_blank"
       :title="t('coin.whitepaper')"
-      class="btn btn-primary mb-4 animate-up-2"
+      class="mb-4 no-underline p-button p-component p-button-outlined"
     >
-      <i class="icon-attachment mr-1"></i>
+      <i class="pi pi-file mr-1"></i>
       {{ t("coin.whitepaper") }}
     </a>
   </div>

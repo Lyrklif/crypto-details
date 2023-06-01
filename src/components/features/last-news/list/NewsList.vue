@@ -16,7 +16,7 @@ defineProps({
     <li
       v-for="(item, index) in list"
       :key="`articles-${index}`"
-      class="mb-4 col-12 col-md-6 col-lg-4"
+      class="mb-4 col-12 md:col-6 lg:col-4"
     >
       <NewsItem :item="item" />
     </li>

@@ -42,10 +42,10 @@ const iconClasses = computed(() => {
   <a
     :href="item.url"
     target="_blank"
-    :title="item.url"
-    class="d-inline-flex align-items-center btn btn-sm btn-primary py-1"
+    :title="$filters.hostname(item.url)"
+    class="p-button p-component inline-flex align-items-center no-underline p-button-outlined"
   >
-    <span :class="[iconClasses, 'mr-1']"></span>
-    <small>{{ $filters.hostname(item.url) }}</small>
+    <span :class="[iconClasses, 'mr-1']" />
+    <span>{{ $filters.hostname(item.url) }}</span>
   </a>
 </template>

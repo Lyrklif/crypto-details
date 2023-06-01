@@ -29,12 +29,12 @@ defineProps({
       target="_blank"
       :href="sourceAPI[site].site"
       :title="site"
-      class="text-capitalize mr-2"
+      class="text-capitalize mr-2 no-underline"
     >
       <b>{{ site }}</b>
     </a>
 
-    <i v-if="loading" class="icon-spinner"></i>
-    <i v-else :class="fall ? 'icon-heart-broken' : 'icon-heart'"></i>
+    <i v-if="loading" class="pi pi-spin pi-spinner"></i>
+    <i v-else class="pi" :class="fall ? 'pi-power-off' : 'pi-heart-fill'"></i>
   </p>
 </template>

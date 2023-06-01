@@ -48,22 +48,22 @@ load();
 
 <template>
   <div>
-    <div class="row">
-      <div v-if="loading" class="col-12 col-lg-6">
+    <div class="grid">
+      <div v-if="loading" class="col-12 lg:col-6">
         <LinesSpinner />
       </div>
       <AlertMessage
         v-else-if="error"
         :text="errorText"
         type="error"
-        class="col-12 col-lg-6"
+        class="col-12 lg:col-6"
       />
       <AlertMessage
         v-else-if="!coin"
         :text="t('errors.empty')"
-        class="col-12 col-lg-6"
+        class="col-12 lg:col-6"
       />
-      <section class="col-12 col-lg-6" v-else>
+      <section class="col-12 lg:col-6" v-else>
         <CoinHeader :coin="coin" class="mb-4" />
         <CoinStatuses :coin="coin" class="mb-2" />
         <CoinTags :links="coin.tags" class="mb-2" />
@@ -77,7 +77,7 @@ load();
         />
       </section>
 
-      <PriceWidget class="col-12 col-lg-6" :id="`${route.params.id}`" />
+      <PriceWidget class="col-12 lg:col-6" :id="`${route.params.id}`" />
     </div>
 
     <CoinTeam
