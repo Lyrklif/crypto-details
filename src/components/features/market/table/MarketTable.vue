@@ -18,13 +18,13 @@ const scoreSeverity = {
 };
 
 defineProps({
-  list: Array as PropType<Array<MarketsItemResponse>>,
+  data: Array as PropType<Array<MarketsItemResponse>>,
 });
 </script>
 
 <template>
   <DataTable
-    :value="list"
+    :value="data"
     class="w-full p-datatable-sm"
     stripedRows
     removableSort

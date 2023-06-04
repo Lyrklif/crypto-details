@@ -9,10 +9,10 @@ import AlertMessage from "../../base/AlertMessage.vue";
 import LinesSpinner from "../../base/LinesSpinner.vue";
 import NewsList from "./list/NewsList.vue";
 import { useRoute } from "vue-router";
-import { startNewsPage, maxNewsPage } from "../../../constants/navLinks";
+import { maxNewsPage, startNewsPage } from "../../../constants/navLinks";
 import router from "../../../router";
-import Paginator from "primevue/paginator";
 import type { PageState } from "primevue/paginator";
+import Paginator from "primevue/paginator";
 
 const { t } = useI18n();
 const store = useCoinStore();
@@ -43,8 +43,10 @@ async function loadNews() {
     data.value = response.data?.data || [];
     if (response.data.data?.length) loaded.value = true;
   } catch (e: any) {
-    errorText.value = e.response?.statusText;
-    error.value = true;
+    const { text, notFound } = e?.response || {};
+    data.value = null;
+    errorText.value = text;
+    error.value = !notFound;
   } finally {
     loading.value = false;
   }

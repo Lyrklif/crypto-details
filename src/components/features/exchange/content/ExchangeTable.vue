@@ -9,13 +9,13 @@ import { ROWS, ROWS_PER_PAGE } from "@/constants/table";
 const { t } = useI18n();
 
 defineProps({
-  list: Array as PropType<Array<CoinExchangesItem>>,
+  data: Array as PropType<Array<CoinExchangesItem>>,
 });
 </script>
 
 <template>
   <DataTable
-    :value="list"
+    :value="data"
     class="w-full p-datatable-sm"
     stripedRows
     removableSort

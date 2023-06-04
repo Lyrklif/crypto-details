@@ -12,13 +12,13 @@ const { t } = useI18n();
 const store = useCoinStore();
 
 defineProps({
-  pools: Array as PropType<Array<Pool>>,
+  data: Array as PropType<Array<Pool>>,
 });
 </script>
 
 <template>
   <DataTable
-    :value="pools"
+    :value="data"
     class="w-full p-datatable-sm"
     stripedRows
     removableSort

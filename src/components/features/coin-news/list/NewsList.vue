@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { PropType } from "vue";
+import { computed, PropType } from "vue";
 import { useI18n } from "vue-i18n";
 import type { AssetNewsItem } from "../../../../api/messari/types";
 import NewsItem from "./item/NewsItem.vue";
 
 const { t } = useI18n();
 
-defineProps({
-  list: Array as PropType<Array<AssetNewsItem>>,
+const props = defineProps({
+  data: Object as PropType<{ data: Array<AssetNewsItem> }>,
+});
+
+const list = computed((): Array<AssetNewsItem> => {
+  return props.data?.data || [];
 });
 </script>
 

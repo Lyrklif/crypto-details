@@ -3,11 +3,11 @@ import instance from "./instance";
 import type { Pool } from "./types";
 
 export interface ApiInterface {
-  pools: (coin: string) => AxiosPromise<Array<Pool>>;
+  pools: (params: { coin: string }) => AxiosPromise<Array<Pool>>;
 }
 
 const API: ApiInterface = {
-  pools(coin) {
+  pools({ coin }) {
     return instance.get(`pools`, { params: { coin } });
   },
 };

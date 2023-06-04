@@ -3,7 +3,6 @@ import type { PropType } from "vue";
 import { defineAsyncComponent, ref } from "vue";
 import type { TeamItem } from "../../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
-import SpoilerCard from "../../../base/SpoilerCard.vue";
 import AlertMessage from "../../../base/AlertMessage.vue";
 import LinesSpinner from "../../../base/LinesSpinner.vue";
 
@@ -22,18 +21,8 @@ const AsyncContent = defineAsyncComponent(
 </script>
 
 <template>
-  <SpoilerCard
-    :title="`${t('coin.team')} ${
-      showCount && links.length ? `(${links.length})` : ''
-    }`"
-    site="coinpaprika"
-    :loading="loading"
-    :fall="error"
-    @firstOpen="showCount = true"
-  >
-    <LinesSpinner v-if="loading" />
-    <AlertMessage v-else-if="error" :text="errorText" type="error" />
-    <AlertMessage v-else-if="!links.length" :text="t('errors.empty')" />
-    <component v-else :links="links" :is="AsyncContent" />
-  </SpoilerCard>
+  <LinesSpinner v-if="loading" />
+  <AlertMessage v-else-if="error" :text="errorText" type="error" />
+  <AlertMessage v-else-if="!links.length" :text="t('errors.empty')" />
+  <component v-else :links="links" :is="AsyncContent" />
 </template>

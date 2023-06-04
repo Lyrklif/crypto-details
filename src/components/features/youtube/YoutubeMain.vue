@@ -1,39 +1,12 @@
 <script setup lang="ts">
-import { defineAsyncComponent, ref } from "vue";
+import { defineAsyncComponent } from "vue";
 import API from "../../../api";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../../../stores/coin";
-import type { YoutubeSearchItem } from "../../../api/youtube/types";
-import AlertMessage from "../../base/AlertMessage.vue";
-import LinesSpinner from "../../base/LinesSpinner.vue";
 
 const { t, locale } = useI18n();
 const store = useCoinStore();
-const data = ref<Array<YoutubeSearchItem>>([]);
-const loading = ref<boolean>(false);
-const error = ref<boolean>(false);
-const errorText = ref<string>("");
-
-async function load() {
-  try {
-    loading.value = true;
-    error.value = false;
-    errorText.value = "";
-
-    const response = await API.youtube.search({
-      q: `${store.name} ${store.symbol}`,
-      lang: locale.value,
-      maxResults: 20,
-    });
-    data.value = response.data.items || [];
-  } catch (e: any) {
-    error.value = true;
-    errorText.value = e.response.data.error.message;
-  } finally {
-    loading.value = false;
-  }
-}
 
 const AsyncContent = defineAsyncComponent(
   () => import("./list/YoutubeList.vue")
@@ -42,23 +15,21 @@ const AsyncContent = defineAsyncComponent(
 
 <template>
   <SpoilerCard
-    :title="`${t('youtube.title')} ${
-      data && data.length ? `(${data.length})` : ''
-    }`"
+    v-if="store.symbol"
+    :title="t('youtube.title')"
     site="youtube"
-    :loading="loading"
-    :fall="error"
-    @firstOpen="load"
+    :asyncComponent="AsyncContent"
+    :apiMethod="API.youtube.search"
+    :apiParams="{
+      q: `${store.name} ${store.symbol}`,
+      lang: locale,
+      maxResults: 20,
+    }"
   >
-    <header>
-      <h2 class="h5 mb-2">
+    <template #start>
+      <h3 class="mb-2">
         {{ t("youtube.title") }}: <i>{{ store.name }} {{ store.symbol }}</i>
-      </h2>
-    </header>
-
-    <LinesSpinner v-if="loading" />
-    <AlertMessage v-else-if="error" :text="errorText" type="error" />
-    <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
-    <component v-else :data="data" :is="AsyncContent" />
+      </h3>
+    </template>
   </SpoilerCard>
 </template>

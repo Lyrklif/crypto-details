@@ -1,19 +1,23 @@
 <script setup lang="ts">
-import { PropType } from "vue";
+import { computed, PropType } from "vue";
 import { useI18n } from "vue-i18n";
 import type { YoutubeSearchItem } from "../../../../api/youtube/types";
 import YoutubeItem from "./YoutubeItem.vue";
 
 const { t } = useI18n();
 
-defineProps({
-  data: Array as PropType<Array<YoutubeSearchItem>>,
+const props = defineProps({
+  data: Object as PropType<{ items: Array<YoutubeSearchItem> }>,
+});
+
+const items = computed((): Array<YoutubeSearchItem> => {
+  return props.data?.items || [];
 });
 </script>
 
 <template>
   <ul class="list-unstyled list my-0">
-    <li v-for="item in data" :key="`youtube-${item.id.videoId}`" class="mb-4">
+    <li v-for="item in items" :key="`youtube-${item.id.videoId}`" class="mb-4">
       <YoutubeItem :item="item" />
     </li>
   </ul>

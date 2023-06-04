@@ -1,38 +1,12 @@
 <script setup lang="ts">
-import { ref, defineAsyncComponent } from "vue";
+import { defineAsyncComponent } from "vue";
 import { useRoute } from "vue-router";
 import API from "../../../api";
-import type { CoinExchangesItem } from "../../../api/coinpaprika/types";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
-import ExchangeTable from "./content/ExchangeTable.vue";
-import AlertMessage from "../../base/AlertMessage.vue";
-import LinesSpinner from "../../base/LinesSpinner.vue";
 
 const { t } = useI18n();
 const route = useRoute();
-const list = ref<Array<CoinExchangesItem>>([]);
-const loading = ref<boolean>(false);
-const error = ref<boolean>(false);
-const errorText = ref<string>("");
-
-async function load() {
-  try {
-    loading.value = true;
-    error.value = false;
-    errorText.value = "";
-
-    const response = await API.coinpaprika.coinExchanges(
-      route.params.id as string
-    );
-    list.value = response.data;
-  } catch (e: any) {
-    error.value = true;
-    errorText.value = e.response.data.error;
-  } finally {
-    loading.value = false;
-  }
-}
 
 const AsyncContent = defineAsyncComponent(
   () => import("./content/ExchangeTable.vue")
@@ -41,15 +15,10 @@ const AsyncContent = defineAsyncComponent(
 
 <template>
   <SpoilerCard
-    :title="`${t('exchanges.title')} ${list.length ? `(${list.length})` : ''}`"
+    :title="t('exchanges.title')"
     site="coinpaprika"
-    :loading="loading"
-    :fall="error"
-    @firstOpen="load"
-  >
-    <LinesSpinner v-if="loading" />
-    <AlertMessage v-else-if="error" :text="errorText" type="error" />
-    <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
-    <component v-else :list="list" :is="AsyncContent" />
-  </SpoilerCard>
+    :asyncComponent="AsyncContent"
+    :apiMethod="API.coinpaprika.coinExchanges"
+    :apiParams="{ coin_id: route.params.id }"
+  />
 </template>

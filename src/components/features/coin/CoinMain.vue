@@ -36,8 +36,9 @@ async function load() {
     coin.value = response.data;
     store.setSymbol(response.data.symbol, response.data.name);
   } catch (e: any) {
-    error.value = true;
-    errorText.value = e.response.data.error;
+    const { text, notFound } = e?.response || {};
+    errorText.value = text;
+    error.value = !notFound;
   } finally {
     loading.value = false;
   }

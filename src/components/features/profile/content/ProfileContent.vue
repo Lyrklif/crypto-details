@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PropType } from "vue";
+import { computed, PropType } from "vue";
 import { useI18n } from "vue-i18n";
 import type { AssetProfileDataResponse } from "../../../../api/messari/types";
 import Card from "primevue/card";
@@ -7,8 +7,12 @@ import Fieldset from "primevue/fieldset";
 
 const { t } = useI18n();
 
-defineProps({
-  profile: Object as PropType<AssetProfileDataResponse>,
+const props = defineProps({
+  data: Object as PropType<{ data: AssetProfileDataResponse }>,
+});
+
+const profile = computed((): AssetProfileDataResponse | null => {
+  return props.data?.data || null;
 });
 </script>
 

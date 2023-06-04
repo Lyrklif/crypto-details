@@ -1,11 +1,11 @@
 import type { AxiosPromise } from "axios";
 import instance from "./instance";
 import type {
-  SearchResponse,
+  CoinExchangesItem,
   GetCoinByIDResponse,
   GetTwitterItem,
-  CoinExchangesItem,
   MarketsItemResponse,
+  SearchResponse,
 } from "./types";
 
 export interface ApiInterface {
@@ -16,12 +16,16 @@ export interface ApiInterface {
     limit?: number;
   }) => AxiosPromise<SearchResponse>;
   getCoinByID: (coin_id: string) => AxiosPromise<GetCoinByIDResponse>;
-  coinTwitter: (coin_id: string) => AxiosPromise<Array<GetTwitterItem>>;
-  coinExchanges: (coin_id: string) => AxiosPromise<Array<CoinExchangesItem>>;
-  getMarketsByCoin: (
-    coin_id: string,
-    quotes?: string
-  ) => AxiosPromise<Array<MarketsItemResponse>>;
+  coinTwitter: (params: {
+    coin_id: string;
+  }) => AxiosPromise<Array<GetTwitterItem>>;
+  coinExchanges: (params: {
+    coin_id: string;
+  }) => AxiosPromise<Array<CoinExchangesItem>>;
+  getMarketsByCoin: (params: {
+    coin_id: string;
+    quotes?: string;
+  }) => AxiosPromise<Array<MarketsItemResponse>>;
 }
 
 const API: ApiInterface = {
@@ -31,13 +35,13 @@ const API: ApiInterface = {
   getCoinByID(coin_id) {
     return instance.get(`coins/${coin_id}`);
   },
-  coinTwitter(coin_id) {
+  coinTwitter({ coin_id }) {
     return instance.get(`coins/${coin_id}/twitter`);
   },
-  coinExchanges(coin_id) {
+  coinExchanges({ coin_id }) {
     return instance.get(`coins/${coin_id}/exchanges`);
   },
-  getMarketsByCoin(coin_id, quotes) {
+  getMarketsByCoin({ coin_id, quotes }) {
     return instance.get(`coins/${coin_id}/markets`, { params: { quotes } });
   },
 };

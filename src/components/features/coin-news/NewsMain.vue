@@ -5,12 +5,10 @@ import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../../../stores/coin";
 import type { AssetNewsItem } from "../../../api/messari/types";
-import AlertMessage from "../../base/AlertMessage.vue";
-import LinesSpinner from "../../base/LinesSpinner.vue";
 
 const { t } = useI18n();
 const store = useCoinStore();
-const data = ref<Array<AssetNewsItem>>([]);
+const data = ref<{ data: Array<AssetNewsItem> } | null>(null);
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
 const errorText = ref<string>("");
@@ -21,11 +19,13 @@ async function loadNews() {
     error.value = false;
     errorText.value = "";
 
-    const response = await API.messari.newsForAsset(store.symbol);
-    data.value = response.data.data || [];
+    const response = await API.messari.newsForAsset({ assetKey: store.symbol });
+    data.value = response.data;
   } catch (e: any) {
-    errorText.value = e.response.statusText;
-    error.value = true;
+    const { text, notFound } = e?.response || {};
+    data.value = null;
+    errorText.value = text;
+    error.value = !notFound;
   } finally {
     loading.value = false;
   }
@@ -36,21 +36,17 @@ const AsyncContent = defineAsyncComponent(() => import("./list/NewsList.vue"));
 
 <template>
   <SpoilerCard
-    :title="`${t('news.title')} ${data.length ? `(${data.length})` : ''}`"
+    v-if="store.symbol"
+    :title="t('news.title')"
     site="messari"
-    :loading="loading"
-    :fall="error"
-    @firstOpen="loadNews"
+    :asyncComponent="AsyncContent"
+    :apiMethod="API.messari.newsForAsset"
+    :apiParams="{ assetKey: store.symbol }"
   >
-    <header>
-      <h2 class="h5 mb-2">
+    <template #start>
+      <h3 class="mb-2">
         {{ t("news.title") }}: <i>{{ store.symbol }}</i>
-      </h2>
-    </header>
-
-    <LinesSpinner v-if="loading" />
-    <AlertMessage v-else-if="error" :text="errorText" type="error" />
-    <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
-    <component v-else :list="data" :is="AsyncContent" />
+      </h3>
+    </template>
   </SpoilerCard>
 </template>
