@@ -2,6 +2,8 @@
 import { PropType } from "vue";
 import { useI18n } from "vue-i18n";
 import type { AssetProfileDataResponse } from "../../../../api/messari/types";
+import Card from "primevue/card";
+import Fieldset from "primevue/fieldset";
 
 const { t } = useI18n();
 
@@ -11,32 +13,38 @@ defineProps({
 </script>
 
 <template>
-  <div>
-    <h4 v-if="profile.technology">{{ t("profile.technology") }}</h4>
-    <p v-html="profile.technology" />
+  <Card v-if="profile.technology" class="mb-4">
+    <template #title>{{ t("profile.technology") }}</template>
+    <template #content>
+      <div v-html="profile.technology" />
+    </template>
+  </Card>
 
-    <h4 v-if="profile.token_distribution.description">
-      {{ t("profile.token_distribution") }}
-    </h4>
-    <p v-html="profile.token_distribution.description" />
+  <Card v-if="profile.token_distribution.description" class="mb-4">
+    <template #title>{{ t("profile.token_distribution") }}</template>
+    <template #content>
+      <div v-html="profile.token_distribution.description" />
+    </template>
+  </Card>
 
-    <h4 v-if="profile.background">{{ t("profile.history") }}</h4>
-    <p v-html="profile.background" />
+  <Card v-if="profile.background" class="mb-4">
+    <template #title>{{ t("profile.history") }}</template>
+    <template #content>
+      <div v-html="profile.background" />
+    </template>
+  </Card>
 
-    <h4 v-if="profile.organizations && profile.organizations.length">
-      {{ t("profile.organizations") }}
-    </h4>
-    <ul
-      v-if="profile.organizations && profile.organizations.length"
-      class="list-unstyled mt-2"
-    >
+  <div v-if="profile.organizations && profile.organizations.length">
+    <h3 class="text-2xl">{{ t("profile.organizations") }}</h3>
+    <ul class="list-unstyled">
       <li
         v-for="(item, index) in profile.organizations"
         :key="`organization-${index}`"
-        class="card bg-primary border-light mb-2 p-2"
+        class="card border mb-3"
       >
-        <h5>{{ item.name }}</h5>
-        <small v-html="item.description" />
+        <Fieldset :legend="item.name" v-if="item.description">
+          <div v-html="item.description" />
+        </Fieldset>
       </li>
     </ul>
   </div>

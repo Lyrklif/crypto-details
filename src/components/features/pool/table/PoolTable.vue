@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { PropType, ref } from "vue";
+import { PropType } from "vue";
 import type { Pool } from "../../../../api/minerstat/types";
 import { useI18n } from "vue-i18n";
-import PoolItem from "./item/PoolItem.vue";
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
+import { useCoinStore } from "../../../../stores/coin";
+import Tag from "primevue/tag";
 
 const { t } = useI18n();
+const store = useCoinStore();
 
 defineProps({
   pools: Array as PropType<Array<Pool>>,
@@ -12,22 +16,63 @@ defineProps({
 </script>
 
 <template>
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>{{ t("pools.fee") }}</th>
-        <th>{{ t("pools.payout_threshold") }}</th>
-        <th>{{ t("pools.reward_method") }}</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <PoolItem
-        v-for="(pool, index) in pools"
-        :key="`pool-${index}`"
-        :pool="pool"
-      />
-    </tbody>
-  </table>
+  <DataTable :value="pools" class="w-full" stripedRows removableSort>
+    <Column field="site" :header="t('pools.name')" sortable sortField="name">
+      <template #body="{ data }">
+        <a
+          :href="data.website"
+          target="_blank"
+          :title="data.name"
+          class="btn btn-sm btn-primary btn-pill text-info py-1"
+        >
+          {{ data.name }}
+        </a>
+      </template>
+    </Column>
+    <Column
+      field="fee"
+      :header="t('pools.fee')"
+      sortable
+      :sortField="`coins.${store.symbol}.fee`"
+    >
+      <template #body="{ data }">
+        {{ data.coins[store.symbol].fee }}
+      </template>
+    </Column>
+    <Column
+      field="payout_threshold"
+      :header="t('pools.payout_threshold')"
+      sortable
+      :sortField="`coins.${store.symbol}.payoutThreshold`"
+    >
+      <template #body="{ data }">
+        {{ data.coins[store.symbol].payoutThreshold }}
+      </template>
+    </Column>
+    <Column
+      field="reward_method"
+      :header="t('pools.reward_method')"
+      sortable
+      :sortField="`coins.${store.symbol}.rewardMethod`"
+    >
+      <template #body="{ data }">
+        {{ data.coins[store.symbol].rewardMethod }}
+      </template>
+    </Column>
+    <Column>
+      <template #body="{ data }">
+        <Tag severity="info" :value="data.coins[store.symbol].algorithm" />
+        <Tag
+          v-if="data.coins[store.symbol].registration"
+          severity="warning"
+          :value="t('pools.registration')"
+        />
+        <Tag
+          v-if="data.coins[store.symbol].anonymous"
+          severity="success"
+          :value="t('pools.anonymous')"
+        />
+      </template>
+    </Column>
+  </DataTable>
 </template>

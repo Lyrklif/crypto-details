@@ -79,6 +79,7 @@ export default {
     reward_method: "Reward Method",
     registration: "Registration",
     anonymous: "Anonymous",
+    name: "Name",
   },
   profile: {
     title: "Profile",
