@@ -1,31 +1,52 @@
 <script setup lang="ts">
-import { PropType } from "vue";
+import { computed, PropType } from "vue";
 import { useI18n } from "vue-i18n";
 import type { AssetMetricDataResponse } from "../../../../../api/messari/types";
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
 
 const { t } = useI18n();
 
-defineProps({
+const props = defineProps({
   data: Object as PropType<AssetMetricDataResponse>,
+});
+
+const tableData = computed(() => {
+  const values = props.data?.supply_activity;
+  if (!values) return [];
+  const keys: Array<string> = Object.keys(values);
+  return keys.map((key): { key: string; value: any } => {
+    // @ts-ignore
+    const value = values[key];
+    return { key, value };
+  });
 });
 </script>
 
 <template>
   <div>
-    <h4 class="mb-1">{{ t("metric.supply_activity") }}</h4>
-    <table class="table table-striped">
-      <tbody>
-        <tr
-          v-for="key in Object.keys(data.supply_activity)"
-          :key="`supply_activity-${key}`"
-          v-show="data.supply_activity[key]"
-        >
-          <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
-          <td class="text-right py-1 text-monospace">
-            {{ $filters.number(data.supply_activity[key]) }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <h4 class="mb-3">{{ t("metric.supply_activity") }}</h4>
+    <DataTable
+      :value="tableData"
+      class="w-full p-datatable-sm"
+      stripedRows
+      removableSort
+    >
+      <Column field="key" sortable sortField="key">
+        <template #body="{ data }">
+          {{ t(`metric.${data.key}`) }}
+        </template>
+      </Column>
+      <Column
+        field="value"
+        sortable
+        sortField="value"
+        headerClass="text-right flex justify-content-end"
+      >
+        <template #body="{ data }">
+          {{ $filters.number(data.value) }}
+        </template>
+      </Column>
+    </DataTable>
   </div>
 </template>

@@ -1,45 +1,94 @@
 <script setup lang="ts">
-import { PropType } from "vue";
+import { computed, PropType } from "vue";
 import { useI18n } from "vue-i18n";
-import type { AssetMetricDataResponse } from "../../../../../api/messari/types";
+import type {
+  AssetMetricDataResponse,
+  MetricSharpeRatios,
+  MetricVolatilityStats,
+} from "../../../../../api/messari/types";
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
 
 const { t } = useI18n();
 
-defineProps({
+const props = defineProps({
   data: Object as PropType<AssetMetricDataResponse>,
+});
+
+const sharpeRatiosData = computed(() => {
+  const ratios: MetricSharpeRatios | undefined =
+    props.data?.risk_metrics.sharpe_ratios;
+  if (!ratios) return [];
+  const keys: Array<string> = Object.keys(ratios);
+  return keys.map((key): { key: string; value: any } => {
+    // @ts-ignore
+    const value = ratios[key];
+    return { key, value };
+  });
+});
+
+const statsData = computed(() => {
+  const stats: MetricVolatilityStats | undefined =
+    props.data?.risk_metrics.volatility_stats;
+  if (!stats) return [];
+  const keys: Array<string> = Object.keys(stats);
+  return keys.map((key): { key: string; value: any } => {
+    // @ts-ignore
+    const value = stats[key];
+    return { key, value };
+  });
 });
 </script>
 
 <template>
   <div>
-    <h4 class="mb-1">{{ t("metric.risk") }}</h4>
-    <table class="table mb-4 table-striped">
-      <tbody>
-        <tr
-          v-for="key in Object.keys(data.risk_metrics.sharpe_ratios)"
-          :key="`sharpe_ratios-${key}`"
-          v-show="data.risk_metrics.sharpe_ratios[key]"
-        >
-          <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
-          <td class="text-right py-1 text-monospace">
-            {{ $filters.number(data.risk_metrics.sharpe_ratios[key], 2) }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="table table-striped">
-      <tbody>
-        <tr
-          v-for="key in Object.keys(data.risk_metrics.volatility_stats)"
-          :key="`volatility_stats-${key}`"
-          v-show="data.risk_metrics.volatility_stats[key]"
-        >
-          <td class="pr-3 py-1">{{ t(`metric.${key}`) }}</td>
-          <td class="text-right py-1 text-monospace">
-            {{ $filters.number(data.risk_metrics.volatility_stats[key], 2) }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <h4 class="mb-2">{{ t("metric.risk") }}</h4>
+    <DataTable
+      :value="sharpeRatiosData"
+      class="w-full p-datatable-sm mb-4"
+      stripedRows
+      removableSort
+    >
+      <Column field="key" sortable sortField="key">
+        <template #body="{ data }">
+          {{ t(`metric.${data.key}`) }}
+        </template>
+      </Column>
+      <Column
+        field="value"
+        sortable
+        sortField="value"
+        class="text-right"
+        headerClass="text-right flex justify-content-end"
+      >
+        <template #body="{ data }">
+          {{ $filters.number(data.value, 2) }}
+        </template>
+      </Column>
+    </DataTable>
+
+    <DataTable
+      :value="statsData"
+      class="w-full p-datatable-sm"
+      stripedRows
+      removableSort
+    >
+      <Column field="key" sortable sortField="key">
+        <template #body="{ data }">
+          {{ t(`metric.${data.key}`) }}
+        </template>
+      </Column>
+      <Column
+        field="value"
+        sortable
+        sortField="value"
+        headerClass="text-right flex justify-content-end"
+        class="text-right"
+      >
+        <template #body="{ data }">
+          {{ $filters.number(data.value, 2) }}
+        </template>
+      </Column>
+    </DataTable>
   </div>
 </template>

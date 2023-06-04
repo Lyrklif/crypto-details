@@ -108,20 +108,24 @@ interface MetricRoiByYear {
   "2011_usd_percent": number | null;
 }
 
+interface MetricSharpeRatios {
+  last_30_days: number | null;
+  last_90_days: number | null;
+  last_1_year: number | null;
+  last_3_years: number | null;
+}
+
+interface MetricVolatilityStats {
+  volatility_last_30_days: number | null;
+  volatility_last_90_days: number | null;
+  volatility_last_1_year: number | null;
+  volatility_last_3_years: number | null;
+}
+
 interface AssetMetricDataResponse {
   risk_metrics: {
-    sharpe_ratios: {
-      last_30_days: number | null;
-      last_90_days: number | null;
-      last_1_year: number | null;
-      last_3_years: number | null;
-    };
-    volatility_stats: {
-      volatility_last_30_days: number | null;
-      volatility_last_90_days: number | null;
-      volatility_last_1_year: number | null;
-      volatility_last_3_years: number | null;
-    };
+    sharpe_ratios: MetricSharpeRatios;
+    volatility_stats: MetricVolatilityStats;
   };
   roi_by_year: MetricRoiByYear;
   supply: {
@@ -235,6 +239,8 @@ export type {
   AssetNewsResponse,
   AssetNewsItem,
   MetricRoiByYear,
+  MetricSharpeRatios,
+  MetricVolatilityStats,
 };
 
 export { ASSET_ERRORS };

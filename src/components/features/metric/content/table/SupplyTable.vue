@@ -1,33 +1,55 @@
 <script setup lang="ts">
-import { PropType } from "vue";
+import { computed, PropType } from "vue";
 import { useI18n } from "vue-i18n";
 import type { AssetMetricDataResponse } from "../../../../../api/messari/types";
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
 
 const { t } = useI18n();
 
-defineProps({
+const props = defineProps({
   data: Object as PropType<AssetMetricDataResponse>,
+});
+
+const tableData = computed(() => {
+  const arr: Array<{ name: string; value: any }> = [];
+
+  if (props.data?.supply.circulating) {
+    arr.push({ name: "circulating", value: props.data.supply.circulating });
+  }
+  if (props.data?.supply.liquid) {
+    arr.push({ name: "liquid", value: props.data.supply.liquid });
+  }
+  return arr;
 });
 </script>
 
 <template>
   <div>
-    <h4 class="mb-1">{{ t("metric.roi_by_year") }}</h4>
-    <table class="table table-striped">
-      <tbody>
-        <tr v-if="data.supply.circulating">
-          <td class="pr-3 py-1">{{ t(`metric.circulating`) }}</td>
-          <td class="text-right py-1 text-monospace">
-            {{ $filters.number(data.supply.circulating) }}
-          </td>
-        </tr>
-        <tr v-if="data.supply.liquid">
-          <td class="pr-3 py-1">{{ t(`metric.liquid`) }}</td>
-          <td class="text-right py-1 text-monospace">
-            {{ $filters.number(data.supply.liquid) }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <h4 class="mb-3">{{ t("metric.roi_by_year") }}</h4>
+
+    <DataTable
+      :value="tableData"
+      class="w-full p-datatable-sm"
+      stripedRows
+      removableSort
+    >
+      <Column field="name" sortable sortField="name">
+        <template #body="{ data }">
+          {{ t(`metric.${data.name}`) }}
+        </template>
+      </Column>
+      <Column
+        field="value"
+        sortable
+        sortField="value"
+        class="text-right"
+        headerClass="text-right flex justify-content-end"
+      >
+        <template #body="{ data }">
+          {{ $filters.number(data.value) }}
+        </template>
+      </Column>
+    </DataTable>
   </div>
 </template>
