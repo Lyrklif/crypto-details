@@ -12,6 +12,7 @@ const { t } = useI18n();
         :to="{ name: item.name, params: item.params }"
         v-slot="{ isActive }"
         :title="t(item.text)"
+        class="capitalize p-button p-component p-button-primary p-button-outlined no-underline"
       >
         <span class="" :class="{ active: isActive }">
           {{ t(item.text) }}

@@ -8,7 +8,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <footer class="bd-footer p-3 mt-5 bg-soft text-center">
+  <footer class="p-3 mt-5 text-center">
     <PageLinks class="mb-1" />
     <ApiList />
     <GitHubLink class="mb-0" />

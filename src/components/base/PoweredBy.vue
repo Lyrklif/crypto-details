@@ -29,7 +29,7 @@ defineProps({
       target="_blank"
       :href="sourceAPI[site].site"
       :title="site"
-      class="text-capitalize mr-2 no-underline"
+      class="capitalize mr-2 no-underline"
     >
       <b>{{ site }}</b>
     </a>
