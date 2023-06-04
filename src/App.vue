@@ -5,13 +5,11 @@ import AppFooter from "./components/layout/footer/AppFooter.vue";
 </script>
 
 <template>
-  <div>
-    <AppHeader />
+  <AppHeader />
 
-    <main class="container mt-6">
-      <RouterView />
-    </main>
+  <main class="container mt-6">
+    <RouterView />
+  </main>
 
-    <AppFooter class="mt-5" />
-  </div>
+  <AppFooter class="mt-5" />
 </template>

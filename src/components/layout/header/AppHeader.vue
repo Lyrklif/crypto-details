@@ -22,19 +22,17 @@ const menuLinks = computed((): Array<MenuItem> => {
 </script>
 
 <template>
-  <div class="card relative">
-    <Menubar :model="menuLinks">
-      <template #start>
-        <div class="flex align-items-center justify-content-center">
-          <img alt="logo" src="/favicon-32x32.png" height="30" width="30" />
-        </div>
-      </template>
-      <template #end>
-        <div class="flex flex-wrap justify-content-end">
-          <LocaleChanger />
-          <CurrencyChanger class="ml-2" />
-        </div>
-      </template>
-    </Menubar>
-  </div>
+  <Menubar :model="menuLinks" class="menubar">
+    <template #start>
+      <div class="flex align-items-center justify-content-center mr-3">
+        <img alt="logo" src="/favicon-32x32.png" height="30" width="30" />
+      </div>
+    </template>
+    <template #end>
+      <div class="flex flex-wrap justify-content-end">
+        <LocaleChanger />
+        <CurrencyChanger class="ml-2" />
+      </div>
+    </template>
+  </Menubar>
 </template>
