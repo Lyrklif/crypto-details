@@ -23,7 +23,7 @@ const choose = (key: string) => {
       <li
         v-for="item in store.items"
         :key="`search-history-${item}`"
-        class="mb-1 mr-1"
+        class="mb-1 mr-1 inline-block"
       >
         <HistoryItem @choose="choose" :item="item" :is-disabled="isDisabled" />
       </li>
