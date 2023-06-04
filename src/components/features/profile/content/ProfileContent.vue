@@ -40,7 +40,7 @@ defineProps({
       <li
         v-for="(item, index) in profile.organizations"
         :key="`organization-${index}`"
-        class="card border mb-3"
+        class="surface-border border-solid border-1 mb-3"
       >
         <Fieldset :legend="item.name" v-if="item.description">
           <div v-html="item.description" />

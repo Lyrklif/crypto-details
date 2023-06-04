@@ -22,7 +22,7 @@ defineProps({
     >
       <LazyImage
         :src="item.user_image_link"
-        class="shadow-soft p-0 border border-light rounded-circle mr-2 overflow-hidden"
+        class="p-0 surface-border border-solid border-1 rounded-circle mr-2 overflow-hidden"
         :alt="item.user_name"
         height="48"
         width="48"

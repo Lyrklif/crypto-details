@@ -42,7 +42,7 @@ function initGoogleTrends(keyword: string, widget: widgetType, divId: divType) {
 </script>
 
 <template>
-  <section class="card bg-primary border-light shadow-soft p-3">
+  <section class="surface-border border-solid border-1 p-3">
     <header>
       <h2>{{ t("trends.title") }}</h2>
     </header>

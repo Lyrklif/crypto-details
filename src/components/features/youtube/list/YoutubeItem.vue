@@ -12,12 +12,12 @@ defineProps({
 </script>
 
 <template>
-  <article class="card bg-primary shadow-sm border-light py-4 px-3">
+  <article>
     <a
       :href="`https://www.youtube.com/watch?v=${item.id.videoId}`"
       target="_blank"
       :title="item.snippet.title"
-      class="no-underline d-sm-flex"
+      class="no-underline flex flex-column sm:flex-row py-4 px-3 surface-border border-solid border-1"
     >
       <LazyImage
         :src="item.snippet.thumbnails.default.url"
@@ -29,10 +29,10 @@ defineProps({
       <div>
         <header>
           <h3 class="my-0 h4">{{ item.snippet.title }}</h3>
-          <p class="small text-black-50 my-0">
+          <p class="mt-0 mb-1">
             {{ item.snippet.channelTitle }}
           </p>
-          <p class="mb-0 lh-120">{{ item.snippet.description }}</p>
+          <p class="my-0 line-height-1">{{ item.snippet.description }}</p>
         </header>
       </div>
     </a>

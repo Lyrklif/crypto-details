@@ -16,7 +16,7 @@ defineProps({
     <li
       v-for="item in list"
       :key="item.status_id"
-      class="mb-3 pt-3 pb-1 px-4 card bg-primary shadow-inset border-light"
+      class="mb-3 pt-3 pb-1 px-4 surface-border border-solid border-1"
     >
       <TwitterItem :item="item" />
     </li>
