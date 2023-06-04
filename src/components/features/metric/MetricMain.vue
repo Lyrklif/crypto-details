@@ -46,7 +46,7 @@ async function load() {
       <h2 class="text-hide">{{ t("metric.title") }}</h2>
     </header>
 
-    <SpoilerCard :title="`${t('metric.title')}`" @firstOpen="load">
+    <SpoilerCard :title="t('metric.title')" @firstOpen="load">
       <template #content>
         <PoweredBy
           site="messari"

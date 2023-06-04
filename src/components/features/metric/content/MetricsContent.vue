@@ -17,12 +17,12 @@ defineProps({
 
 <template>
   <div>
-    <div class="row">
+    <div class="flex flex-wrap">
       <RoiByYearTable class="col-12 md:col-6" :data="data" />
       <RiskTable class="col-12 md:col-6" :data="data" />
     </div>
 
-    <div class="row">
+    <div class="flex flex-wrap">
       <div class="col-12 md:col-6 mb-3">
         <SupplyTable class="mb-3" :data="data" />
         <ActivityTable :data="data" />

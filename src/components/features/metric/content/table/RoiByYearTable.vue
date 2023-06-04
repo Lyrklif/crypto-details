@@ -1,35 +1,63 @@
 <script setup lang="ts">
-import { PropType } from "vue";
+import { computed, PropType } from "vue";
 import { useI18n } from "vue-i18n";
-import type { AssetMetricDataResponse } from "../../../../../api/messari/types";
+import type {
+  AssetMetricDataResponse,
+  MetricRoiByYear,
+} from "../../../../../api/messari/types";
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
 
 const { t } = useI18n();
 
-defineProps({
+const props = defineProps({
   data: Object as PropType<AssetMetricDataResponse>,
+});
+
+const tableData = computed(() => {
+  const years: MetricRoiByYear | undefined = props.data?.roi_by_year;
+  if (!years) return [];
+  const keys: Array<string> = Object.keys(years);
+  return keys.map((key): { year: string; value: any } => {
+    // @ts-ignore
+    const value = years[key];
+    return { year: key, value };
+  });
 });
 </script>
 
 <template>
   <div>
-    <h4 class="mb-1">{{ t("metric.roi_by_year") }}</h4>
-    <table class="table mb-3 table-striped">
-      <tbody>
-        <tr
-          v-for="key in Object.keys(data.roi_by_year)"
-          :key="`roi_by_year-${key}`"
-          v-show="data.roi_by_year[key]"
-        >
-          <td class="pr-3 py-1">{{ parseInt(key) }}</td>
-          <td
-            class="text-right py-1 text-monospace"
-            :class="data.roi_by_year[key] >= 0 ? 'text-success' : 'text-danger'"
+    <h4 class="mb-2">{{ t("metric.roi_by_year") }}</h4>
+    <DataTable
+      :value="tableData"
+      class="w-full p-datatable-sm"
+      stripedRows
+      removableSort
+    >
+      <Column field="year" sortable sortField="year">
+        <template #body="{ data }">
+          {{ parseInt(data.year) }}
+        </template>
+      </Column>
+      <Column
+        field="value"
+        sortable
+        sortField="value"
+        headerClass="text-right flex justify-content-end"
+      >
+        <template #body="{ data }">
+          <div
+            class="text-right"
+            :class="{
+              'text-green-500': data.value > 0,
+              'text-red-500': data.value < 0,
+            }"
           >
-            {{ data.roi_by_year[key] > 0 ? "+" : "" }}
-            {{ $filters.percent(data.roi_by_year[key]) }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            {{ data.value > 0 ? "+" : "" }}{{ $filters.percent(data.value) }}
+          </div>
+        </template>
+      </Column>
+    </DataTable>
   </div>
 </template>

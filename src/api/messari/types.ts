@@ -94,6 +94,20 @@ interface AssetProfileResponse {
   data: AssetProfileDataResponse;
 }
 
+interface MetricRoiByYear {
+  "2021_usd_percent": number | null;
+  "2020_usd_percent": number | null;
+  "2019_usd_percent": number | null;
+  "2018_usd_percent": number | null;
+  "2017_usd_percent": number | null;
+  "2016_usd_percent": number | null;
+  "2015_usd_percent": number | null;
+  "2014_usd_percent": number | null;
+  "2013_usd_percent": number | null;
+  "2012_usd_percent": number | null;
+  "2011_usd_percent": number | null;
+}
+
 interface AssetMetricDataResponse {
   risk_metrics: {
     sharpe_ratios: {
@@ -109,19 +123,7 @@ interface AssetMetricDataResponse {
       volatility_last_3_years: number | null;
     };
   };
-  roi_by_year: {
-    "2021_usd_percent": number | null;
-    "2020_usd_percent": number | null;
-    "2019_usd_percent": number | null;
-    "2018_usd_percent": number | null;
-    "2017_usd_percent": number | null;
-    "2016_usd_percent": number | null;
-    "2015_usd_percent": number | null;
-    "2014_usd_percent": number | null;
-    "2013_usd_percent": number | null;
-    "2012_usd_percent": number | null;
-    "2011_usd_percent": number | null;
-  };
+  roi_by_year: MetricRoiByYear;
   supply: {
     y_2050: number | null;
     y_plus10: number | null;
@@ -232,6 +234,7 @@ export type {
   AssetMetricDataResponse,
   AssetNewsResponse,
   AssetNewsItem,
+  MetricRoiByYear,
 };
 
 export { ASSET_ERRORS };
