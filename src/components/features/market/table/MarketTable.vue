@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { PropType } from "vue";
 import type { MarketsItemResponse } from "../../../../api/coinpaprika/types";
+import { MARKET_TRUST } from "../../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
-import { MARKET_TRUST } from "../../../../api/coinpaprika/types";
 import Tag from "primevue/tag";
 import { ROWS, ROWS_PER_PAGE } from "@/constants/table";
 
@@ -31,7 +31,6 @@ defineProps({
     paginator
     :rows="ROWS"
     :rowsPerPageOptions="ROWS_PER_PAGE"
-    :alwaysShowPaginator="false"
   >
     <Column field="exchange_name" :header="t('market.exchange')" sortable>
       <template #body="{ data }">

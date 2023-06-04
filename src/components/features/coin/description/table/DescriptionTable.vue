@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
+import { computed } from "vue";
 import type { GetCoinByIDResponse } from "../../../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
-import { computed } from "vue";
 import { ROWS, ROWS_PER_PAGE } from "@/constants/table";
 
 const { t } = useI18n();

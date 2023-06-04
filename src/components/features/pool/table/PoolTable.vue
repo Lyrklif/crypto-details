@@ -25,7 +25,6 @@ defineProps({
     paginator
     :rows="ROWS"
     :rowsPerPageOptions="ROWS_PER_PAGE"
-    :alwaysShowPaginator="false"
   >
     <Column field="site" :header="t('pools.name')" sortable sortField="name">
       <template #body="{ data }">

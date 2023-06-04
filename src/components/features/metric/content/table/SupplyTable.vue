@@ -37,7 +37,6 @@ const tableData = computed(() => {
       paginator
       :rows="ROWS"
       :rowsPerPageOptions="ROWS_PER_PAGE"
-      :alwaysShowPaginator="false"
     >
       <Column field="name" sortable sortField="name">
         <template #body="{ data }">

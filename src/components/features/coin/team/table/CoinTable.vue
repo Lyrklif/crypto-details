@@ -21,7 +21,6 @@ defineProps({
     paginator
     :rows="ROWS"
     :rowsPerPageOptions="ROWS_PER_PAGE"
-    :alwaysShowPaginator="false"
   >
     <Column field="name" :header="t('team.name')" sortable sortField="name" />
     <Column
