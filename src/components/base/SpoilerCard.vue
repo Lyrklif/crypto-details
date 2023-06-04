@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
-import Accordion from "primevue/accordion";
-import AccordionTab from "primevue/accordiontab";
-import Panel from "primevue/panel";
 import Card from "primevue/card";
 import PoweredBy from "../base/PoweredBy.vue";
 import type { sourceAPINameType } from "../../constants/sourceAPI";
@@ -20,19 +17,23 @@ emit("firstOpen");
 </script>
 
 <template>
-  <Card class="card">
-    <template #title>
-      <header class="px-3">{{ title }}</header>
-    </template>
-    <template #content>
-      <slot>{{ content }}</slot>
-    </template>
-    <template #footer>
-      <div v-if="site" class="mx-3 ml-auto flex justify-content-end">
-        <PoweredBy :site="site" :loading="loading" :fall="error" />
-      </div>
-    </template>
-  </Card>
+  <section>
+    <Card class="card">
+      <template #title>
+        <header class="px-3">
+          <h2 class="my-0 text-2xl">{{ title }}</h2>
+        </header>
+      </template>
+      <template #content>
+        <slot>{{ content }}</slot>
+      </template>
+      <template #footer>
+        <div v-if="site" class="mx-3 ml-auto flex justify-content-end">
+          <PoweredBy :site="site" :loading="loading" :fall="error" />
+        </div>
+      </template>
+    </Card>
+  </section>
 </template>
 
 <style lang="scss" scoped>

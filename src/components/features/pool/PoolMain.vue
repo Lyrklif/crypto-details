@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { defineAsyncComponent, ref } from "vue";
 import API from "../../../api";
 import type { Pool } from "../../../api/minerstat/types";
 import { useCoinStore } from "../../../stores/coin";
 import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../base/SpoilerCard.vue";
-import PoolTable from "./table/PoolTable.vue";
-import PoweredBy from "../../base/PoweredBy.vue";
 import AlertMessage from "../../base/AlertMessage.vue";
 import LinesSpinner from "../../base/LinesSpinner.vue";
 
@@ -32,25 +30,23 @@ async function load() {
     loading.value = false;
   }
 }
+
+const AsyncContent = defineAsyncComponent(
+  () => import("./table/PoolTable.vue")
+);
 </script>
 
 <template>
-  <section>
-    <header>
-      <h2 class="text-hide">{{ t("pools.title") }}</h2>
-    </header>
-
-    <SpoilerCard
-      :title="`${t('pools.title')} ${pools.length ? `(${pools.length})` : ''}`"
-      site="minerstat"
-      :loading="loading"
-      :fall="error"
-      @firstOpen="load"
-    >
-      <LinesSpinner v-if="loading" />
-      <AlertMessage v-else-if="error" :text="errorText" type="error" />
-      <AlertMessage v-else-if="!pools.length" :text="t('errors.empty')" />
-      <PoolTable v-else :pools="pools" />
-    </SpoilerCard>
-  </section>
+  <SpoilerCard
+    :title="`${t('pools.title')} ${pools.length ? `(${pools.length})` : ''}`"
+    site="minerstat"
+    :loading="loading"
+    :fall="error"
+    @firstOpen="load"
+  >
+    <LinesSpinner v-if="loading" />
+    <AlertMessage v-else-if="error" :text="errorText" type="error" />
+    <AlertMessage v-else-if="!pools.length" :text="t('errors.empty')" />
+    <component v-else :pools="pools" :is="AsyncContent" />
+  </SpoilerCard>
 </template>

@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { defineAsyncComponent, ref } from "vue";
 import API from "../../../api";
 import { useRoute } from "vue-router";
 import type { GetTwitterItem } from "../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
-import TwitterList from "./list/TwitterList.vue";
 import SpoilerCard from "../../base/SpoilerCard.vue";
-import PoweredBy from "../../base/PoweredBy.vue";
 import AlertMessage from "../../base/AlertMessage.vue";
 import LinesSpinner from "../../base/LinesSpinner.vue";
 
@@ -34,27 +32,25 @@ async function load() {
     loading.value = false;
   }
 }
+
+const AsyncContent = defineAsyncComponent(
+  () => import("./list/TwitterList.vue")
+);
 </script>
 
 <template>
-  <section>
-    <header>
-      <h2 class="text-hide">{{ t("twitter.title") }}</h2>
-    </header>
-
-    <SpoilerCard
-      :title="`${t('twitter.title')} ${
-        list && list.length ? `(${list.length})` : ''
-      }`"
-      site="coinpaprika"
-      :loading="loading"
-      :fall="error"
-      @firstOpen="load"
-    >
-      <LinesSpinner v-if="loading" />
-      <AlertMessage v-else-if="error" :text="errorText" type="error" />
-      <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
-      <TwitterList v-else :list="list" />
-    </SpoilerCard>
-  </section>
+  <SpoilerCard
+    :title="`${t('twitter.title')} ${
+      list && list.length ? `(${list.length})` : ''
+    }`"
+    site="coinpaprika"
+    :loading="loading"
+    :fall="error"
+    @firstOpen="load"
+  >
+    <LinesSpinner v-if="loading" />
+    <AlertMessage v-else-if="error" :text="errorText" type="error" />
+    <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
+    <component v-else :list="list" :is="AsyncContent" />
+  </SpoilerCard>
 </template>

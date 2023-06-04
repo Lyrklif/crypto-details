@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { defineAsyncComponent, ref } from "vue";
 import API from "../../../api";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../../../stores/coin";
-import NewsList from "./list/NewsList.vue";
-import PoweredBy from "../../base/PoweredBy.vue";
 import type { AssetNewsItem } from "../../../api/messari/types";
 import AlertMessage from "../../base/AlertMessage.vue";
 import LinesSpinner from "../../base/LinesSpinner.vue";
@@ -32,27 +30,27 @@ async function loadNews() {
     loading.value = false;
   }
 }
+
+const AsyncContent = defineAsyncComponent(() => import("./list/NewsList.vue"));
 </script>
 
 <template>
-  <section>
-    <SpoilerCard
-      :title="`${t('news.title')} ${data.length ? `(${data.length})` : ''}`"
-      site="messari"
-      :loading="loading"
-      :fall="error"
-      @firstOpen="loadNews"
-    >
-      <header>
-        <h2 class="h5 mb-2">
-          {{ t("news.title") }}: <i>{{ store.symbol }}</i>
-        </h2>
-      </header>
+  <SpoilerCard
+    :title="`${t('news.title')} ${data.length ? `(${data.length})` : ''}`"
+    site="messari"
+    :loading="loading"
+    :fall="error"
+    @firstOpen="loadNews"
+  >
+    <header>
+      <h2 class="h5 mb-2">
+        {{ t("news.title") }}: <i>{{ store.symbol }}</i>
+      </h2>
+    </header>
 
-      <LinesSpinner v-if="loading" />
-      <AlertMessage v-else-if="error" :text="errorText" type="error" />
-      <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
-      <NewsList v-else :list="data" />
-    </SpoilerCard>
-  </section>
+    <LinesSpinner v-if="loading" />
+    <AlertMessage v-else-if="error" :text="errorText" type="error" />
+    <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
+    <component v-else :list="data" :is="AsyncContent" />
+  </SpoilerCard>
 </template>

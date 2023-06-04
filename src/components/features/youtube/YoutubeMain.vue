@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { defineAsyncComponent, ref } from "vue";
 import API from "../../../api";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
 import { useCoinStore } from "../../../stores/coin";
 import type { YoutubeSearchItem } from "../../../api/youtube/types";
-import YoutubeList from "./list/YoutubeList.vue";
-import PoweredBy from "../../base/PoweredBy.vue";
 import AlertMessage from "../../base/AlertMessage.vue";
 import LinesSpinner from "../../base/LinesSpinner.vue";
 
@@ -36,29 +34,31 @@ async function load() {
     loading.value = false;
   }
 }
+
+const AsyncContent = defineAsyncComponent(
+  () => import("./list/YoutubeList.vue")
+);
 </script>
 
 <template>
-  <section>
-    <SpoilerCard
-      :title="`${t('youtube.title')} ${
-        data && data.length ? `(${data.length})` : ''
-      }`"
-      site="youtube"
-      :loading="loading"
-      :fall="error"
-      @firstOpen="load"
-    >
-      <header>
-        <h2 class="h5 mb-2">
-          {{ t("youtube.title") }}: <i>{{ store.name }} {{ store.symbol }}</i>
-        </h2>
-      </header>
+  <SpoilerCard
+    :title="`${t('youtube.title')} ${
+      data && data.length ? `(${data.length})` : ''
+    }`"
+    site="youtube"
+    :loading="loading"
+    :fall="error"
+    @firstOpen="load"
+  >
+    <header>
+      <h2 class="h5 mb-2">
+        {{ t("youtube.title") }}: <i>{{ store.name }} {{ store.symbol }}</i>
+      </h2>
+    </header>
 
-      <LinesSpinner v-if="loading" />
-      <AlertMessage v-else-if="error" :text="errorText" type="error" />
-      <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
-      <YoutubeList v-else :data="data" />
-    </SpoilerCard>
-  </section>
+    <LinesSpinner v-if="loading" />
+    <AlertMessage v-else-if="error" :text="errorText" type="error" />
+    <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
+    <component v-else :data="data" :is="AsyncContent" />
+  </SpoilerCard>
 </template>

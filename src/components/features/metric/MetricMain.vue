@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { defineAsyncComponent, ref } from "vue";
 import API from "../../../api";
 import { useCoinStore } from "../../../stores/coin";
 import { useI18n } from "vue-i18n";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import type { AssetMetricDataResponse } from "../../../api/messari/types";
 import { ASSET_ERRORS } from "../../../api/messari/types";
-import MetricsContent from "./content/MetricsContent.vue";
-import PoweredBy from "../../base/PoweredBy.vue";
 import AlertMessage from "../../base/AlertMessage.vue";
 import LinesSpinner from "../../base/LinesSpinner.vue";
 
@@ -38,25 +36,23 @@ async function load() {
     loading.value = false;
   }
 }
+
+const AsyncContent = defineAsyncComponent(
+  () => import("./content/MetricsContent.vue")
+);
 </script>
 
 <template>
-  <section>
-    <header>
-      <h2 class="text-hide">{{ t("metric.title") }}</h2>
-    </header>
-
-    <SpoilerCard
-      :title="t('metric.title')"
-      site="messari"
-      :loading="loading"
-      :fall="error"
-      @firstOpen="load"
-    >
-      <LinesSpinner v-if="loading" />
-      <AlertMessage v-else-if="error" :text="errorText" type="error" />
-      <AlertMessage v-else-if="!data" :text="t('errors.empty')" />
-      <MetricsContent v-else :data="data" />
-    </SpoilerCard>
-  </section>
+  <SpoilerCard
+    :title="t('metric.title')"
+    site="messari"
+    :loading="loading"
+    :fall="error"
+    @firstOpen="load"
+  >
+    <LinesSpinner v-if="loading" />
+    <AlertMessage v-else-if="error" :text="errorText" type="error" />
+    <AlertMessage v-else-if="!data" :text="t('errors.empty')" />
+    <component v-else :data="data" :is="AsyncContent" />
+  </SpoilerCard>
 </template>

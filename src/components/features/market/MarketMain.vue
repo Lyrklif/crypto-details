@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { defineAsyncComponent, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import API from "../../../api";
 import type { MarketsItemResponse } from "../../../api/coinpaprika/types";
 import SpoilerCard from "../../base/SpoilerCard.vue";
 import { useI18n } from "vue-i18n";
-import MarketTable from "./table/MarketTable.vue";
-import PoweredBy from "../../base/PoweredBy.vue";
 import AlertMessage from "../../base/AlertMessage.vue";
 import LinesSpinner from "../../base/LinesSpinner.vue";
 import { useInterfaceStore } from "../../../stores/interface";
@@ -43,25 +41,23 @@ async function load() {
     loading.value = false;
   }
 }
+
+const AsyncContent = defineAsyncComponent(
+  () => import("./table/MarketTable.vue")
+);
 </script>
 
 <template>
-  <section>
-    <header>
-      <h2 class="text-hide">{{ t("market.title") }}</h2>
-    </header>
-
-    <SpoilerCard
-      :title="`${t('market.title')} ${list.length ? `(${list.length})` : ''}`"
-      site="coinpaprika"
-      :loading="loading"
-      :fall="error"
-      @firstOpen="load"
-    >
-      <LinesSpinner v-if="loading" />
-      <AlertMessage v-else-if="error" :text="errorText" type="error" />
-      <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
-      <MarketTable v-else :list="list" />
-    </SpoilerCard>
-  </section>
+  <SpoilerCard
+    :title="`${t('market.title')} ${list.length ? `(${list.length})` : ''}`"
+    site="coinpaprika"
+    :loading="loading"
+    :fall="error"
+    @firstOpen="load"
+  >
+    <LinesSpinner v-if="loading" />
+    <AlertMessage v-else-if="error" :text="errorText" type="error" />
+    <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
+    <component v-else :list="list" :is="AsyncContent" />
+  </SpoilerCard>
 </template>
