@@ -13,7 +13,11 @@ const { availableLocales, locale } = useI18n();
   <Dropdown
     v-model="$i18n.locale"
     :options="availableLocales"
+    inputClass="pl-3 pr-0 py-2 uppercase"
     @change="setLang(locale)"
-    class="uppercase"
-  />
+  >
+    <template #dropdownicon>
+      <i class="pi pi-language" />
+    </template>
+  </Dropdown>
 </template>

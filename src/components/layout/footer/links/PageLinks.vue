@@ -7,15 +7,15 @@ const { t } = useI18n();
 
 <template>
   <ul class="list-unstyled inline-flex">
-    <li class="mx-1" v-for="item in navLinks" :key="t(item.text)">
+    <li class="mx-1" v-for="item in navLinks" :key="t(item.label)">
       <RouterLink
         :to="{ name: item.name, params: item.params }"
         v-slot="{ isActive }"
-        :title="t(item.text)"
+        :title="t(item.label)"
         class="capitalize p-button p-component p-button-primary p-button-outlined no-underline"
       >
         <span class="" :class="{ active: isActive }">
-          {{ t(item.text) }}
+          {{ t(item.label) }}
         </span>
       </RouterLink>
     </li>

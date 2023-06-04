@@ -2,7 +2,7 @@
 import { RouterView } from "vue-router";
 import AppHeader from "./components/layout/header/AppHeader.vue";
 import AppFooter from "./components/layout/footer/AppFooter.vue";
-import Pagination from "./components/layout/AppPagination.vue";
+import AppPagination from "./components/layout/AppPagination.vue";
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import Pagination from "./components/layout/AppPagination.vue";
     <AppHeader />
 
     <main class="container">
-      <Pagination class="mt-4 mb-5" />
+      <AppPagination class="mt-1 mb-6" />
       <RouterView />
     </main>
 

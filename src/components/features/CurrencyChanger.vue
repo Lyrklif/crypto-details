@@ -17,6 +17,11 @@ const changeHandler = (): void => {
   <Dropdown
     v-model="currency"
     :options="currencyVariants"
+    inputClass="pl-3 pr-0 py-2 uppercase"
     @change="changeHandler"
-  />
+  >
+    <template #dropdownicon>
+      <i class="pi pi-wallet" />
+    </template>
+  </Dropdown>
 </template>
