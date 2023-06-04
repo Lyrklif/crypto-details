@@ -47,44 +47,37 @@ load();
 </script>
 
 <template>
-  <div>
-    <div class="grid">
-      <div v-if="loading" class="col-12 lg:col-6">
-        <LinesSpinner />
-      </div>
-      <AlertMessage
-        v-else-if="error"
-        :text="errorText"
-        type="error"
-        class="col-12 lg:col-6"
-      />
-      <AlertMessage
-        v-else-if="!coin"
-        :text="t('errors.empty')"
-        class="col-12 lg:col-6"
-      />
-      <section class="col-12 lg:col-6" v-else>
-        <CoinHeader :coin="coin" class="mb-4" />
-        <CoinStatuses :coin="coin" class="mb-2" />
-        <CoinTags :links="coin.tags" class="mb-2" />
-        <CoinSocial :links="coin.links_extended" class="mb-3" />
-        <CoinDescription :coin="coin" class="mb-2" />
-        <PoweredBy
-          site="coinpaprika"
-          class="mb-4"
-          :loading="loading"
-          :fall="error"
-        />
-      </section>
-
-      <PriceWidget class="col-12 lg:col-6" :id="`${route.params.id}`" />
+  <div class="grid">
+    <div v-if="loading" class="col-12 lg:col-6">
+      <LinesSpinner />
     </div>
-
-    <CoinTeam
-      v-if="coin"
-      :links="coin.team"
-      :loading="loading"
-      :error="error"
+    <AlertMessage
+      v-else-if="error"
+      :text="errorText"
+      type="error"
+      class="col-12 lg:col-6"
     />
+    <AlertMessage
+      v-else-if="!coin"
+      :text="t('errors.empty')"
+      class="col-12 lg:col-6"
+    />
+    <section class="col-12 lg:col-6" v-else>
+      <CoinHeader :coin="coin" class="mb-4" />
+      <CoinStatuses :coin="coin" class="mb-2" />
+      <CoinTags :links="coin.tags" class="mb-2" />
+      <CoinSocial :links="coin.links_extended" class="mb-3" />
+      <CoinDescription :coin="coin" class="mb-2" />
+      <PoweredBy
+        site="coinpaprika"
+        class="mb-4"
+        :loading="loading"
+        :fall="error"
+      />
+    </section>
+
+    <PriceWidget class="col-12 lg:col-6" :id="`${route.params.id}`" />
   </div>
+
+  <CoinTeam v-if="coin" :links="coin.team" :loading="loading" :error="error" />
 </template>

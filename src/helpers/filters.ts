@@ -4,6 +4,16 @@ import {
   defaultInterfaceLang,
 } from "../constants/interface";
 
+const timeFormat: Intl.DateTimeFormatOptions = {
+  month: "numeric",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+  timeZoneName: "short",
+  timeZone: "UTC",
+};
+
 interface MixinsInterface {
   hostname: (value: string) => string;
   date: (value: string) => string;
@@ -23,8 +33,13 @@ const filters: MixinsInterface = {
     const date = new Date(value);
     const settingsStore = useInterfaceStore();
     const locale = settingsStore.lang || defaultInterfaceLang;
+    const options: typeof timeFormat = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
 
-    return date.toLocaleDateString(locale);
+    return date.toLocaleDateString(locale, options);
   },
   percent(value, decimalPlaces = 2) {
     if (!value) return value;

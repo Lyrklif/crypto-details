@@ -14,8 +14,8 @@ import MarketMain from "../components/features/market/MarketMain.vue";
 <template>
   <div class="grid mx-auto">
     <div class="col-12">
-      <CoinMain class="mb-4" />
-      <ExchangeMain class="mb-4" />
+      <CoinMain />
+      <ExchangeMain class="mb-4 mt-4" />
       <PoolMain class="mb-4" />
       <MarketMain class="mb-4" />
       <ProfileMain class="mb-4" />

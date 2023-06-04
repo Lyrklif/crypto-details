@@ -3,51 +3,46 @@ import type { PropType } from "vue";
 import type { GetCoinByIDResponse } from "../../../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 import DataTable from "primevue/datatable";
+import Column from "primevue/column";
+import { computed } from "vue";
 
 const { t } = useI18n();
-defineProps({
+const props = defineProps({
   coin: Object as PropType<GetCoinByIDResponse>,
+});
+
+const tableData = computed(() => {
+  const { coin } = props;
+  if (!coin) return [];
+  const arr = [
+    { name: "coin.started_at", value: coin.started_at, date: true },
+    { name: "coin.last_data_at", value: coin.last_data_at, date: true },
+    { name: "coin.hash_algorithm", value: coin.hash_algorithm },
+    { name: "coin.org_structure", value: coin.org_structure },
+    { name: "coin.proof_type", value: coin.proof_type },
+    { name: "coin.type", value: coin.type },
+  ];
+  return arr;
 });
 </script>
 
 <template>
-  <DataTable class="p-datatable-sm">
-    <tbody class="p-datatable-tbody">
-      <tr>
-        <td>{{ t("coin.started_at") }}</td>
-        <td>
-          <span class="small">
-            <i class="icon-calendar mr-1" />
-            <span>{{ $filters.date(coin.started_at) || "-" }}</span>
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td>{{ t("coin.last_data_at") }}</td>
-        <td>
-          <span class="small">
-            <i class="icon-calendar mr-1" />
-            <span>{{ $filters.date(coin.last_data_at) || "-" }}</span>
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td>{{ t("coin.hash_algorithm") }}</td>
-        <td>{{ coin.hash_algorithm || "-" }}</td>
-      </tr>
-      <tr>
-        <td>{{ t("coin.org_structure") }}</td>
-        <td>{{ coin.org_structure || "-" }}</td>
-      </tr>
-      <tr>
-        <td>{{ t("coin.proof_type") }}</td>
-        <td>{{ coin.proof_type || "-" }}</td>
-      </tr>
-
-      <tr>
-        <td>{{ t("coin.type") }}</td>
-        <td>{{ coin.type || "-" }}</td>
-      </tr>
-    </tbody>
+  <DataTable class="table p-datatable-sm w-full" :value="tableData">
+    <Column field="name" headerClass="hidden">
+      <template #body="{ data }">
+        {{ t(data.name) }}
+      </template>
+    </Column>
+    <Column field="value" headerClass="hidden">
+      <template #body="{ data }">
+        <div v-if="data.date">
+          <i class="icon-calendar mr-2" />
+          <span>{{ data.value ? $filters.date(data.value) : "-" }}</span>
+        </div>
+        <div v-else>
+          {{ data.value || "-" }}
+        </div>
+      </template>
+    </Column>
   </DataTable>
 </template>

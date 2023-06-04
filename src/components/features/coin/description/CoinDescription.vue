@@ -21,7 +21,7 @@ defineProps({
       :href="coin.whitepaper.link"
       target="_blank"
       :title="t('coin.whitepaper')"
-      class="mb-4 no-underline p-button p-component p-button-outlined"
+      class="my-4 no-underline p-button p-component p-button-outlined"
     >
       <i class="pi pi-file mr-1"></i>
       {{ t("coin.whitepaper") }}
