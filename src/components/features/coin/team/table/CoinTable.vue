@@ -15,7 +15,7 @@ defineProps({
 <template>
   <DataTable
     :value="links"
-    class="w-full p-datatable-sm"
+    class="p-datatable-sm"
     stripedRows
     removableSort
     paginator

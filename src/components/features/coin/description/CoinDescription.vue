@@ -12,10 +12,6 @@ defineProps({
 
 <template>
   <div>
-    <p class="mb-4">{{ coin.description }}</p>
-
-    <DescriptionTable :coin="coin" />
-
     <a
       v-if="coin.whitepaper.link"
       :href="coin.whitepaper.link"
@@ -26,5 +22,9 @@ defineProps({
       <i class="pi pi-file mr-1"></i>
       {{ t("coin.whitepaper") }}
     </a>
+
+    <p class="mb-4">{{ coin.description }}</p>
+
+    <DescriptionTable :coin="coin" />
   </div>
 </template>

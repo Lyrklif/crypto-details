@@ -9,21 +9,28 @@ import GoogleTrends from "../components/features/GoogleTrends.vue";
 import NewsMain from "../components/features/coin-news/NewsMain.vue";
 import YoutubeMain from "../components/features/youtube/YoutubeMain.vue";
 import MarketMain from "../components/features/market/MarketMain.vue";
+
+import PriceWidget from "../components/features/CoinPrice.vue";
 </script>
 
 <template>
   <div class="grid mx-auto">
-    <div class="col-12">
-      <CoinMain />
-      <ExchangeMain class="mb-4 mt-4" />
-      <PoolMain class="mb-4" />
-      <MarketMain class="mb-4" />
-      <ProfileMain class="mb-4" />
-      <MetricMain class="mb-4" />
-      <NewsMain class="mb-4" />
-      <YoutubeMain class="mb-4" />
-      <TwitterMain class="mb-5" />
-      <GoogleTrends />
-    </div>
+    <CoinMain />
+    <PriceWidget class="col-12 lg:col-6" />
+    <ExchangeMain class="col-12 lg:col-6" />
+
+    <ProfileMain class="col-12" />
+
+    <NewsMain class="col-12 md:col-6" />
+    <YoutubeMain class="col-12 md:col-6" />
+
+    <PoolMain class="col-12 lg:col-6" />
+    <MarketMain class="col-12 lg:col-6" />
+
+    <MetricMain class="col-12" />
+
+    <TwitterMain class="col-12" />
+
+    <GoogleTrends class="col-12" />
   </div>
 </template>

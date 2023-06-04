@@ -10,7 +10,6 @@ import CoinTags from "./tag/CoinTags.vue";
 import CoinStatuses from "./status/CoinStatuses.vue";
 import CoinHeader from "./header/CoinHeader.vue";
 import CoinDescription from "./description/CoinDescription.vue";
-import PriceWidget from "../CoinPrice.vue";
 import PoweredBy from "../../base/PoweredBy.vue";
 import AlertMessage from "../../base/AlertMessage.vue";
 import { useI18n } from "vue-i18n";
@@ -48,22 +47,14 @@ load();
 </script>
 
 <template>
-  <div class="grid">
-    <div v-if="loading" class="col-12 lg:col-6">
+  <div class="col-12 md:col-6">
+    <div v-if="loading">
       <LinesSpinner />
     </div>
-    <AlertMessage
-      v-else-if="error"
-      :text="errorText"
-      type="error"
-      class="col-12 lg:col-6"
-    />
-    <AlertMessage
-      v-else-if="!coin"
-      :text="t('errors.empty')"
-      class="col-12 lg:col-6"
-    />
-    <section class="col-12 lg:col-6" v-else>
+    <AlertMessage v-else-if="error" :text="errorText" type="error" />
+    <AlertMessage v-else-if="!coin" :text="t('errors.empty')" />
+
+    <section v-else>
       <CoinHeader :coin="coin" class="mb-4" />
       <CoinStatuses :coin="coin" class="mb-2" />
       <CoinTags :links="coin.tags" class="mb-2" />
@@ -76,9 +67,13 @@ load();
         :fall="error"
       />
     </section>
-
-    <PriceWidget class="col-12 lg:col-6" :id="`${route.params.id}`" />
   </div>
 
-  <CoinTeam v-if="coin" :links="coin.team" :loading="loading" :error="error" />
+  <CoinTeam
+    v-if="coin"
+    :links="coin.team"
+    :loading="loading"
+    :error="error"
+    class="col-12 md:col-6"
+  />
 </template>
