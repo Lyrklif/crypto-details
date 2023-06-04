@@ -6,6 +6,7 @@ import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import { useCoinStore } from "../../../../stores/coin";
 import Tag from "primevue/tag";
+import { ROWS, ROWS_PER_PAGE } from "@/constants/table";
 
 const { t } = useI18n();
 const store = useCoinStore();
@@ -16,7 +17,16 @@ defineProps({
 </script>
 
 <template>
-  <DataTable :value="pools" class="w-full" stripedRows removableSort>
+  <DataTable
+    :value="pools"
+    class="w-full p-datatable-sm"
+    stripedRows
+    removableSort
+    paginator
+    :rows="ROWS"
+    :rowsPerPageOptions="ROWS_PER_PAGE"
+    :alwaysShowPaginator="false"
+  >
     <Column field="site" :header="t('pools.name')" sortable sortField="name">
       <template #body="{ data }">
         <a

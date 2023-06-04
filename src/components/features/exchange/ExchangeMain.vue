@@ -49,17 +49,17 @@ async function load() {
       @firstOpen="load"
     >
       <template #content>
-        <PoweredBy
-          site="coinpaprika"
-          class="mb-4"
-          :loading="loading"
-          :fall="error"
-        />
-
         <LinesSpinner v-if="loading" />
         <AlertMessage v-else-if="error" :text="errorText" type="error" />
         <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
         <ExchangeTable v-else :list="list" />
+
+        <PoweredBy
+          site="coinpaprika"
+          class="mt-4"
+          :loading="loading"
+          :fall="error"
+        />
       </template>
     </SpoilerCard>
   </section>

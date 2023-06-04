@@ -45,16 +45,17 @@ async function load() {
       @firstOpen="load"
     >
       <template #content>
-        <PoweredBy
-          site="minerstat"
-          class="mb-4"
-          :loading="loading"
-          :fall="error"
-        />
         <LinesSpinner v-if="loading" />
         <AlertMessage v-else-if="error" :text="errorText" type="error" />
         <AlertMessage v-else-if="!pools.length" :text="t('errors.empty')" />
         <PoolTable v-else :pools="pools" />
+
+        <PoweredBy
+          site="minerstat"
+          class="mt-4"
+          :loading="loading"
+          :fall="error"
+        />
       </template>
     </SpoilerCard>
   </section>

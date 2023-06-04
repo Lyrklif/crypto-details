@@ -4,6 +4,7 @@ import { useI18n } from "vue-i18n";
 import type { AssetMetricDataResponse } from "../../../../../api/messari/types";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
+import { ROWS, ROWS_PER_PAGE } from "@/constants/table";
 
 const { t } = useI18n();
 
@@ -33,6 +34,10 @@ const tableData = computed(() => {
       class="w-full p-datatable-sm"
       stripedRows
       removableSort
+      paginator
+      :rows="ROWS"
+      :rowsPerPageOptions="ROWS_PER_PAGE"
+      :alwaysShowPaginator="false"
     >
       <Column field="name" sortable sortField="name">
         <template #body="{ data }">

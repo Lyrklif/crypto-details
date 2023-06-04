@@ -6,6 +6,7 @@ import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import { MARKET_TRUST } from "../../../../api/coinpaprika/types";
 import Tag from "primevue/tag";
+import { ROWS, ROWS_PER_PAGE } from "@/constants/table";
 
 const { t } = useI18n();
 
@@ -22,7 +23,16 @@ defineProps({
 </script>
 
 <template>
-  <DataTable :value="list" class="w-full" stripedRows removableSort>
+  <DataTable
+    :value="list"
+    class="w-full p-datatable-sm"
+    stripedRows
+    removableSort
+    paginator
+    :rows="ROWS"
+    :rowsPerPageOptions="ROWS_PER_PAGE"
+    :alwaysShowPaginator="false"
+  >
     <Column field="exchange_name" :header="t('market.exchange')" sortable>
       <template #body="{ data }">
         <a

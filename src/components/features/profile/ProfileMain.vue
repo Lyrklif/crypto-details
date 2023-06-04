@@ -47,16 +47,17 @@ async function load() {
 
     <SpoilerCard :title="`${t('profile.title')}`" @firstOpen="load">
       <template #content>
-        <PoweredBy
-          site="messari"
-          class="mb-4"
-          :loading="loading"
-          :fall="error"
-        />
         <LinesSpinner v-if="loading" />
         <AlertMessage v-else-if="error" :text="errorText" type="error" />
         <AlertMessage v-else-if="!profile" :text="t('errors.empty')" />
         <ProfileContent v-else :profile="profile" />
+
+        <PoweredBy
+          site="messari"
+          class="mt-4"
+          :loading="loading"
+          :fall="error"
+        />
       </template>
     </SpoilerCard>
   </section>

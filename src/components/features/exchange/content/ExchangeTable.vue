@@ -4,6 +4,7 @@ import type { CoinExchangesItem } from "../../../../api/coinpaprika/types";
 import { useI18n } from "vue-i18n";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
+import { ROWS, ROWS_PER_PAGE } from "@/constants/table";
 
 const { t } = useI18n();
 
@@ -13,7 +14,16 @@ defineProps({
 </script>
 
 <template>
-  <DataTable :value="list" class="w-full" stripedRows removableSort>
+  <DataTable
+    :value="list"
+    class="w-full p-datatable-sm"
+    stripedRows
+    removableSort
+    paginator
+    :rows="ROWS"
+    :rowsPerPageOptions="ROWS_PER_PAGE"
+    :alwaysShowPaginator="false"
+  >
     <Column
       field="source"
       :header="t('exchanges.source')"

@@ -9,6 +9,7 @@ import AlertMessage from "../../../base/AlertMessage.vue";
 import LinesSpinner from "../../../base/LinesSpinner.vue";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
+import { ROWS, ROWS_PER_PAGE } from "@/constants/table";
 
 const { t } = useI18n();
 const showCount = ref(false);
@@ -33,23 +34,19 @@ defineProps({
       @firstOpen="showCount = true"
     >
       <template #content>
-        <PoweredBy
-          site="coinpaprika"
-          class="mb-4"
-          :loading="loading"
-          :fall="error"
-        />
-
         <LinesSpinner v-if="loading" />
         <AlertMessage v-else-if="error" :text="errorText" type="error" />
         <AlertMessage v-else-if="!links.length" :text="t('errors.empty')" />
-
         <DataTable
           v-else
           :value="links"
-          class="w-full"
+          class="w-full p-datatable-sm"
           stripedRows
           removableSort
+          paginator
+          :rows="ROWS"
+          :rowsPerPageOptions="ROWS_PER_PAGE"
+          :alwaysShowPaginator="false"
         >
           <Column
             field="name"
@@ -64,6 +61,13 @@ defineProps({
             sortField="position"
           />
         </DataTable>
+
+        <PoweredBy
+          site="coinpaprika"
+          class="mt-4"
+          :loading="loading"
+          :fall="error"
+        />
       </template>
     </SpoilerCard>
   </section>

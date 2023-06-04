@@ -8,6 +8,7 @@ import type {
 } from "../../../../../api/messari/types";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
+import { ROWS, ROWS_PER_PAGE } from "@/constants/table";
 
 const { t } = useI18n();
 
@@ -48,6 +49,10 @@ const statsData = computed(() => {
       class="w-full p-datatable-sm mb-4"
       stripedRows
       removableSort
+      paginator
+      :rows="ROWS"
+      :rowsPerPageOptions="ROWS_PER_PAGE"
+      :alwaysShowPaginator="false"
     >
       <Column field="key" sortable sortField="key">
         <template #body="{ data }">
@@ -72,6 +77,10 @@ const statsData = computed(() => {
       class="w-full p-datatable-sm"
       stripedRows
       removableSort
+      paginator
+      :rows="ROWS"
+      :rowsPerPageOptions="ROWS_PER_PAGE"
+      :alwaysShowPaginator="false"
     >
       <Column field="key" sortable sortField="key">
         <template #body="{ data }">

@@ -5,6 +5,7 @@ import { useI18n } from "vue-i18n";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import { computed } from "vue";
+import { ROWS, ROWS_PER_PAGE } from "@/constants/table";
 
 const { t } = useI18n();
 const props = defineProps({
@@ -27,7 +28,14 @@ const tableData = computed(() => {
 </script>
 
 <template>
-  <DataTable class="table p-datatable-sm w-full" :value="tableData">
+  <DataTable
+    class="table p-datatable-sm w-full"
+    :value="tableData"
+    paginator
+    :rows="ROWS"
+    :rowsPerPageOptions="ROWS_PER_PAGE"
+    :alwaysShowPaginator="false"
+  >
     <Column field="name" headerClass="hidden">
       <template #body="{ data }">
         {{ t(data.name) }}

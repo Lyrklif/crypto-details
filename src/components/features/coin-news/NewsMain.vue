@@ -47,16 +47,16 @@ async function loadNews() {
           </h2>
         </header>
 
-        <PoweredBy
-          site="messari"
-          class="mb-4"
-          :loading="loading"
-          :fall="error"
-        />
         <LinesSpinner v-if="loading" />
         <AlertMessage v-else-if="error" :text="errorText" type="error" />
         <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
         <NewsList v-else :list="data" />
+        <PoweredBy
+          site="messari"
+          class="mt-4"
+          :loading="loading"
+          :fall="error"
+        />
       </template>
     </SpoilerCard>
   </section>

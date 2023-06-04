@@ -70,7 +70,7 @@ load();
       <CoinDescription :coin="coin" class="mb-2" />
       <PoweredBy
         site="coinpaprika"
-        class="mb-4"
+        class="mt-4"
         :loading="loading"
         :fall="error"
       />
