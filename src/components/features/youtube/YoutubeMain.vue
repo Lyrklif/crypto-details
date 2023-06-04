@@ -44,27 +44,21 @@ async function load() {
       :title="`${t('youtube.title')} ${
         data && data.length ? `(${data.length})` : ''
       }`"
+      site="youtube"
+      :loading="loading"
+      :fall="error"
       @firstOpen="load"
     >
-      <template #content>
-        <header>
-          <h2 class="h5 mb-2">
-            {{ t("youtube.title") }}: <i>{{ store.name }} {{ store.symbol }}</i>
-          </h2>
-        </header>
+      <header>
+        <h2 class="h5 mb-2">
+          {{ t("youtube.title") }}: <i>{{ store.name }} {{ store.symbol }}</i>
+        </h2>
+      </header>
 
-        <LinesSpinner v-if="loading" />
-        <AlertMessage v-else-if="error" :text="errorText" type="error" />
-        <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
-        <YoutubeList v-else :data="data" />
-
-        <PoweredBy
-          site="youtube"
-          class="mt-4"
-          :loading="loading"
-          :fall="error"
-        />
-      </template>
+      <LinesSpinner v-if="loading" />
+      <AlertMessage v-else-if="error" :text="errorText" type="error" />
+      <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
+      <YoutubeList v-else :data="data" />
     </SpoilerCard>
   </section>
 </template>

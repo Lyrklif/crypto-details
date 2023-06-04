@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-  <ul class="list-unstyled flex flex-wrap">
+  <ul class="list-unstyled flex flex-wrap my-0">
     <li v-for="item in links" :key="`tag-${item.id}`" class="mr-2 mb-2">
       <Tag :value="item.name" />
     </li>

@@ -25,7 +25,7 @@ defineProps({
 </script>
 
 <template>
-  <Message :severity="alerts[type].severity">
+  <Message :severity="alerts[type].severity" :closable="false">
     <slot>{{ text }}</slot>
   </Message>
 </template>

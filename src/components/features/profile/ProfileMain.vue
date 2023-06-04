@@ -45,20 +45,17 @@ async function load() {
       <h2 class="text-hide">{{ t("profile.title") }}</h2>
     </header>
 
-    <SpoilerCard :title="`${t('profile.title')}`" @firstOpen="load">
-      <template #content>
-        <LinesSpinner v-if="loading" />
-        <AlertMessage v-else-if="error" :text="errorText" type="error" />
-        <AlertMessage v-else-if="!profile" :text="t('errors.empty')" />
-        <ProfileContent v-else :profile="profile" />
-
-        <PoweredBy
-          site="messari"
-          class="mt-4"
-          :loading="loading"
-          :fall="error"
-        />
-      </template>
+    <SpoilerCard
+      :title="`${t('profile.title')}`"
+      site="messari"
+      :loading="loading"
+      :fall="error"
+      @firstOpen="load"
+    >
+      <LinesSpinner v-if="loading" />
+      <AlertMessage v-else-if="error" :text="errorText" type="error" />
+      <AlertMessage v-else-if="!profile" :text="t('errors.empty')" />
+      <ProfileContent v-else :profile="profile" />
     </SpoilerCard>
   </section>
 </template>

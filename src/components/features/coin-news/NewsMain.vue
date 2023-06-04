@@ -38,26 +38,21 @@ async function loadNews() {
   <section>
     <SpoilerCard
       :title="`${t('news.title')} ${data.length ? `(${data.length})` : ''}`"
+      site="messari"
+      :loading="loading"
+      :fall="error"
       @firstOpen="loadNews"
     >
-      <template #content>
-        <header>
-          <h2 class="h5 mb-2">
-            {{ t("news.title") }}: <i>{{ store.symbol }}</i>
-          </h2>
-        </header>
+      <header>
+        <h2 class="h5 mb-2">
+          {{ t("news.title") }}: <i>{{ store.symbol }}</i>
+        </h2>
+      </header>
 
-        <LinesSpinner v-if="loading" />
-        <AlertMessage v-else-if="error" :text="errorText" type="error" />
-        <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
-        <NewsList v-else :list="data" />
-        <PoweredBy
-          site="messari"
-          class="mt-4"
-          :loading="loading"
-          :fall="error"
-        />
-      </template>
+      <LinesSpinner v-if="loading" />
+      <AlertMessage v-else-if="error" :text="errorText" type="error" />
+      <AlertMessage v-else-if="!data.length" :text="t('errors.empty')" />
+      <NewsList v-else :list="data" />
     </SpoilerCard>
   </section>
 </template>

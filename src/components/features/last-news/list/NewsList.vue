@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <ul class="list-unstyled grid">
+  <ul class="list-unstyled grid my-0">
     <li
       v-for="(item, index) in list"
       :key="`articles-${index}`"

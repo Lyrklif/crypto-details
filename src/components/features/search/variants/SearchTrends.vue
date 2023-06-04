@@ -36,7 +36,7 @@ const choose = (key: string) => {
 <template>
   <div>
     <b>{{ t("search.trends") }}: <i v-if="loading" class="icon-spinner" /></b>
-    <ul class="list-unstyled mb-0">
+    <ul class="list-unstyled my-0">
       <li
         v-for="item in trendingCoins"
         :key="`search-trend-${item.item.id}`"

@@ -31,44 +31,38 @@ defineProps({
       :title="`${t('coin.team')} ${
         showCount && links.length ? `(${links.length})` : ''
       }`"
+      site="coinpaprika"
+      :loading="loading"
+      :fall="error"
       @firstOpen="showCount = true"
     >
-      <template #content>
-        <LinesSpinner v-if="loading" />
-        <AlertMessage v-else-if="error" :text="errorText" type="error" />
-        <AlertMessage v-else-if="!links.length" :text="t('errors.empty')" />
-        <DataTable
-          v-else
-          :value="links"
-          class="w-full p-datatable-sm"
-          stripedRows
-          removableSort
-          paginator
-          :rows="ROWS"
-          :rowsPerPageOptions="ROWS_PER_PAGE"
-          :alwaysShowPaginator="false"
-        >
-          <Column
-            field="name"
-            :header="t('team.name')"
-            sortable
-            sortField="name"
-          />
-          <Column
-            field="position"
-            :header="t('team.position')"
-            sortable
-            sortField="position"
-          />
-        </DataTable>
-
-        <PoweredBy
-          site="coinpaprika"
-          class="mt-4"
-          :loading="loading"
-          :fall="error"
+      <LinesSpinner v-if="loading" />
+      <AlertMessage v-else-if="error" :text="errorText" type="error" />
+      <AlertMessage v-else-if="!links.length" :text="t('errors.empty')" />
+      <DataTable
+        v-else
+        :value="links"
+        class="w-full p-datatable-sm"
+        stripedRows
+        removableSort
+        paginator
+        :rows="ROWS"
+        :rowsPerPageOptions="ROWS_PER_PAGE"
+        :alwaysShowPaginator="false"
+      >
+        <Column
+          field="name"
+          :header="t('team.name')"
+          sortable
+          sortField="name"
         />
-      </template>
+        <Column
+          field="position"
+          :header="t('team.position')"
+          sortable
+          sortField="position"
+        />
+      </DataTable>
     </SpoilerCard>
   </section>
 </template>

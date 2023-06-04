@@ -23,7 +23,7 @@ defineProps({
 </script>
 
 <template>
-  <p>
+  <p class="my-0 text-xs">
     {{ t("source.powered_by") }}
     <a
       target="_blank"

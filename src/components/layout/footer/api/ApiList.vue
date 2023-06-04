@@ -7,7 +7,9 @@ const { t } = useI18n();
 
 <template>
   <div class="flex flex-wrap justify-content-center">
-    <ul class="list-unstyled inline-flex mb-2 flex-wrap justify-content-center">
+    <ul
+      class="list-unstyled inline-flex mb-2 flex-wrap justify-content-center my-0"
+    >
       <li
         v-for="key in Object.keys(sourceAPI)"
         :key="`footer-link-${key}`"

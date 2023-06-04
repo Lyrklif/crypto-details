@@ -42,21 +42,15 @@ async function load() {
 
     <SpoilerCard
       :title="`${t('pools.title')} ${pools.length ? `(${pools.length})` : ''}`"
+      site="minerstat"
+      :loading="loading"
+      :fall="error"
       @firstOpen="load"
     >
-      <template #content>
-        <LinesSpinner v-if="loading" />
-        <AlertMessage v-else-if="error" :text="errorText" type="error" />
-        <AlertMessage v-else-if="!pools.length" :text="t('errors.empty')" />
-        <PoolTable v-else :pools="pools" />
-
-        <PoweredBy
-          site="minerstat"
-          class="mt-4"
-          :loading="loading"
-          :fall="error"
-        />
-      </template>
+      <LinesSpinner v-if="loading" />
+      <AlertMessage v-else-if="error" :text="errorText" type="error" />
+      <AlertMessage v-else-if="!pools.length" :text="t('errors.empty')" />
+      <PoolTable v-else :pools="pools" />
     </SpoilerCard>
   </section>
 </template>

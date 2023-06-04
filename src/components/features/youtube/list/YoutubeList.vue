@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <ul class="list-unstyled list">
+  <ul class="list-unstyled list my-0">
     <li v-for="item in data" :key="`youtube-${item.id.videoId}`" class="mb-4">
       <YoutubeItem :item="item" />
     </li>

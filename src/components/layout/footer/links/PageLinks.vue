@@ -6,7 +6,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <ul class="list-unstyled inline-flex">
+  <ul class="list-unstyled inline-flex my-0">
     <li class="mx-1" v-for="item in navLinks" :key="t(item.label)">
       <RouterLink
         :to="{ name: item.name, params: item.params }"

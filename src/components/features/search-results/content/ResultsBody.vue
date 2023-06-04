@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-  <ul class="list-unstyled">
+  <ul class="list-unstyled my-0">
     <li v-for="item in items" :key="`search-result-${item.id}`" class="mb-3">
       <ResultsItem :item="item" />
     </li>

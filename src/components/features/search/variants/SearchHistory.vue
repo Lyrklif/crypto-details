@@ -19,7 +19,7 @@ const choose = (key: string) => {
 <template>
   <div v-if="store.items.length">
     <b>{{ t("search.history") }}:</b>
-    <ul class="list-unstyled mb-0">
+    <ul class="list-unstyled my-0">
       <li
         v-for="item in store.items"
         :key="`search-history-${item}`"

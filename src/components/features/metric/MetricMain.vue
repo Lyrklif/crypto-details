@@ -46,20 +46,17 @@ async function load() {
       <h2 class="text-hide">{{ t("metric.title") }}</h2>
     </header>
 
-    <SpoilerCard :title="t('metric.title')" @firstOpen="load">
-      <template #content>
-        <LinesSpinner v-if="loading" />
-        <AlertMessage v-else-if="error" :text="errorText" type="error" />
-        <AlertMessage v-else-if="!data" :text="t('errors.empty')" />
-        <MetricsContent v-else :data="data" />
-
-        <PoweredBy
-          site="messari"
-          class="mt-4"
-          :loading="loading"
-          :fall="error"
-        />
-      </template>
+    <SpoilerCard
+      :title="t('metric.title')"
+      site="messari"
+      :loading="loading"
+      :fall="error"
+      @firstOpen="load"
+    >
+      <LinesSpinner v-if="loading" />
+      <AlertMessage v-else-if="error" :text="errorText" type="error" />
+      <AlertMessage v-else-if="!data" :text="t('errors.empty')" />
+      <MetricsContent v-else :data="data" />
     </SpoilerCard>
   </section>
 </template>

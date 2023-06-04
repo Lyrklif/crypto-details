@@ -24,7 +24,7 @@ defineProps({
       </template>
 
       <template #content>
-        <ul class="flex list-unstyled">
+        <ul class="flex list-unstyled my-0">
           <li v-if="item.is_new">
             <Tag severity="info" :value="t('search.new')" rounded />
           </li>

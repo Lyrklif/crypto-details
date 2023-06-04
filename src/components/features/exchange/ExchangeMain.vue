@@ -46,21 +46,15 @@ async function load() {
       :title="`${t('exchanges.title')} ${
         list.length ? `(${list.length})` : ''
       }`"
+      site="coinpaprika"
+      :loading="loading"
+      :fall="error"
       @firstOpen="load"
     >
-      <template #content>
-        <LinesSpinner v-if="loading" />
-        <AlertMessage v-else-if="error" :text="errorText" type="error" />
-        <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
-        <ExchangeTable v-else :list="list" />
-
-        <PoweredBy
-          site="coinpaprika"
-          class="mt-4"
-          :loading="loading"
-          :fall="error"
-        />
-      </template>
+      <LinesSpinner v-if="loading" />
+      <AlertMessage v-else-if="error" :text="errorText" type="error" />
+      <AlertMessage v-else-if="!list.length" :text="t('errors.empty')" />
+      <ExchangeTable v-else :list="list" />
     </SpoilerCard>
   </section>
 </template>

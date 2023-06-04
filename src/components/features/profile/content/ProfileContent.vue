@@ -36,7 +36,7 @@ defineProps({
 
   <div v-if="profile.organizations && profile.organizations.length">
     <h3 class="text-2xl">{{ t("profile.organizations") }}</h3>
-    <ul class="list-unstyled">
+    <ul class="list-unstyled my-0">
       <li
         v-for="(item, index) in profile.organizations"
         :key="`organization-${index}`"
