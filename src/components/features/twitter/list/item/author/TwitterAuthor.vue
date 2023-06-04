@@ -18,7 +18,7 @@ defineProps({
       target="_blank"
       :href="`https://twitter.com/${item.user_name}`"
       :title="item.user_name"
-      class="flex flex-wrap align-items-center text-decoration-none"
+      class="flex flex-wrap align-items-center no-underline"
     >
       <LazyImage
         :src="item.user_image_link"

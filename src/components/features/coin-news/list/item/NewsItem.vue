@@ -12,24 +12,24 @@ defineProps({
 </script>
 
 <template>
-  <article class="card bg-primary shadow-sm border-light">
+  <article>
     <a
       :href="item.url"
       target="_blank"
       :title="item.title"
-      class="text-decoration-none d-md-flex py-4 px-3"
+      class="flex flex-column md:flex-row w-full no-underline py-4 px-3 surface-border border-solid border-1"
     >
-      <div class="d-md-flex align-items-center mr-md-1 flex-shrink-0">
+      <div class="md:d-flex align-items-center md:mr-1 flex-shrink-0">
         <LazyImage
           :src="item.previewImage"
           :alt="item.title"
-          class="image rounded mb-3 mb-md-0 mr-md-3"
+          class="image rounded mb-3 md:mb-0 md:mr-3"
         />
       </div>
       <div>
         <header class="mb-1">
-          <h3 class="h5 mt-0 mb-0 text-facebook">{{ item.title }}</h3>
-          <span class="text-dark lh-100 mb-2 small">
+          <h3 class="h5 my-0">{{ item.title }}</h3>
+          <span class="line-height-1 mb-2">
             {{ item.author.name }}
           </span>
         </header>

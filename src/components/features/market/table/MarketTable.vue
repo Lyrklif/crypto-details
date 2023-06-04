@@ -28,7 +28,7 @@ defineProps({
         <a
           :href="data.market_url"
           target="_blank"
-          class="text-decoration-none"
+          class="no-underline"
           :title="data.exchange_name"
           >{{ data.exchange_name }}</a
         >

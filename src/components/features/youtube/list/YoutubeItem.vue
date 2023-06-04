@@ -17,7 +17,7 @@ defineProps({
       :href="`https://www.youtube.com/watch?v=${item.id.videoId}`"
       target="_blank"
       :title="item.snippet.title"
-      class="text-decoration-none d-sm-flex"
+      class="no-underline d-sm-flex"
     >
       <LazyImage
         :src="item.snippet.thumbnails.default.url"

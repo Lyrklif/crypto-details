@@ -17,7 +17,7 @@ defineProps({
       :href="item.url"
       target="_blank"
       :title="item.title"
-      class="text-decoration-none card bg-primary border-light shadow-soft h-100"
+      class="no-underline card bg-primary border-light shadow-soft h-100"
     >
       <LazyImage
         :src="item.previewImage"

@@ -17,7 +17,7 @@ defineProps({
   <article :class="{ 'pl-3': item.is_retweet }">
     <TwitterAuthor :item="item" />
 
-    <a :href="item.status_link" class="text-decoration-none" target="_blank">
+    <a :href="item.status_link" class="no-underline" target="_blank">
       <p class="h6">{{ item.status }}</p>
 
       <LazyImage
