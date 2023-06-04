@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-  <DataTable>
+  <DataTable class="p-datatable-sm">
     <tbody class="p-datatable-tbody">
       <tr>
         <td>{{ t("coin.started_at") }}</td>
